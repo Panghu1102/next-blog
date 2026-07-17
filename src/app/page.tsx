@@ -1,11 +1,9 @@
-import { Github, Mail } from "lucide-react";
-
 export default function Home() {
 	const contacts = [
-		{ name: "Email", icon: Mail, value: "example@email.com" },
-		{ name: "小红书", icon: null, value: "待填写" },
-		{ name: "贴吧", icon: null, value: "待填写" },
-		{ name: "Github", icon: Github, value: "Panghu1102" },
+		{ name: "Email", value: "example@email.com" },
+		{ name: "小红书", value: "待填写" },
+		{ name: "贴吧", value: "待填写" },
+		{ name: "Github", value: "Panghu1102" },
 	];
 
 	return (
@@ -40,9 +38,8 @@ export default function Home() {
 						</div>
 
 						<div className="flex-1 space-y-3">
-							{contacts.map(({ name, icon: Icon, value }) => (
+							{contacts.map(({ name, value }) => (
 								<div key={name} className="flex items-center gap-3 text-sm">
-									{Icon && <Icon className="h-5 w-5" />}
 									<span className="font-medium">{name}</span>
 									<span className="text-black/60 dark:text-white/60">{value}</span>
 								</div>
