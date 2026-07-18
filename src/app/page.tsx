@@ -48,7 +48,14 @@ export default function Home() {
 
 					<div className="mt-8 border-t border-black/10 pt-6 dark:border-white/10">
 						<h2 className="text-xl font-semibold">关于我</h2>
-						<p className="mt-3 text-black/60 dark:text-white/60">个人介绍内容将在这里填写。</p>
+						<div className="mt-3 space-y-3 text-black/60 dark:text-white/60">
+							<p>你好，欢迎来到我的网站。</p>
+							<p>我是一名开发爱好者，主要关注编程、计算机技术以及和 AI 的方向。常用 Python 和 JavaScript 进行开发，也会探索各种有趣的技术栈和工具，把想法变成可以实际运行的项目。</p>
+							<p>这些项目通常从一个小想法开始，然后一步步打磨成完整功能。</p>
+							<p>这个网站主要用来记录我的项目、实验和技术笔记，也会分享一些开发过程中的思考与经验。这里的内容更多偏实践导向，关注“如何实现”和“如何优化”。</p>
+							<p>如果你也对开发、技术探索或创意编程感兴趣，希望这里的内容能对你有启发。</p>
+							<p>如果需要帮助的话，也欢迎致信。</p>
+						</div>
 					</div>
 				</section>
 			</main>
