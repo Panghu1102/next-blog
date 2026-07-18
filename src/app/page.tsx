@@ -1,19 +1,21 @@
+import { Github, Mail } from "lucide-react";
+
 export default function Home() {
 	const contacts = [
-		{ name: "Email", value: "example@email.com" },
-		{ name: "小红书", value: "待填写" },
-		{ name: "贴吧", value: "待填写" },
-		{ name: "Github", value: "Panghu1102" },
+		{ name: "Email", icon: Mail, value: "example@email.com" },
+		{ name: "小红书", icon: null, value: "待填写" },
+		{ name: "贴吧", icon: null, value: "待填写" },
+		{ name: "Github", icon: Github, value: "Panghu1102" },
 	];
 
 	return (
 		<div className="min-h-screen bg-white text-black transition-colors dark:bg-black dark:text-white">
 			<header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">
-				<nav className="flex items-center justify-between rounded-2xl border border-black/10 bg-white/40 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/40">
+				<nav className="flex items-center justify-between rounded-2xl border border-black/10 bg-white/20 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/20">
 					<div className="text-lg font-semibold">Panghu Blog</div>
 					<div className="flex gap-2">
 						{["Home", "Blog", "Projects", "About"].map((item) => (
-							<a key={item} href="#" className="rounded-xl px-4 py-2 text-sm transition-all hover:shadow-[0_0_25px_rgba(0,0,0,0.18)] dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+							<a key={item} href="#" className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 hover:shadow-[0_0_25px_rgba(0,0,0,0.18)] dark:hover:bg-white/10 dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.2)]">
 								{item}
 							</a>
 						))}
@@ -38,8 +40,9 @@ export default function Home() {
 						</div>
 
 						<div className="flex-1 space-y-3">
-							{contacts.map(({ name, value }) => (
+							{contacts.map(({ name, icon: Icon, value }) => (
 								<div key={name} className="flex items-center gap-3 text-sm">
+									{Icon && <Icon className="h-5 w-5" />}
 									<span className="font-medium">{name}</span>
 									<span className="text-black/60 dark:text-white/60">{value}</span>
 								</div>
