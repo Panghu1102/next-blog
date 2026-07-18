@@ -1,11 +1,11 @@
-import { Github, Mail } from "lucide-react";
+import { GithubIcon, Mail } from "lucide-react";
 
 export default function Home() {
 	const contacts = [
 		{ name: "Email", icon: Mail, value: "example@email.com" },
 		{ name: "小红书", icon: null, value: "待填写" },
 		{ name: "贴吧", icon: null, value: "待填写" },
-		{ name: "Github", icon: Github, value: "Panghu1102" },
+		{ name: "Github", icon: GithubIcon, value: "Panghu1102" },
 	];
 
 	return (
