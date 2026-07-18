@@ -1,11 +1,11 @@
-import { Link2, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function Home() {
 	const contacts = [
 		{ name: "Email", icon: Mail, value: "example@email.com" },
 		{ name: "小红书", icon: null, value: "待填写" },
 		{ name: "贴吧", icon: null, value: "待填写" },
-		{ name: "GitHub", icon: Link2, value: "Panghu1102" },
+		{ name: "GitHub", icon: null, value: "Panghu1102" },
 	];
 
 	return (
