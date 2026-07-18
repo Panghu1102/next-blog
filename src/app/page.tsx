@@ -1,11 +1,11 @@
-import { GithubIcon, Mail } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 
 export default function Home() {
 	const contacts = [
 		{ name: "Email", icon: Mail, value: "example@email.com" },
 		{ name: "小红书", icon: null, value: "待填写" },
 		{ name: "贴吧", icon: null, value: "待填写" },
-		{ name: "Github", icon: GithubIcon, value: "Panghu1102" },
+		{ name: "Github", icon: Github, value: "Panghu1102" },
 	];
 
 	return (
@@ -24,12 +24,8 @@ export default function Home() {
 			</header>
 
 			<main className="flex min-h-screen flex-col items-center px-6 pt-32">
-				<h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-					Welcome to my blog
-				</h1>
-				<p className="mt-4 text-base text-black/60 dark:text-white/60">
-					A modern blog built with Next.js
-				</p>
+				<h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Welcome to my blog</h1>
+				<p className="mt-4 text-base text-black/60 dark:text-white/60">A modern blog built with Next.js</p>
 
 				<section className="mt-12 w-full max-w-4xl rounded-3xl border border-black/10 bg-white/40 p-8 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/40">
 					<div className="flex flex-col gap-8 md:flex-row md:items-center">
