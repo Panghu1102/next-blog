@@ -1,8 +1,4 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import remarkGfm from "remark-gfm";
+import { generatedPosts } from "@/generated/posts";
 import type { Root, RootContent, Text, PhrasingContent, ListItem, TableRow } from "mdast";
 
 export type PostMeta = {
@@ -16,83 +12,17 @@ export type Post = PostMeta & {
   content: Root;
 };
 
-const postsDirectory = path.join(process.cwd(), "posts");
-
-function ensurePostsDirectory() {
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
-  }
-}
-
-function isMarkdownFile(fileName: string) {
-  return fileName.endsWith(".md");
-}
-
-function formatTitle(slug: string) {
-  return slug
-    .split("-")
-    .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
-function getPostSource(slug: string) {
-  ensurePostsDirectory();
-  const filePath = path.join(postsDirectory, `${slug}.md`);
-
-  if (!filePath.startsWith(postsDirectory) || !fs.existsSync(filePath)) {
-    return null;
-  }
-
-  return fs.readFileSync(filePath, "utf8");
-}
-
 export function getAllPosts(): PostMeta[] {
-  ensurePostsDirectory();
-
-  return fs
-    .readdirSync(postsDirectory)
-    .filter(isMarkdownFile)
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      const source = fs.readFileSync(path.join(postsDirectory, fileName), "utf8");
-      const { data, content } = matter(source);
-      const excerpt = content
-        .replace(/[#>*_`\-[\]]/g, "")
-        .split("\n")
-        .map((line) => line.trim())
-        .find(Boolean);
-
-      return {
-        slug,
-        title: typeof data.title === "string" ? data.title : formatTitle(slug),
-        description:
-          typeof data.description === "string"
-            ? data.description
-            : excerpt ?? "阅读这篇 Markdown 文章。",
-        date: typeof data.date === "string" ? data.date : undefined,
-      };
-    })
-    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  return generatedPosts.map(({ slug, title, description, date }) => ({
+    slug,
+    title,
+    description,
+    date,
+  }));
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const source = getPostSource(slug);
-
-  if (!source) {
-    return null;
-  }
-
-  const { data, content } = matter(source);
-  const parsed = await remark().use(remarkGfm).parse(content);
-
-  return {
-    slug,
-    title: typeof data.title === "string" ? data.title : formatTitle(slug),
-    description: typeof data.description === "string" ? data.description : "阅读这篇 Markdown 文章。",
-    date: typeof data.date === "string" ? data.date : undefined,
-    content: parsed,
-  };
+export function getPostBySlug(slug: string): Post | null {
+  return generatedPosts.find((post) => post.slug === slug) ?? null;
 }
 
 export function renderInline(nodes: PhrasingContent[] = []) {
