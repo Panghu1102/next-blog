@@ -49,14 +49,16 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "npm run generate:posts && next build",
+		"build": "opennextjs-cloudflare build",
+		"build:next": "npm run generate:posts && next build",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
 		"check": "npm run build && tsc",
-		"deploy": "npm run generate:posts && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
 		"dev": "next dev",
+		"generate:posts": "node scripts/generate-posts.mjs",
 		"lint": "next lint",
-		"preview": "npm run generate:posts && opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
 		"start": "next start",
-		"generate:posts": "node scripts/generate-posts.mjs"
+		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload"
 	}
 }
