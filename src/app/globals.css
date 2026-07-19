@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
 	--background: #ffffff;
 	--foreground: #171717;
@@ -137,4 +139,13 @@ body {
 
 .markdown-body tr:last-child td {
 	border-bottom: 0;
+}
+
+.giscus-comments .giscus,
+.giscus-comments .giscus-frame {
+	width: 100%;
+}
+
+.giscus-comments .giscus-frame {
+	border-radius: 1rem;
 }

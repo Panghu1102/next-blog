@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays } from "lucide-react";
+import { GiscusComments } from "@/components/posts/GiscusComments";
 import { getAllPosts, getPostBySlug, renderBlocks } from "@/lib/posts";
 
 export function generateStaticParams() {
@@ -41,6 +42,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
         <div className="markdown-body mt-8">{renderBlocks(post.content.children)}</div>
       </article>
+      <GiscusComments />
     </main>
   );
 }

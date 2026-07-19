@@ -6,6 +6,7 @@ export type GeneratedPost = {
   title: string;
   description: string;
   date?: string;
+  pinned: boolean;
   content: Root;
 };
 
@@ -15,6 +16,7 @@ export const generatedPosts = [
     "title": "欢迎来到我的博客",
     "description": "这是一篇示例 Markdown 文章，用于展示 posts 目录的加载效果。",
     "date": "2026-07-19",
+    "pinned": false,
     "content": {
       "type": "root",
       "children": [

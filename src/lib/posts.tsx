@@ -6,6 +6,7 @@ export type PostMeta = {
   title: string;
   description: string;
   date?: string;
+  pinned: boolean;
 };
 
 export type Post = PostMeta & {
@@ -13,11 +14,12 @@ export type Post = PostMeta & {
 };
 
 export function getAllPosts(): PostMeta[] {
-  return generatedPosts.map(({ slug, title, description, date }) => ({
+  return generatedPosts.map(({ slug, title, description, date, pinned }) => ({
     slug,
     title,
     description,
     date,
+    pinned,
   }));
 }
 
