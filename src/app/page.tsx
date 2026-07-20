@@ -11,10 +11,10 @@ export default function Home() {
 	const [expanded, setExpanded] = useState(false);
 
 	const contacts = [
-		{ name: "Email", icon: Mail, value: "example@email.com" },
-		{ name: "小红书", icon: ExternalLink, value: "待填写" },
-		{ name: "贴吧", icon: ExternalLink, value: "待填写" },
-		{ name: "GitHub", icon: ExternalLink, value: "Panghu1102" },
+		{ name: "Email", icon: Mail, value: "Ph101102@163.com", href: "mailto:Ph101102@163.com" },
+		{ name: "小红书", icon: ExternalLink, value: "Panghu1102", href: "https://www.xiaohongshu.com/user/profile/63e64f0f000000002600784a?xsec_token=YB6tdTc5ICPxK5P8K8xUDP23NLeGUuhDZbEN3wdP_lL_M=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODlHNjdLNE82NzUyOTgwNjg5OTc7PTpK&apptime=1784475483&share_id=c78a4d192c6d4334bdd3a0a61efe8c18" },
+		{ name: "贴吧", icon: ExternalLink, value: "Panghu1102", href: "https://tieba.baidu.com/home/main?id=tb.1.d07df80c.a8EiNjQtA7cwWgVEwH0bmQ?t=1672895272&fr=index" },
+		{ name: "GitHub", icon: ExternalLink, value: "Panghu1102", href: "https://github.com/Panghu1102" },
 	];
 
 	const latestPosts = getAllPosts()
@@ -50,7 +50,7 @@ export default function Home() {
 					<motion.section initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.7 }} className="mt-12 w-full max-w-4xl rounded-3xl border border-black/10 bg-white/40 p-8 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/40">
 						<div className="flex flex-col gap-8 md:flex-row md:items-center">
 							<div className="flex justify-center md:justify-start"><div className="h-36 w-36 overflow-hidden rounded-full border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5"><img src="/avatar/avatar.jpg" alt="Avatar" className="h-full w-full object-cover" /></div></div>
-							<div className="flex-1 space-y-3">{contacts.map(({name,icon:Icon,value})=>(<div key={name} className="flex items-center gap-3 text-sm"><Icon className="h-5 w-5"/><span className="font-medium">{name}</span><span className="text-black/60 dark:text-white/60">{value}</span></div>))}</div>
+							<div className="flex-1 space-y-3">{contacts.map(({name,icon:Icon,value,href})=>(<div key={name} className="flex items-center gap-3 text-sm"><Icon className="h-5 w-5"/><span className="font-medium">{name}</span>{href ? (<a href={href} target="_blank" rel="noopener noreferrer" className="text-black/60 transition hover:text-black dark:text-white/60 dark:hover:text-white">{value}</a>) : (<span className="text-black/60 dark:text-white/60">{value}</span>)}</div>))}</div>
 						</div>
 						<div className="mt-8 border-t border-black/10 pt-6 dark:border-white/10">
 							<button onClick={()=>setExpanded(!expanded)} className="flex w-full items-center justify-between text-xl font-semibold">

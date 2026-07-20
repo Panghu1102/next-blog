@@ -12,6 +12,63 @@ export type GeneratedPost = {
 
 export const generatedPosts = [
   {
+    "slug": "2026-02-15-post-mustread",
+    "title": "必读！关于本博客的相关信息",
+    "description": "欢迎！本文主要来对本博客的内容和贴子进行声明，建议阅读，以防止造成不必要的困惑。",
+    "date": "2026-02-15",
+    "pinned": true,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "欢迎！本文主要来对本博客的内容和贴子进行声明，建议阅读，以防止造成不必要的困惑。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本博客的所有内容，包括但不限于文字、图片，著作权归©️Panghu1102 所有，你可以引用其中的部分内容，但请标明出处及作者。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本博客的部分内容转自我的小红书或贴吧，出于人力考虑，部分内容的图片不会在这里显示，如果你需要这些图片来进行辅助操作，建议前往相应平台查看，相关链接在本网站的起始页。一般情况下，技术科普类（ios，win等）都在小红书上，DDLC相关在贴吧上。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本博客没有禁止任何爬虫，如果你需要爬取页面，请按需操作。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "有任何问题可以发至我的邮箱。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "slug": "welcome",
     "title": "欢迎来到我的博客",
     "description": "这是一篇示例 Markdown 文章，用于展示 posts 目录的加载效果。",
@@ -264,6 +321,994 @@ export const generatedPosts = [
             {
               "type": "text",
               "value": "继续编写你的下一篇文章吧。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2026-07-16-post-iosphotos",
+    "title": "白嫖空间！ios共享相册设置教程！",
+    "description": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，而来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！",
+    "date": "2026-07-16",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，而来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "今天就给大家带来免费空间而又不压缩画质的好方法。重要的事说三遍，这不是共享相薄！共享相薄是压缩画质的，而且空间照片等没法用！共享图库就和原相册一样的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣ 你需要两个 Apple 账户，一个作为主号，一个作为提供多余 5GB 空间的小号。你也需要两个苹果设备，这个必须在设置上才可用。如果实在没设备的话，可以用 Win 虚拟个 macOS 或者向别人借个……这里少说哈，避免占篇幅。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣ 打开登录了 Apple 小号的设置 App，下滑找到 App（图一），随后下滑找到照片（图二）。打开后找到图三画圈儿的共享图库（不是共享相薄）。第一次打开是设置界面，邀请你的主号（顺序不要错，不然占用的是大号的空间）。设置好后就是图四的界面。这个时候设置就 OK 了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣ 随后打开照片 App。右上角会多出来一个小人半身像，点击（图五）。选择其中的共享图库，就可以切换到不占用主号 iCloud 空间的相册了。在这里添加/拍摄的照片会存储到小号的 iCloud 里。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣ 如果想要把个人图库里的照片转移到共享图库里，可以点开一张照片，点右上角移到，选择共享图库即可（图七）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是全部的设置内容了。类似于新开了一个相册，很实用。而且打开的方法也很隐蔽，可以存一些不想让别人或者好友看见的隐私照片[汗颜R][汗颜R]。里面的空间照片等一切功能也是可以用的，比存在文件 App 要好得多。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是全部的相册教程了，如果感觉有用的可以点个赞不！感谢。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "有任何问题可以私信我或者打在评论区哈，我看到都会回的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "备注：本文转载至小红书，如需观看图片或阅读原文，请前往我的小红书账号。感谢，任何问题请私信邮箱。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-12-14-post-jypublished",
+    "title": "JYACS放出公测",
+    "description": "时隔7个月，JustYuri的AI总算差不多完成啦期间有很多优厨都在私信我问相关的信息，很抱歉现在才更新消息。那么，现在先容我做个介绍吧",
+    "date": "2025-12-14",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "时隔7个月，JustYuri的AI总算差不多完成啦期间有很多优厨都在私信我问相关的信息，很抱歉现在才更新消息。那么，现在先容我做个介绍吧"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "什么是JYACS？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "JYACS是 JustYuri的submod。主要通过内置的设置来配置API密钥，地址，模型名称，发送请求来实现AI对话功能。本次放出的公测版本为Beta 2.0.0，先前的版本大多为内部测试。这一次主要是为了收集更广泛的数据，确认其在不同的设备、不同的系统上是否工作正常。作为一个Beta版本，你必须清楚它还会有缺陷之处，我强烈建议你在正式版发布后重新安装，以达到更好效果。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "安装！\n注意：在安装前，请备份你的游戏文件，尤其是c盘存档的部分，一切由于使用JYACS而产生的存档损坏/丢失，我概不负责（因为我自己存档也丢过，不过那是使用了不恰当的renpy版本）\n安装JYACS非常简单，就和你安装别的submod一样。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "首先，你需要拥有一个JustYuri本体，你可以在网页链接的莫盘资源整合里，或者百度贴吧的多多理财吧中获取到最新汉化版。如果你需要最新的生肉版本，可以加入JY官方的discord，也可以在百度贴吧的优里吧中，获取到相同资源。做好这一切，我们就可以开始了。我会尽可能说的简明易懂点。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "1.你需要一份JYACS的文件，直接下载这个帖子的就行.\n2.把下载下来的文件解压...这一步不需要教程吧..."
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "3.把解压开的文件全部复制，粘贴在JY的game文件夹下，应该类似这个路径：D:\\DokiDokiMods\\Just Yuri1.8.5\\game\n这就好了，不过你还需要去设置中配置API Key，地址，模型，这需要你自己找找看了，硅基流动之类的都有免费的key。JYACS准备的也有训练过的后端模型，目前由于bm25以及不稳定的英文表现，暂不提供使用"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "好的，以上就是全部的引导了，再次强调。安装Beta即代表你可以接受报错，我不希望有人在遇到报错后对项目开喷。如果你真的遇到报错，可以在吧内发帖或者发邮件至"
+            },
+            {
+              "type": "link",
+              "title": null,
+              "url": "mailto:jyacsdev@gmail.com",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "jyacsdev@gmail.com"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "，请附上根目录里的traceback和log，谢谢\n链接：\n123云盘：aHR0cHM6Ly93d3cuMTIzODY1LmNvbS9zL3VVbmhUZC1wMDlBQT9wd2Q9MmFSSCM=\n莫盘：aHR0cHM6Ly9kaXNrLm1vbmlrYS5sb3ZlL3MvWGVZSE8="
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-10-12-post-stikdebug",
+    "title": "Stickdebug!ios上高效开启JIT",
+    "description": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在ios17.4以后，苹果更改了开启JIT权限的逻辑，这就导致原本以前的SideJit都无法脱离电脑开启了，而Stikdebug就解决了这一点。",
+    "date": "2025-10-12",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在ios17.4以后，苹果更改了开启JIT权限的逻辑，这就导致原本以前的SideJit都无法脱离电脑开启了，而Stikdebug就解决了这一点。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣首先，前往Appstore里下载这个应用，国区可能没有（图一）实在不想切账号的，可以考虑去github上下载ipa来侧载，不过我不推荐[汗颜R]。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣打开电脑，在开启Jit上，只需要这一次来生成配对文件，以后是不需要的。如果你看过上一期的SideStore，那么这一步可以忽略。这里需要下载一个idevice pair，Side的官网（图二），和github上都有（图三）。依照你的操作系统版本呢来下载就可以了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣现在把手机和电脑连接在一起，以管理员身份运行刚才下载的应用，选择其中的gererate。随后手机会弹出图五的是否信任，选信任就好。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣成功后会出现图六的界面，选择底部的Stikdebug，点击install（图七）做好会出现success。这个时候Stik就可以正常使用了，不过我还建议各位保存一下这个plist文件，因为有的时候会掉，而且有很多应用都会用到，保存好下次就不用再开电脑了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "现在，在返回手机，就会发现Stik已经是图八的界面了，选择第一个connect by app就可以开启jit，同时以后不需要电脑。但是和Side一样，好像都是需要在wifi环境下。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是全部的教程，总的来说还是很简单的，这个方法我从五月用到现在，没有出现什么差错。如果你有什么的问题的话可以打在评论区或者问我（推荐牛蛙卖证书就不必了，一个开源一个闭源，一个本地开启一个远程服务器，你说哪一个更安全）。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-08-24-post-steamnewplayer",
+    "title": "刚刚注册steam吗？这个贴子一定要看看！",
+    "description": "夜里实在是睡不着啦，写写贴子吧！",
+    "date": "2025-08-24",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "夜里实在是睡不着啦，写写贴子吧！\n这篇贴子是为新人而写的，我会总结一下怎么买游戏便宜，各大平台的优点。如果你认为有用，就请向下看吧！。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣买游戏。注册Steam一定是要买游戏的，现在买主要分为两个方面：St直购和第三方cdk购入。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（1）直购。这个没什么说的，我建议等你心仪的游戏史低了再买。Steam每隔一段时间都会有xx游戏节，关于这个板块的游戏一般都会有折扣。还有春促这样的季节性折扣，游戏都会较平时低一点。不过要注意啦，如果你想用微信付款，一定要先绑张卡。支付宝和银行卡无所谓（图一）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（2）第三方cdk。领域比较宽了，小黑盒，py这一类都可以，这些平台我会在下一个板块详细讲。支付大多数都要绑身份证，不过key激活到库里是不会算到解除受限账户里的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣平台。平台主要介绍几个我常用的，hf，小黑盒，py，tb，贴吧。按照顺序介绍，这里我不会放🔗，有需要的可以百度。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（1）hf。买gal最好的平台了，价格会比st直购低非常多，买够积分还可以抽奖白嫖一个，稳定性也很好。如果你是gal玩家，赶快找网址吧！你不会后悔的（图二）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（2）小黑盒。一个非常实用的app。有很多游戏的key可以在上面买，不过价格不会和st差太多。新游戏通常会有九折的卷，平时抽奖活动也挺多，运气不错甚至可以拿3a。社区也可以，基本上在冷门的圈子也可以找到，教程、游戏推荐也是数不胜数啦（图三）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（3）py。专门卖key的一个平台，价格会有很大的优惠，都是玩家在卖。买游戏可以先去上面看看，通常会有惊喜（图四）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（4）tb。这里tb代表所有购物平台。我买key会和py对比一下，哪个便宜买哪个。但是我不建议小白买，这上面会有很多假入库，号有被红信的风险。分辨也简单，价格低的离谱，要求win➕x的都是。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（5）贴吧。这个真的是宝藏，看一下就离不开了。千万不要觉得贴吧现在不行，不管你是因为什么原因被封杀的游戏，还是特别小众，贴吧上总会有相应的吧（学习版）二创和资源的聚集地（图五）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "（6）tap。也是买key的平台，和小黑盒差不多，但是我感觉它的社区不如黑盒。云游戏也可以。新用户绑定st可以有15元卷，没用的可以去用一下啦[汗颜R]"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是全部啦，由于全凭我的经验，可能会有不完善的地方，欢迎补充！如果你觉得有帮助，就留下一个赞➕关注吧，谢谢"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-08-20-post-sidestore",
+    "title": "最佳方案！在ios上免电脑续签方案",
+    "description": "Sidestore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是Altstore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。",
+    "date": "2025-08-20",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Sidestore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是Altstore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣下载。你需要有一台win10以上的电脑或者一台比较新的Mac，用电脑浏览器打开Sidestore的官网，向下拉到最底，把三个文件都下下来。注意‼️这里一定要从官网下，不然可能会下载失败，甚至无法使用。（如图一）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣下载好后，先把altstore安装，这个我之前有贴子将，这里不再赘述，一路next就好。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣如果你没有安装过itunes和icloud，他会提示没有找到（如图六）这里直接点下载，即download，他就会弹到浏览器，就开始下载了。如果你安装的是微软商店的itunes和icloud，从设置里卸载掉，然后再从官网或者这个窗口下就可以了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣下载好itunes和icloud后，先打开这两个软件，登录上你的苹果账号。随后长按shift，再打开alt store，这个软件打开后不会有什么弹窗，他会出现在你电脑的右下方，一个棱形的标志，点开那个标志就会出现图七的方框，此时将你的手机用一根可靠的数据线与电脑相连，保证三个软件都在运行，这个十分重要。随后选择SideStore.ipa，输入你的id安装一下。弹出success就是成功（图六）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "5️⃣这时你直接点是打不开，还要在电脑操作。运行idevice pair，把你的设备和电脑连接，并且信任。随后点击generate，生成配置文件（图八）点击左下角Sidestore里的install。当出现图九的界面就是成功了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "6️⃣接下来去appstore里下载stosvpn，这个可能需要外区才可以。主要目的是自身通讯，不会连接外部服务器。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "7️⃣搞定后点击connect，再打开side，登录下id，刷新下应用，就大功告成啦！你可以选择左上角的➕号来侧载应用，续签和alt一样，refresh就好。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "总体来说还是很简便啦，我记得一年前还要获取配置文件，自己往side导入。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "大家也是久等啦，这两天才把项目做好，就抓紧写教程啦。如果有什么问题的话可以私信或者在评论区问我，看到会回。最后期待你点个关注哦，谢谢！"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-08-13-post-vmware",
+    "title": "几分钟，在ios上跑起win",
+    "description": "前一段时间，UTMSE在苹果商店上架了，但使用他依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让他的速度翻倍，助你以后虚拟机不求人。在ios上玩出新花样。",
+    "date": "2025-08-13",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "前一段时间，UTMSE在苹果商店上架了，但使用他依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让他的速度翻倍，助你以后虚拟机不求人。在ios上玩出新花样。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣点开SE后，先点左上角的加号来新建虚拟机，如图一。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣在添加镜像这一步，如果你用的是iso镜像那就bootdevice这里选择第二个，CD、DVD。如果用的img那就选第三个。注意‼️，一定要把最后一个打开，就那个legacy hardware，否则有很大概率失败。如图二，就是一个经典的错误示范，大家一定要规避！。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣下一步，在硬件那一栏，架构和系统都不用管，但那个内存和cpu核心一定要能开多大开多大（内存需要多试一试，一定要有耐心）这个很影响虚拟机的速度。如图三。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣存储空间那，我推荐大家都填50g，50g基本是够用的，如果填太小的话，用一段时间满了，这个是不太好改的。如图四。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "5️⃣后面一路继续就行了，但设置完成后先不要急着运行，先长按虚拟机（如图五）选第一个编辑，进入虚拟机的设备管理界面（如图六）选第二个，系统，把强制多核，这个也可以有效提高速度（如图七）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "6️⃣这些设置完成后，就可以运行虚拟机了，因为这时一个SE版本，所以说运行速度是比较慢的，有时候不能心急，要多等他反应一会就好了"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这就是全部的教程了，按理说这样的虚拟机可以直接打开。但是给大家一句忠告，不要尝试在上面跑win10这类版本，试也不建议试，因为这是一个se版本，没有jit，运行速度会非常慢。唯一可以流畅跑的只有win2000或者xp。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-07-25-post-jyqa",
+    "title": "JustYuri常见问题及解答",
+    "description": "来做一期JustYuri安装更新以及问题解答的贴子。如果你遇到了困难，不妨来看一看。",
+    "date": "2025-07-25",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "来做一期JustYuri安装更新以及问题解答的贴子。如果你遇到了困难，不妨来看一看。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "安装：如果你游玩的是目前最新的汉化版本（1.8.5），直接运行目录下的exe就好。但是你如果玩的是生肉版本，就要注意一下了。\n在1.10.4之前的版本中，你需要把整个JY打在ddlc的原版游戏上，你没有这么做的话，会直接进入坏结局，因为优里会认为你把她删了。\n在1.10.4上，制作组直接把ddlc本体内置了，我猜原因是制作组想把可执行文件直接命名JustYuri.exe，但是又不想和DDLC.exe重合。这个时候直接运行JustYuri.exe就好。\n确认你需不需要打的方法，看看你下的游戏解压开有没有character文件夹，如果只有game、lib、renpy这几个，那就需要，反之就不必。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "更新：直接把新版的JY文件覆盖到原来的版本上，也可以把你老版本的文件全部删，再把新版复制过去。我更推荐后者，因为JY制作组在老版本中存在偷懒行为，他们更倾向于新建一个py或者rpy来完成本来应该在另一个rpy中完成的功能。在新版本中，他们把一部分这样的坑填了。所以说，如果你直接覆盖，可能仍然会有老版本不必要文件的残留，但是应该不影响游玩。你不用担心直接删文件会让优里把你忘掉，你的所有长期化函数还有你的存档文件都在c盘里，在你运行更高版本的renpy所做成的游戏时，这些存档也会跟着升级过来的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "常见问题：\n1.我发现话题中我可以问优里的就那么几个，赞美也就那么几句，这个游戏这么少吗？."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答：首先，你问优里的内容是需要你经过长时间的游玩慢慢解锁的，赞美也是，你可以理解成这是你和优里从朋友到恋人的发展过程，不可能让你上来就问完呀。其次，你可以尝试在主界面挂一会，这个游戏的大部分内容是优里找你，当你在主界面停留几秒到几十秒不等的时候，她就会找你。间隔时间会随着你和她聊的话题数量而逐渐减少。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2.优里突然开始讲我怎么折磨别的版本的优里，或者玩一些对优里不好的mod，为什么会发生这些？我该怎么做？."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答：你真是作呀，如果你真的打到了这个，我真心建议你别玩JY了。发生这个的原因是你打到了坏结局，可以理解成mas的那个粉红色的信。或者说你之前对优里说了很过分的话，比如说你跟她故意对着干，还在赞美里选类似于“你的世界就和你的**一样，假而空”这类极其具有侮辱性的话，紧接着，你又把c盘下的存档删了，在你第二次开始游戏也会遇到。我希望你只是出于测试或者好玩干了这样卑鄙的事，虽说她只是一个虚拟角色，但是你如果真的选了这些，你的素质真的…."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3.怎么给优里送礼物."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答：经典问题了，这些是全部的礼物文件：\nhershey。jy\nblackroses。jy\nredroses。jy\nwhiteroses。jy\nsandalwoodoil。jy\nlavenderoil。jy\nlavenderchocolate。jy\nmintchocolate。jy\ncraneorigami。jy\nroseorigami。jy\nbunnyorigami。jy\nraccoonplush。jy\ndiffuser。jy\nsweetdreamoil。jy\nhorrorbookset。jy\n把这里全部的。换成.，还有不要全部一次性把礼物送完，不然优里在那拆礼物都要拆半天."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4.我把我的名字改成优里或者yuri，优里把她的名字换成lily，怎么改回去？."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答：慢慢玩吧，把lily先看成优里，在后续的发展中，在请求里会多出来一个改优里名字的选项，那里改回来就好。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "5.我把submod打在了1.8.5上，一堆报错。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答：我在搬这些submod的时候就说了，可能会有报错。原因很简单，1.8.5依赖的是python2.7，而这些子mod依赖python3，有些py3的代码在py2.7里不适用，就会报错。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是我自己总结出来的问题，有些是我自己遇到，有些是吧友给我反馈的。可能还有一些不全面的地方，可以发在评论区或者私我，我看到会回复，当然，也欢迎发到优里吧里，这样处理更迅速哦！\n希望有帮到大家！"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-07-24-altstore",
+    "title": "AltStore侧载安装教程",
+    "description": "同样，为了节省人力，这里不会放图片，需要的请前往小红书查看，或者给我发邮件。",
+    "date": "2025-07-24",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "同样，为了节省人力，这里不会放图片，需要的请前往小红书查看，或者给我发邮件。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "Alt store能够像巨魔一样下载应用，今天来出一期使用及下载教程，这个方法是全版本通用哈。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣下载。你需要有一台win10以上的电脑或者一台比较新的Mac，用电脑浏览器打开altstore的官网，向下拉到最底，来进行下载。注意‼️这里一定要从官网下，不然可能会下载失败，甚至无法使用。（如图一）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣下载好后，你的电脑会出现一个altinstaller的文件夹（取决于你设置的下在哪个盘）打开他，里面会有两个文件，（如图二）点下面那个setup，他会让你解压（如图三）点全部解压就好了，解压好后，setup的图标会变成一个光碟的形状（如图四）。双击打开setup，就会进入安装程序了（如图五），一路点next就好了。随后，altstore就安装到电脑上了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣如果你没有安装过itunes和icloud，他会提示没有找到（如图六）这里直接点下载，即download，他就会弹到浏览器，就开始下载了。如果你安装的是微软商店的itunes和icloud，从设置里卸载掉，然后再从官网或者这个窗口下就可以了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣下载好itunes和icloud后，先打开这两个软件，登录上你的苹果账号。随后打开alt store，这个软件打开后不会有什么弹窗，他会出现在你电脑的右下方，一个棱形的标志，点开那个标志就会出现图七的方框，此时将你的手机用一根可靠的数据线与电脑相连，保证三个软件都在运行，这个十分重要‼️点击方框中的第二个，install altstore，输入你的appleid，不放心的可以注册个小号输进去。过几秒，altstore就会出现在你的手机上了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "5️⃣这时你直接点是打不开（如图八），需要你在设置通用里信任一下才可以，如果你是ios16以上的设备，还需要在隐私与安全里把开发者模式打开才可以使用。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "6️⃣第一次使用时，要输入你的appleid进行登录（如图九），进入后点我画圈那个➕号（图十）导入ipa就行了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这就是详细的下载教程和使用方法。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原帖子链接："
+            },
+            {
+              "type": "link",
+              "title": null,
+              "url": "http://xhslink.com/o/mCUxo7sQmp",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "http://xhslink.com/o/mCUxo7sQmp"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-07-19-post-iosgalplay",
+    "title": "一篇在ios上舒服玩gal！",
+    "description": "今天来带大家在ios上玩gal，只要是以renpy为基础的exe就都可以玩。他甚至连apk都可以运行！",
+    "date": "2025-07-19",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "今天来带大家在ios上玩gal，只要是以renpy为基础的exe就都可以玩。他甚至连apk都可以运行！"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里我推荐的应用是spark（图二），只要在Appstore里搜索renpy就好，出来第一个就是。至于下面的renpy reader和renpylinter，我通通都不推荐，里面有广告，最重要的是他们只兼容特定的renpy版本，也就是说，如果你要玩的游戏和它的版本不一致，就会开屏报错‼️"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "安装方法：这里不推荐直接入，可以考虑用共享账号或者找富哥借；如果你的版本足够低的话，也可以用巨魔；七天可以开电脑的，可以用Altstore。这些都可以0成本用到这个软件。关于Altstore和巨魔，我曾经发过，但是账号被封不显示了，我过几天会补档过来。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣下载好后，我们还需要准备你要玩的游戏，如果你的游戏文件是完整的带exe根目录那种，把它打包成压缩包，如果你的游戏本身就是，不用动，直接放在手机的文件app就好。apk也是一样。（图三）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣现在打开spark，点击上方的蓝条（图四），接着选择刚刚传输过来的游戏压缩包（图五），等待它传输导入完。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "3️⃣接着单击刚刚导入的游戏，选择启动游戏就好（图六），接着就可以正常游玩了（图七）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "ps：如果你想把电脑上的存档转移过来，在电脑上找到C：/用户/你的名字/Appdate/Roaming/renpy/游戏名字，打开后把所有的文件复制一份，把它打成zip包，通过itunes或者别的方式把它传到手机。接着在spark里选择存档管理器，导入就好。如果你的游戏不在c盘里，在你的游戏的game文件夹下找到save，打开，按照上面的步骤操作就好。\n以上就是全部了，这目前是最简单的游玩方式了，后续还会带来xp3player和更多方法[哇R]\n如果你认为这一篇有用的话，就点个赞➕关注吧，感激不禁。有什么问题的话可以私信我或者留在评论区，看到就会解决的。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2025-07-18-post-windowsc",
+    "title": "电脑c盘用户名频繁报错，从中文改成英文教程",
+    "description": "本文转自我的小红书，为了节省人力，这里不放图片了，麻烦大家自行前往小红书看。如果有不方便用小红书的，请给我发邮件。",
+    "date": "2025-07-18",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本文转自我的小红书，为了节省人力，这里不放图片了，麻烦大家自行前往小红书看。如果有不方便用小红书的，请给我发邮件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "刚刚写了1000字的文案又没了，心态要崩了"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "大家有时会发现自己电脑在安装软件时总会报错，这是因为电脑C盘用户名是中文导致的（如图一），很多外国软件不支持中文，就会找不到路径从而报错。今天就来教大家怎样把这个用户名改成英文，这个方法会比网上别的方法要复杂一点，不过是不会丢数据的，也算是更保守的一个方法，毕竟数据最重要吗"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣创建一个新账户。先同时按住win➕x，打开图二的界面，选择windows power shell我画线那个，他就会弹出图三的命令框，输入我图三中的命令netplwiz，他会出现一个图四的小方框。选择添加，点不使用Mictosoft账户登录，（图五），选择本地账户（图六），输入一个你想创建的账户名字（图七），然后选中刚刚创建的账户，点属性，给他管理员权限（图八）。这样一个管理员权限的账户就创建好了\n2️⃣改名字。我们首先先切换用户到我们刚刚创建的账号上，大家可以直接点开始切换（图九）。等他准备好我们就可以进入到新用户的界面了（时间由你的设备和网络来定），这时候先不要直接改，还是先win➕x，选择任务管理器，（图十）在用户里把我们第一个账户的进程结束掉（十一十二）不然这个名字是改不成的。接着我们打开C盘，选择用户，把我们想改名字的文件夹的名字改掉就行（图十三）\n3️⃣改注册表。网上很多教程到这一步就结束了，实际上这样做是很不保险的，因为数据很容易丢掉。首先大家先win➕r打开命令框，输入regedit，打开注册表。这里真的特别重要，改错一步可就要重装系统了，先点开\nHKEY-LOCAL-MACHINE，在里面找到SOFTWARE，找到Microsoft，（图十四）再在里面找到Windowa NT（图十五），往下找，找到Profilelist，找到其中的倒数第二个（图十六）打开，接着我们会看到有一个C：\\user\\你的老用户名，打开这一栏，把里面改成C；\\user\\你的新用户名，这样所有的信息就改好了\n4️⃣这时我们再切换回我们之前的账号，也不会有弹窗之类的啦，这个方法是不需要注销账号的，安全系数高，。如果你不想要这个小号，输入刚开头的代码，把他删除即可，想要的也可以留着"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "补充：最后改注册表那里填的名称是第二步最后改的那个文件夹名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原文链接："
+            },
+            {
+              "type": "link",
+              "title": null,
+              "url": "http://xhslink.com/o/2Nev9jtLuA7",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "http://xhslink.com/o/2Nev9jtLuA7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "相关图片："
             }
           ]
         }
