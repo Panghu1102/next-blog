@@ -37,8 +37,13 @@ export default function Home() {
 					<nav className="flex items-center justify-between rounded-2xl border border-black/10 bg-white/20 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/20">
 						<div className="text-lg font-semibold">Panghu Blog</div>
 						<div className="flex items-center gap-2">
-							{["Home", "Blog", "Projects", "About"].map((item) => (
-								<a key={item} href={item === "Blog" ? "/posts" : "#"} className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 dark:hover:bg-white/10">{item}</a>
+							{[
+								{ label: "Home", href: "/" },
+								{ label: "Blog", href: "/posts" },
+								{ label: "Projects", href: "/projects" },
+								{ label: "About", href: "#" },
+							].map((item) => (
+								<a key={item.label} href={item.href} className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 dark:hover:bg-white/10">{item.label}</a>
 							))}
 							<ThemeToggle />
 						</div>
