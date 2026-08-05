@@ -7,6 +7,13 @@ export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix: "always",
+  localeDetection: true,
+  pathnames: {
+    "/": "/",
+    "/projects": "/projects",
+    "/posts": "/blog",
+    "/posts/[slug]": "/blog/[slug]",
+  },
 });
 
 export type Locale = (typeof locales)[number];

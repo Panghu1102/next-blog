@@ -3,16 +3,15 @@
 import Image from "next/image";
 import { Mail, ChevronDown, ExternalLink, CalendarDays, ArrowRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { NavBar } from "@/components/NavBar";
 import { getAllPosts } from "@/lib/posts";
 import { useState } from "react";
 
 export default function Home() {
 	const [expanded, setExpanded] = useState(false);
 	const t = useTranslations();
-	const locale = useLocale();
 	const aboutParagraphs = t.raw("home.about") as string[];
 
 	const contacts = [
@@ -31,25 +30,7 @@ export default function Home() {
 		<div className="min-h-screen bg-white text-black dark:bg-black dark:text-white">
 			<motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
 				<header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">
-					<nav className="flex items-center justify-between rounded-2xl border border-black/10 bg-white/20 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/20">
-						<div className="text-lg font-semibold">Panghu Blog</div>
-						<div className="flex items-center gap-2">
-							{[
-								{ label: t("nav.home"), href: "/", anchor: false },
-								{ label: t("nav.blog"), href: "/posts", anchor: false },
-								{ label: t("nav.projects"), href: "/projects", anchor: false },
-								{ label: t("nav.about"), href: "#", anchor: true },
-							].map((item) => (
-								item.anchor ? (
-									<a key={item.label} href={item.href} className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 dark:hover:bg-white/10">{item.label}</a>
-								) : (
-									<Link key={item.label} href={item.href} className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 dark:hover:bg-white/10">{item.label}</Link>
-								)
-							))}
-							<Link href="/" locale={locale === "zh" ? "en" : "zh"} className="rounded-xl px-4 py-2 text-sm transition-all hover:bg-black/5 dark:hover:bg-white/10">{t("nav.language")}</Link>
-							<ThemeToggle />
-						</div>
-					</nav>
+					<NavBar />
 				</header>
 				<main className="flex min-h-screen flex-col items-center px-6 pt-32">
 					<motion.h1 initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.2}} className="text-4xl font-bold tracking-tight sm:text-5xl">{t("home.title")}</motion.h1>
@@ -97,7 +78,7 @@ export default function Home() {
 						<div className="mt-6 grid gap-4 sm:grid-cols-2">
 							{latestPosts.length > 0 ? latestPosts.map((post, index) => (
 								<motion.div key={post.slug} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45, delay: index * 0.06 }}>
-									<Link href={`/posts/${post.slug}`} className="group block h-full rounded-2xl border border-black/10 bg-white/35 p-5 transition duration-300 hover:-translate-y-1 hover:bg-white/60 hover:shadow-xl hover:shadow-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:shadow-white/5">
+									<Link href={{ pathname: "/posts/[slug]", params: { slug: post.slug } }} className="group block h-full rounded-2xl border border-black/10 bg-white/35 p-5 transition duration-300 hover:-translate-y-1 hover:bg-white/60 hover:shadow-xl hover:shadow-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:shadow-white/5">
 										{post.date ? (<span className="inline-flex items-center gap-2 rounded-full border border-black/10 px-3 py-1 text-xs text-black/55 dark:border-white/10 dark:text-white/55"><CalendarDays className="h-3.5 w-3.5" />{post.date}</span>) : null}
 										<h3 className="mt-3 text-lg font-semibold tracking-tight group-hover:text-indigo-500 dark:group-hover:text-indigo-300">{post.title}</h3>
 										<p className="mt-2 line-clamp-3 text-sm leading-6 text-black/60 dark:text-white/60">{post.description}</p>
