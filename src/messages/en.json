@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "projects": "Projects",
+    "about": "About",
+    "language": "中文"
+  },
+  "home": {
+    "title": "Welcome to my blog",
+    "subtitle": "A modern blog built with Next.js",
+    "aboutTitle": "About me",
+    "freshLabel": "Fresh Notes",
+    "latestTitle": "Latest posts",
+    "more": "More posts",
+    "empty": "There are no recent posts to show yet.",
+    "about": [
+      "Hello, welcome to my website.",
+      "I am a development enthusiast focused on programming, computer technology, and AI. I often build with Python and JavaScript, explore interesting stacks and tools, and turn ideas into working projects.",
+      "These projects usually start from a small idea and are refined step by step into complete features.",
+      "This site records my projects, experiments, and technical notes, and also shares thoughts and lessons from development. The content is practice-oriented and focuses on implementation and optimization.",
+      "If you are interested in development, technical exploration, or creative coding, I hope you find something useful here.",
+      "If you need help, feel free to email me."
+    ]
+  },
+  "posts": {
+    "searchPlaceholder": "Search post titles, descriptions, or dates...",
+    "clearSearch": "Clear search",
+    "label": "Markdown Journal",
+    "title": "Posts",
+    "description": "Markdown posts are loaded from the repository's posts folder, with important content pinned and everything sorted by date.",
+    "pinned": "Pinned",
+    "back": "Back to posts"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A growing collection of my projects, experiments, and ideas.",
+    "back": "Back home",
+    "github": "View GitHub repo"
+  },
+  "metadata": {
+    "title": "Panghu Blog",
+    "description": "Panghu's blog for projects, experiments, and technical notes."
+  }
+}

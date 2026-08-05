@@ -1,7 +1,8 @@
 "use client";
 
 import Fuse from "fuse.js";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, Pin, Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -13,6 +14,7 @@ type PostsListProps = {
 
 export function PostsList({ posts }: PostsListProps) {
   const [keyword, setKeyword] = useState("");
+  const t = useTranslations("posts");
 
   const fuse = useMemo(
     () =>
@@ -41,7 +43,7 @@ export function PostsList({ posts }: PostsListProps) {
             <input
               value={keyword}
               onChange={(event) => setKeyword(event.target.value)}
-              placeholder="随时搜索文章标题、简介或日期..."
+              placeholder={t("searchPlaceholder")}
               className="w-full bg-transparent text-sm outline-none placeholder:text-black/35 dark:placeholder:text-white/35"
             />
             <AnimatePresence>
@@ -55,7 +57,7 @@ export function PostsList({ posts }: PostsListProps) {
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setKeyword("")}
                   className="rounded-full p-1 text-black/45 transition hover:bg-black/5 hover:text-black dark:text-white/45 dark:hover:bg-white/10 dark:hover:text-white"
-                  aria-label="清空搜索"
+                  aria-label={t("clearSearch")}
                 >
                   <X className="h-4 w-4" />
                 </motion.button>
@@ -71,10 +73,10 @@ export function PostsList({ posts }: PostsListProps) {
         transition={{ duration: 0.65, ease: "easeOut" }}
         className="mx-auto w-full max-w-4xl rounded-3xl border border-black/10 bg-white/50 p-8 shadow-2xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-black/45 dark:shadow-white/5"
       >
-        <p className="text-sm font-medium uppercase tracking-[0.35em] text-black/45 dark:text-white/45">Markdown Journal</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Posts</h1>
+        <p className="text-sm font-medium uppercase tracking-[0.35em] text-black/45 dark:text-white/45">{t("label")}</p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
         <p className="mt-3 max-w-2xl text-black/60 dark:text-white/60">
-          自动读取仓库根目录 <span className="font-mono">posts</span> 文件夹中的 Markdown 文章，置顶重要内容并按日期展示。
+          {t("description")}
         </p>
 
         <div className="mt-8 grid gap-4">
@@ -98,7 +100,7 @@ export function PostsList({ posts }: PostsListProps) {
                         {post.pinned ? (
                           <span className="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2.5 py-1 text-xs font-semibold text-amber-700 ring-1 ring-amber-500/25 dark:text-amber-200">
                             <Pin className="h-3.5 w-3.5 fill-current" />
-                            置顶
+                            {t("pinned")}
                           </span>
                         ) : null}
                         <h2 className="text-xl font-semibold tracking-tight group-hover:text-indigo-500 dark:group-hover:text-indigo-300">{post.title}</h2>

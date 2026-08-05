@@ -30,12 +30,10 @@ function getStoredTheme(): ThemeMode {
 }
 
 export function ThemeToggle() {
-	const [mode, setMode] = useState<ThemeMode>("auto");
+	const [mode, setMode] = useState<ThemeMode>(getStoredTheme);
 
 	useEffect(() => {
-		const storedTheme = getStoredTheme();
-		setMode(storedTheme);
-		applyTheme(storedTheme);
+		applyTheme(mode);
 
 		const interval = window.setInterval(() => {
 			if (getStoredTheme() === "auto") {
@@ -44,7 +42,7 @@ export function ThemeToggle() {
 		}, 60_000);
 
 		return () => window.clearInterval(interval);
-	}, []);
+	}, [mode]);
 
 	const current = useMemo(() => {
 		if (mode === "auto") {
