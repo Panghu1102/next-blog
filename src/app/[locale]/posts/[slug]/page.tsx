@@ -1,19 +1,23 @@
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays } from "lucide-react";
 import { GiscusComments } from "@/components/posts/GiscusComments";
 import { getAllPosts, getPostBySlug, renderBlocks } from "@/lib/posts";
+import { locales, type Locale } from "@/i18n/routing";
 
 export function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+  return locales.flatMap((locale) => getAllPosts().map((post) => ({ locale, slug: post.slug })));
 }
 
 type PostPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 };
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("posts");
   const post = getPostBySlug(slug);
 
   if (!post) {
@@ -26,7 +30,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <article className="mx-auto w-full max-w-3xl rounded-3xl border border-black/10 bg-white/55 p-6 shadow-2xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-black/50 dark:shadow-white/5 sm:p-10">
         <Link href="/posts" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-sm text-black/60 transition hover:bg-black/5 hover:text-black dark:border-white/10 dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white">
           <ArrowLeft className="h-4 w-4" />
-          返回文章列表
+          {t("back")}
         </Link>
 
         <header className="mt-8 border-b border-black/10 pb-8 dark:border-white/10">

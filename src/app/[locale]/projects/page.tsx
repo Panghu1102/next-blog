@@ -1,5 +1,6 @@
 import { ArrowLeft, ExternalLink, FolderGit2, Sparkles } from "lucide-react";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 
 const projects = [
 	{
@@ -22,14 +23,22 @@ const projects = [
 	},
 ];
 
-export default function ProjectsPage() {
+type ProjectsPageProps = {
+	params: Promise<{ locale: string }>;
+};
+
+export default async function ProjectsPage({ params }: ProjectsPageProps) {
+	const { locale } = await params;
+	setRequestLocale(locale);
+	const t = await getTranslations("projects");
+
 	return (
 		<div className="min-h-screen bg-white text-black dark:bg-black dark:text-white">
 			<main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-24">
 				<nav className="mb-10 flex items-center justify-between rounded-2xl border border-black/10 bg-white/20 px-5 py-3 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-black/20">
 					<Link href="/" className="inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-black/65 transition hover:bg-black/5 hover:text-black dark:text-white/65 dark:hover:bg-white/10 dark:hover:text-white">
 						<ArrowLeft className="h-4 w-4" />
-						返回主页
+						{t("back")}
 					</Link>
 					<span className="text-lg font-semibold">Panghu Projects</span>
 				</nav>
@@ -40,9 +49,9 @@ export default function ProjectsPage() {
 							<Sparkles className="h-4 w-4" />
 							Projects
 						</p>
-						<h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">项目展示</h1>
+						<h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">{t("title")}</h1>
 						<p className="mt-5 text-base leading-8 text-black/60 dark:text-white/60">
-							这里收录了我正在维护或持续探索的项目。每个项目都以资料卡形式展示名称、简介、技术方向与仓库入口，方便快速了解项目定位。
+							{t("description")}
 						</p>
 					</div>
 				</section>
@@ -67,7 +76,7 @@ export default function ProjectsPage() {
 								))}
 							</div>
 							<a href={project.href} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
-								查看 GitHub 仓库
+								{t("github")}
 								<ExternalLink className="h-4 w-4" />
 							</a>
 						</article>

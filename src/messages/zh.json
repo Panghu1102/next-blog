@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "首页",
+    "blog": "文章",
+    "projects": "项目",
+    "about": "关于",
+    "language": "English"
+  },
+  "home": {
+    "title": "欢迎来到我的博客",
+    "subtitle": "使用 Next.js 构建的现代博客",
+    "aboutTitle": "关于我",
+    "freshLabel": "最新笔记",
+    "latestTitle": "最新的帖子！",
+    "more": "更多内容",
+    "empty": "暂时还没有可展示的最新文章。",
+    "about": [
+      "你好，欢迎来到我的网站。",
+      "我是一名开发爱好者，主要关注编程、计算机技术以及和 AI 的方向。常用 Python 和 JavaScript 进行开发，也会探索各种有趣的技术栈和工具，把想法变成可以实际运行的项目。",
+      "这些项目通常从一个小想法开始，然后一步步打磨成完整功能。",
+      "这个网站主要用来记录我的项目、实验和技术笔记，也会分享一些开发过程中的思考与经验。这里的内容更多偏实践导向，关注“如何实现”和“如何优化”。",
+      "如果你也对开发、技术探索或创意编程感兴趣，希望这里的内容能对你有启发。",
+      "如果需要帮助的话，也欢迎致信。"
+    ]
+  },
+  "posts": {
+    "searchPlaceholder": "随时搜索文章标题、简介或日期...",
+    "clearSearch": "清空搜索",
+    "label": "Markdown 日志",
+    "title": "文章",
+    "description": "自动读取仓库根目录 posts 文件夹中的 Markdown 文章，置顶重要内容并按日期展示。",
+    "pinned": "置顶",
+    "back": "返回文章列表"
+  },
+  "projects": {
+    "title": "项目",
+    "description": "这里会持续整理我的项目、实验和想法。",
+    "back": "返回主页",
+    "github": "查看 GitHub 仓库"
+  },
+  "metadata": {
+    "title": "Panghu Blog",
+    "description": "Panghu 的项目、实验和技术笔记博客。"
+  }
+}
