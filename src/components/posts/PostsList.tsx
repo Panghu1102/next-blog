@@ -3,6 +3,7 @@
 import Fuse from "fuse.js";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { NavBar } from "@/components/NavBar";
 import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, Pin, Search, X } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -35,8 +36,9 @@ export function PostsList({ posts }: PostsListProps) {
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease: "easeOut" }}
-        className="sticky top-4 z-40 mx-auto mb-8 w-full max-w-4xl"
+        className="sticky top-4 z-40 mx-auto mb-8 w-full max-w-4xl space-y-4"
       >
+        <NavBar />
         <div className="rounded-2xl border border-black/10 bg-white/35 p-3 shadow-2xl shadow-black/10 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/25 dark:border-white/10 dark:bg-black/35 dark:shadow-white/5 dark:supports-[backdrop-filter]:bg-black/25">
           <div className="flex items-center gap-3 rounded-xl border border-white/40 bg-white/45 px-4 py-3 shadow-inner dark:border-white/10 dark:bg-white/10">
             <Search className="h-5 w-5 shrink-0 text-black/45 dark:text-white/45" />
@@ -91,7 +93,7 @@ export function PostsList({ posts }: PostsListProps) {
                 transition={{ delay: index * 0.04, duration: 0.42, ease: "easeOut" }}
               >
                 <Link
-                  href={`/posts/${post.slug}`}
+                  href={{ pathname: "/posts/[slug]", params: { slug: post.slug } }}
                   className="group block rounded-2xl border border-black/10 bg-white/45 p-5 transition duration-300 hover:-translate-y-1 hover:bg-white/75 hover:shadow-xl hover:shadow-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 dark:hover:shadow-white/5"
                 >
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">

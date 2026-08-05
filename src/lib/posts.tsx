@@ -93,6 +93,18 @@ function renderTableRow(row: TableRow, index: number, isHeader = false) {
   );
 }
 
+export function getPostBodyBlocks(post: Post): RootContent[] {
+  const [firstBlock, ...remainingBlocks] = post.content.children;
+
+  if (firstBlock?.type !== "paragraph") {
+    return post.content.children;
+  }
+
+  return getPlainText(firstBlock.children).trim() === post.description.trim()
+    ? remainingBlocks
+    : post.content.children;
+}
+
 export function renderBlocks(nodes: RootContent[] = []) {
   return nodes.map((node, index) => {
     if (node.type === "heading") {

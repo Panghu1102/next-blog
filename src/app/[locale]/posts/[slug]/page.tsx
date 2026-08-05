@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays } from "lucide-react";
 import { GiscusComments } from "@/components/posts/GiscusComments";
-import { getAllPosts, getPostBySlug, renderBlocks } from "@/lib/posts";
+import { getAllPosts, getPostBodyBlocks, getPostBySlug, renderBlocks } from "@/lib/posts";
 import { locales, type Locale } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -41,10 +41,9 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
           ) : null}
           <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">{post.title}</h1>
-          <p className="mt-4 text-lg leading-8 text-black/60 dark:text-white/60">{post.description}</p>
         </header>
 
-        <div className="markdown-body mt-8">{renderBlocks(post.content.children)}</div>
+        <div className="markdown-body mt-8">{renderBlocks(getPostBodyBlocks(post))}</div>
       </article>
       <GiscusComments />
     </main>
