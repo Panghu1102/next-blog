@@ -1,33 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://example.com/zh</loc><changefreq>weekly</changefreq><priority>1</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en"/></url>
-<url><loc>https://example.com/en</loc><changefreq>weekly</changefreq><priority>1</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en"/></url>
-<url><loc>https://example.com/zh/posts</loc><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts"/></url>
-<url><loc>https://example.com/en/posts</loc><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts"/></url>
-<url><loc>https://example.com/zh/projects</loc><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/projects"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/projects"/></url>
-<url><loc>https://example.com/en/projects</loc><changefreq>weekly</changefreq><priority>0.8</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/projects"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/projects"/></url>
-<url><loc>https://example.com/zh/posts/2025-07-18-post-windowsc</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-18-post-windowsc"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-18-post-windowsc"/></url>
-<url><loc>https://example.com/en/posts/2025-07-18-post-windowsc</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-18-post-windowsc"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-18-post-windowsc"/></url>
-<url><loc>https://example.com/zh/posts/2025-07-19-post-iosgalplay</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-19-post-iosgalplay"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-19-post-iosgalplay"/></url>
-<url><loc>https://example.com/en/posts/2025-07-19-post-iosgalplay</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-19-post-iosgalplay"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-19-post-iosgalplay"/></url>
-<url><loc>https://example.com/zh/posts/2025-07-24-altstore</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-24-altstore"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-24-altstore"/></url>
-<url><loc>https://example.com/en/posts/2025-07-24-altstore</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-24-altstore"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-24-altstore"/></url>
-<url><loc>https://example.com/zh/posts/2025-07-25-post-jyqa</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-25-post-jyqa"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-25-post-jyqa"/></url>
-<url><loc>https://example.com/en/posts/2025-07-25-post-jyqa</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-07-25-post-jyqa"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-07-25-post-jyqa"/></url>
-<url><loc>https://example.com/zh/posts/2025-08-13-post-vmware</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-13-post-vmware"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-13-post-vmware"/></url>
-<url><loc>https://example.com/en/posts/2025-08-13-post-vmware</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-13-post-vmware"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-13-post-vmware"/></url>
-<url><loc>https://example.com/zh/posts/2025-08-20-post-sidestore</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-20-post-sidestore"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-20-post-sidestore"/></url>
-<url><loc>https://example.com/en/posts/2025-08-20-post-sidestore</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-20-post-sidestore"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-20-post-sidestore"/></url>
-<url><loc>https://example.com/zh/posts/2025-08-24-post-steamnewplayer</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-24-post-steamnewplayer"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-24-post-steamnewplayer"/></url>
-<url><loc>https://example.com/en/posts/2025-08-24-post-steamnewplayer</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-08-24-post-steamnewplayer"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-08-24-post-steamnewplayer"/></url>
-<url><loc>https://example.com/zh/posts/2025-10-12-post-stikdebug</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-10-12-post-stikdebug"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-10-12-post-stikdebug"/></url>
-<url><loc>https://example.com/en/posts/2025-10-12-post-stikdebug</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-10-12-post-stikdebug"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-10-12-post-stikdebug"/></url>
-<url><loc>https://example.com/zh/posts/2025-12-14-post-jypublished</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-12-14-post-jypublished"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-12-14-post-jypublished"/></url>
-<url><loc>https://example.com/en/posts/2025-12-14-post-jypublished</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2025-12-14-post-jypublished"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2025-12-14-post-jypublished"/></url>
-<url><loc>https://example.com/zh/posts/2026-02-15-post-mustread</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2026-02-15-post-mustread"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2026-02-15-post-mustread"/></url>
-<url><loc>https://example.com/en/posts/2026-02-15-post-mustread</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2026-02-15-post-mustread"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2026-02-15-post-mustread"/></url>
-<url><loc>https://example.com/zh/posts/2026-07-16-post-iosphotos</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2026-07-16-post-iosphotos"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2026-07-16-post-iosphotos"/></url>
-<url><loc>https://example.com/en/posts/2026-07-16-post-iosphotos</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/2026-07-16-post-iosphotos"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/2026-07-16-post-iosphotos"/></url>
-<url><loc>https://example.com/zh/posts/welcome</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/welcome"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/welcome"/></url>
-<url><loc>https://example.com/en/posts/welcome</loc><changefreq>monthly</changefreq><priority>0.7</priority><xhtml:link rel="alternate" hreflang="zh" href="https://example.com/zh/posts/welcome"/><xhtml:link rel="alternate" hreflang="en" href="https://example.com/en/posts/welcome"/></url>
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+       <loc>https://panghu.bond/en</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.8000</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/about</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/projects</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/welcome</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2026-07-16-post-iosphotos</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-12-14-post-jypublished</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-10-12-post-stikdebug</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.6400</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/about</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/projects</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/welcome</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2026-07-16-post-iosphotos</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-12-14-post-jypublished</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-10-12-post-stikdebug</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2026-02-15-post-mustread</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-08-24-post-steamnewplayer</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-08-20-post-sidestore</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-08-13-post-vmware</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-07-25-post-jyqa</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-07-24-altstore</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-07-19-post-iosgalplay</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/en/blog/2025-07-18-post-windowsc</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.5120</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2026-02-15-post-mustread</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-08-24-post-steamnewplayer</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-08-20-post-sidestore</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-08-13-post-vmware</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-07-25-post-jyqa</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-07-24-altstore</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-07-19-post-iosgalplay</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
+  <url>
+       <loc>https://panghu.bond/zh/blog/2025-07-18-post-windowsc</loc>
+       <lastmod>2026-08-09T09:31:42+00:00</lastmod>
+       <changefreq>daily</changefreq>
+       <priority>0.4096</priority>
+  </url>
 </urlset>
