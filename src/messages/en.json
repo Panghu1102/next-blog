@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "blog": "Blog",
+    "blog": "About",
     "projects": "Projects",
     "about": "About",
     "language": "中文"
@@ -41,5 +41,33 @@
   "metadata": {
     "title": "Panghu Blog",
     "description": "Panghu's blog for projects, experiments, and technical notes."
+  },
+  "about": {
+    "label": "About Panghu",
+    "title": "About me and this blog",
+    "subtitle": "A place for projects, experiments, tutorials, and notes about games, system tools, and AI.",
+    "paragraphs": [
+      "Hello, welcome to Panghu Blog. This site is both my personal homepage and a place to organize technical notes and project updates.",
+      "I focus on programming, computer technology, and AI, while also writing about iOS sideloading, Windows tips, virtual machines, Steam beginner notes, and DDLC/JustYuri-related content. Many posts come from practical sharing on Xiaohongshu or Tieba, so they focus on solving real problems step by step.",
+      "The tutorials try to keep practical notes, risk reminders, and lessons learned. If a post mentions images that are not shown here, you can usually find them on the original platform or contact me by email.",
+      "I hope this site helps people who enjoy tinkering with devices, exploring software, and building creative projects. Suggestions and corrections are always welcome."
+    ],
+    "highlights": [
+      {
+        "title": "Technical practice",
+        "description": "Practical guides for iOS, Windows, virtual machines, and sideloading tools, with operational details and risk notes."
+      },
+      {
+        "title": "Project notes",
+        "description": "Updates on JustYuri, JYACS, and personal development experiments, turning ideas into usable features."
+      },
+      {
+        "title": "Experience sharing",
+        "description": "Notes about games, tools, and platforms, with ongoing editing to make posts clearer and easier to read."
+      }
+    ],
+    "contactTitle": "Contact and keep reading",
+    "contactDescription": "If you have questions, suggestions, or want to talk about a project, use the links below.",
+    "readPosts": "Browse posts"
   }
 }

@@ -10,7 +10,7 @@ export function NavBar() {
 
   const items = [
     { label: t("home"), href: "/" },
-    { label: t("blog"), href: "/posts" },
+    { label: t("blog"), href: "/about" },
     { label: t("projects"), href: "/projects" },
   ] as const;
 

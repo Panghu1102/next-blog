@@ -11,6 +11,7 @@ export const routing = defineRouting({
   pathnames: {
     "/": "/",
     "/projects": "/projects",
+    "/about": "/about",
     "/posts": "/blog",
     "/posts/[slug]": "/blog/[slug]",
   },
