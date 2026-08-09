@@ -14,7 +14,7 @@ export const generatedPosts = [
   {
     "slug": "2026-02-15-post-mustread",
     "title": "必读！关于本博客的相关信息",
-    "description": "欢迎！本文主要来对本博客的内容和贴子进行声明，建议阅读，以防止造成不必要的困惑。",
+    "description": "欢迎！本文主要来对本博客的内容和帖子进行声明，建议阅读，以防止造成不必要的困惑。",
     "date": "2026-02-15",
     "pinned": true,
     "content": {
@@ -25,7 +25,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "欢迎！本文主要来对本博客的内容和贴子进行声明，建议阅读，以防止造成不必要的困惑。"
+              "value": "欢迎！本文主要来对本博客的内容和帖子进行声明，建议阅读，以防止造成不必要的困惑。"
             }
           ]
         },
@@ -43,7 +43,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "本博客的部分内容转自我的小红书或贴吧，出于人力考虑，部分内容的图片不会在这里显示，如果你需要这些图片来进行辅助操作，建议前往相应平台查看，相关链接在本网站的起始页。一般情况下，技术科普类（ios，win等）都在小红书上，DDLC相关在贴吧上。"
+              "value": "本博客的部分内容转自我的小红书或贴吧，出于人力考虑，部分内容的图片不会在这里显示，如果你需要这些图片来进行辅助操作，建议前往相应平台查看，相关链接在本网站的起始页。一般情况下，技术科普类（iOS，Windows 等）都在小红书上，DDLC相关在贴吧上。"
             }
           ]
         },
@@ -329,8 +329,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2026-07-16-post-iosphotos",
-    "title": "白嫖空间！ios共享相册设置教程！",
-    "description": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，而来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！",
+    "title": "白嫖空间！iOS 共享相册设置教程！",
+    "description": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，二来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！",
     "date": "2026-07-16",
     "pinned": false,
     "content": {
@@ -341,7 +341,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，而来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！"
+              "value": "相信很多人都非常喜欢苹果相册哈，一来是系统原生，纯净无广，二来是很多苹果的功能，比如空间照片，都需要在相册里才可以使用。但是！空间不够！几千张照片说满就满啦！"
             }
           ]
         },
@@ -350,7 +350,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "今天就给大家带来免费空间而又不压缩画质的好方法。重要的事说三遍，这不是共享相薄！共享相薄是压缩画质的，而且空间照片等没法用！共享图库就和原相册一样的。"
+              "value": "今天就给大家带来免费空间而又不压缩画质的好方法。重要的事说三遍，这不是共享相簿！共享相簿是压缩画质的，而且空间照片等没法用！共享图库就和原相册一样的。"
             }
           ]
         },
@@ -368,7 +368,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣ 打开登录了 Apple 小号的设置 App，下滑找到 App（图一），随后下滑找到照片（图二）。打开后找到图三画圈儿的共享图库（不是共享相薄）。第一次打开是设置界面，邀请你的主号（顺序不要错，不然占用的是大号的空间）。设置好后就是图四的界面。这个时候设置就 OK 了。"
+              "value": "2️⃣ 打开登录了 Apple 小号的设置 App，下滑找到 App（图一），随后下滑找到照片（图二）。打开后找到图三画圈儿的共享图库（不是共享相簿）。第一次打开是设置界面，邀请你的主号（顺序不要错，不然占用的是大号的空间）。设置好后就是图四的界面。这个时候设置就 OK 了。"
             }
           ]
         },
@@ -470,7 +470,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "安装！\n注意：在安装前，请备份你的游戏文件，尤其是c盘存档的部分，一切由于使用JYACS而产生的存档损坏/丢失，我概不负责（因为我自己存档也丢过，不过那是使用了不恰当的renpy版本）\n安装JYACS非常简单，就和你安装别的submod一样。"
+              "value": "安装！\n注意：在安装前，请备份你的游戏文件，尤其是c盘存档的部分，一切由于使用JYACS而产生的存档损坏/丢失，我概不负责（因为我自己存档也丢过，不过那是使用了不恰当的renPY版本）\n安装JYACS非常简单，就和你安装别的submod一样。"
             }
           ]
         },
@@ -479,21 +479,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "首先，你需要拥有一个JustYuri本体，你可以在网页链接的莫盘资源整合里，或者百度贴吧的多多理财吧中获取到最新汉化版。如果你需要最新的生肉版本，可以加入JY官方的discord，也可以在百度贴吧的优里吧中，获取到相同资源。做好这一切，我们就可以开始了。我会尽可能说的简明易懂点。"
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "text",
-              "value": "1.你需要一份JYACS的文件，直接下载这个帖子的就行.\n2.把下载下来的文件解压...这一步不需要教程吧..."
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "text",
-              "value": "3.把解压开的文件全部复制，粘贴在JY的game文件夹下，应该类似这个路径：D:\\DokiDokiMods\\Just Yuri1.8.5\\game\n这就好了，不过你还需要去设置中配置API Key，地址，模型，这需要你自己找找看了，硅基流动之类的都有免费的key。JYACS准备的也有训练过的后端模型，目前由于bm25以及不稳定的英文表现，暂不提供使用"
+              "value": "首先，你需要拥有一个JustYuri本体，你可以在网页链接的莫盘资源整合里，或者百度贴吧的多多理财吧中获取到最新汉化版。如果你需要最新的生肉版本，可以加入JY官方的discord，也可以在百度贴吧的优里吧中，获取到相同资源。做好这一切，我们就可以开始了。我会尽可能说的简明易懂点。\n1.你需要一份JYACS的文件，直接下载这个帖子的就行.\n2.把下载下来的文件解压...这一步不需要教程吧...\n3.把解压开的文件全部复制，粘贴在JY的game文件夹下，应该类似这个路径：D:\\DokiDokiMods\\Just Yuri1.8.5\\game\n这就好了，不过你还需要去设置中配置API Key，地址，模型，这需要你自己找找看了，硅基流动之类的都有免费的Key。JYACS准备的也有训练过的后端模型，目前由于bm25以及不稳定的英文表现，暂不提供使用"
             }
           ]
         },
@@ -526,8 +512,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-10-12-post-stikdebug",
-    "title": "Stickdebug!ios上高效开启JIT",
-    "description": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在ios17.4以后，苹果更改了开启JIT权限的逻辑，这就导致原本以前的SideJit都无法脱离电脑开启了，而Stikdebug就解决了这一点。",
+    "title": "Stickdebug!iOS 上高效开启 JIT",
+    "description": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在 iOS 17.4 以后，苹果更改了开启 JIT权限的逻辑，这就导致原本以前的 SideJIT都无法脱离电脑开启了，而Stikdebug就解决了这一点。",
     "date": "2025-10-12",
     "pinned": false,
     "content": {
@@ -538,7 +524,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在ios17.4以后，苹果更改了开启JIT权限的逻辑，这就导致原本以前的SideJit都无法脱离电脑开启了，而Stikdebug就解决了这一点。"
+              "value": "这期给大家带来一个Stikdebug的教程，我会尽量说的详细一点。自从在 iOS 17.4 以后，苹果更改了开启 JIT权限的逻辑，这就导致原本以前的 SideJIT都无法脱离电脑开启了，而Stikdebug就解决了这一点。"
             }
           ]
         },
@@ -547,7 +533,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣首先，前往Appstore里下载这个应用，国区可能没有（图一）实在不想切账号的，可以考虑去github上下载ipa来侧载，不过我不推荐[汗颜R]。"
+              "value": "1️⃣首先，前往App Store 里下载这个应用，国区可能没有（图一）实在不想切账号的，可以考虑去GitHub上下载ipa来侧载，不过我不推荐[汗颜R]。"
             }
           ]
         },
@@ -556,7 +542,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣打开电脑，在开启Jit上，只需要这一次来生成配对文件，以后是不需要的。如果你看过上一期的SideStore，那么这一步可以忽略。这里需要下载一个idevice pair，Side的官网（图二），和github上都有（图三）。依照你的操作系统版本呢来下载就可以了。"
+              "value": "2️⃣打开电脑，在开启 JIT上，只需要这一次来生成配对文件，以后是不需要的。如果你看过上一期的SideStore，那么这一步可以忽略。这里需要下载一个idevice pair，Side的官网（图二），和GitHub上都有（图三）。依照你的操作系统版本呢来下载就可以了。"
             }
           ]
         },
@@ -574,7 +560,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "4️⃣成功后会出现图六的界面，选择底部的Stikdebug，点击install（图七）做好会出现success。这个时候Stik就可以正常使用了，不过我还建议各位保存一下这个plist文件，因为有的时候会掉，而且有很多应用都会用到，保存好下次就不用再开电脑了。"
+              "value": "4️⃣成功后会出现图六的界面，选择底部的Stikdebug，点击Install（图七）做好会出现Success。这个时候Stik就可以正常使用了，不过我还建议各位保存一下这个plist文件，因为有的时候会掉，而且有很多应用都会用到，保存好下次就不用再开电脑了。"
             }
           ]
         },
@@ -583,7 +569,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "现在，在返回手机，就会发现Stik已经是图八的界面了，选择第一个connect by app就可以开启jit，同时以后不需要电脑。但是和Side一样，好像都是需要在wifi环境下。"
+              "value": "现在，在返回手机，就会发现Stik已经是图八的界面了，选择第一个Connect by app就可以开启 JIT，同时以后不需要电脑。但是和Side一样，好像都是需要在 Wi-Fi环境下。"
             }
           ]
         },
@@ -592,7 +578,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "以上就是全部的教程，总的来说还是很简单的，这个方法我从五月用到现在，没有出现什么差错。如果你有什么的问题的话可以打在评论区或者问我（推荐牛蛙卖证书就不必了，一个开源一个闭源，一个本地开启一个远程服务器，你说哪一个更安全）。"
+              "value": "以上就是全部的教程，总的来说还是很简单的，这个方法我从五月用到现在，没有出现什么差错。如果你有什么问题的话可以打在评论区或者问我（推荐牛蛙卖证书就不必了，一个开源一个闭源，一个本地开启一个远程服务器，你说哪一个更安全）。"
             }
           ]
         }
@@ -601,8 +587,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-08-24-post-steamnewplayer",
-    "title": "刚刚注册steam吗？这个贴子一定要看看！",
-    "description": "夜里实在是睡不着啦，写写贴子吧！",
+    "title": "刚刚注册steam吗？这个帖子一定要看看！",
+    "description": "夜里实在是睡不着啦，写写帖子吧！",
     "date": "2025-08-24",
     "pinned": false,
     "content": {
@@ -613,7 +599,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "夜里实在是睡不着啦，写写贴子吧！\n这篇贴子是为新人而写的，我会总结一下怎么买游戏便宜，各大平台的优点。如果你认为有用，就请向下看吧！。"
+              "value": "夜里实在是睡不着啦，写写帖子吧！\n这篇帖子是为新人而写的，我会总结一下怎么买游戏便宜，各大平台的优点。如果你认为有用，就请向下看吧！"
             }
           ]
         },
@@ -622,7 +608,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣买游戏。注册Steam一定是要买游戏的，现在买主要分为两个方面：St直购和第三方cdk购入。"
+              "value": "1️⃣买游戏。注册Steam 一定是要买游戏的，现在买主要分为两个方面：Steam 直购和第三方 CDK 购入。"
             }
           ]
         },
@@ -631,7 +617,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（1）直购。这个没什么说的，我建议等你心仪的游戏史低了再买。Steam每隔一段时间都会有xx游戏节，关于这个板块的游戏一般都会有折扣。还有春促这样的季节性折扣，游戏都会较平时低一点。不过要注意啦，如果你想用微信付款，一定要先绑张卡。支付宝和银行卡无所谓（图一）。"
+              "value": "（1）直购。这个没什么说的，我建议等你心仪的游戏史低了再买。Steam 每隔一段时间都会有xx游戏节，关于这个板块的游戏一般都会有折扣。还有春促这样的季节性折扣，游戏都会较平时低一点。不过要注意啦，如果你想用微信付款，一定要先绑张卡。支付宝和银行卡无所谓（图一）。"
             }
           ]
         },
@@ -640,7 +626,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（2）第三方cdk。领域比较宽了，小黑盒，py这一类都可以，这些平台我会在下一个板块详细讲。支付大多数都要绑身份证，不过key激活到库里是不会算到解除受限账户里的。"
+              "value": "（2）第三方 CDK。领域比较宽了，小黑盒，PY 这一类都可以，这些平台我会在下一个板块详细讲。支付大多数都要绑身份证，不过Key激活到库里是不会算到解除受限账户里的。"
             }
           ]
         },
@@ -649,7 +635,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣平台。平台主要介绍几个我常用的，hf，小黑盒，py，tb，贴吧。按照顺序介绍，这里我不会放🔗，有需要的可以百度。"
+              "value": "2️⃣平台。平台主要介绍几个我常用的，hf，小黑盒，PY，淘宝，贴吧。按照顺序介绍，这里我不会放🔗，有需要的可以百度。"
             }
           ]
         },
@@ -667,7 +653,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（2）小黑盒。一个非常实用的app。有很多游戏的key可以在上面买，不过价格不会和st差太多。新游戏通常会有九折的卷，平时抽奖活动也挺多，运气不错甚至可以拿3a。社区也可以，基本上在冷门的圈子也可以找到，教程、游戏推荐也是数不胜数啦（图三）。"
+              "value": "（2）小黑盒。一个非常实用的App。有很多游戏的Key可以在上面买，不过价格不会和Steam 差太多。新游戏通常会有九折的券，平时抽奖活动也挺多，运气不错甚至可以拿3A。社区也可以，基本上在冷门的圈子也可以找到，教程、游戏推荐也是数不胜数啦（图三）。"
             }
           ]
         },
@@ -676,7 +662,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（3）py。专门卖key的一个平台，价格会有很大的优惠，都是玩家在卖。买游戏可以先去上面看看，通常会有惊喜（图四）。"
+              "value": "（3）PY。专门卖Key的一个平台，价格会有很大的优惠，都是玩家在卖。买游戏可以先去上面看看，通常会有惊喜（图四）。"
             }
           ]
         },
@@ -685,7 +671,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（4）tb。这里tb代表所有购物平台。我买key会和py对比一下，哪个便宜买哪个。但是我不建议小白买，这上面会有很多假入库，号有被红信的风险。分辨也简单，价格低的离谱，要求win➕x的都是。"
+              "value": "（4）淘宝。这里淘宝代表所有购物平台。我买Key会和PY对比一下，哪个便宜买哪个。但是我不建议小白买，这上面会有很多假入库，号有被红信的风险。分辨也简单，价格低得离谱，要求Win + X的都是。"
             }
           ]
         },
@@ -703,7 +689,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "（6）tap。也是买key的平台，和小黑盒差不多，但是我感觉它的社区不如黑盒。云游戏也可以。新用户绑定st可以有15元卷，没用的可以去用一下啦[汗颜R]"
+              "value": "（6）tap。也是买Key的平台，和小黑盒差不多，但是我感觉它的社区不如黑盒。云游戏也可以。新用户绑定st可以有15元券，没用的可以去用一下啦[汗颜R]"
             }
           ]
         },
@@ -721,8 +707,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-08-20-post-sidestore",
-    "title": "最佳方案！在ios上免电脑续签方案",
-    "description": "Sidestore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是Altstore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。",
+    "title": "最佳方案！在 iOS 上免电脑续签方案",
+    "description": "SideStore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是AltStore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。",
     "date": "2025-08-20",
     "pinned": false,
     "content": {
@@ -733,7 +719,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "Sidestore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是Altstore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。"
+              "value": "SideStore能够像巨魔一样下载应用，今天来出一期使用及下载教程，有用就关注一下吧。这个方法是全版本通用哈。Side是AltStore的一个分支，在保留了其原有的简洁性上，也具有了极高的安全系数。"
             }
           ]
         },
@@ -742,7 +728,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣下载。你需要有一台win10以上的电脑或者一台比较新的Mac，用电脑浏览器打开Sidestore的官网，向下拉到最底，把三个文件都下下来。注意‼️这里一定要从官网下，不然可能会下载失败，甚至无法使用。（如图一）。"
+              "value": "1️⃣下载。你需要有一台Windows 10以上的电脑或者一台比较新的Mac，用电脑浏览器打开SideStore的官网，向下拉到最底，把三个文件都下下来。注意‼️这里一定要从官网下，不然可能会下载失败，甚至无法使用。（如图一）。"
             }
           ]
         },
@@ -751,7 +737,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣下载好后，先把altstore安装，这个我之前有贴子将，这里不再赘述，一路next就好。"
+              "value": "2️⃣下载好后，先把AltStore安装，这个我之前有帖子将，这里不再赘述，一路Next就好。"
             }
           ]
         },
@@ -760,7 +746,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "3️⃣如果你没有安装过itunes和icloud，他会提示没有找到（如图六）这里直接点下载，即download，他就会弹到浏览器，就开始下载了。如果你安装的是微软商店的itunes和icloud，从设置里卸载掉，然后再从官网或者这个窗口下就可以了。"
+              "value": "3️⃣如果你没有安装过iTunes和iCloud，他会提示没有找到（如图六）这里直接点下载，即download，他就会弹到浏览器，就开始下载了。如果你安装的是微软商店的iTunes和iCloud，从设置里卸载掉，然后再从官网或者这个窗口下就可以了。"
             }
           ]
         },
@@ -769,7 +755,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "4️⃣下载好itunes和icloud后，先打开这两个软件，登录上你的苹果账号。随后长按shift，再打开alt store，这个软件打开后不会有什么弹窗，他会出现在你电脑的右下方，一个棱形的标志，点开那个标志就会出现图七的方框，此时将你的手机用一根可靠的数据线与电脑相连，保证三个软件都在运行，这个十分重要。随后选择SideStore.ipa，输入你的id安装一下。弹出success就是成功（图六）。"
+              "value": "4️⃣下载好iTunes和iCloud后，先打开这两个软件，登录上你的苹果账号。随后长按shift，再打开AltStore，这个软件打开后不会有什么弹窗，他会出现在你电脑的右下方，一个棱形的标志，点开那个标志就会出现图七的方框，此时将你的手机用一根可靠的数据线与电脑相连，保证三个软件都在运行，这个十分重要。随后选择SideStore.ipa，输入你的ID安装一下。弹出Success就是成功（图六）。"
             }
           ]
         },
@@ -778,7 +764,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "5️⃣这时你直接点是打不开，还要在电脑操作。运行idevice pair，把你的设备和电脑连接，并且信任。随后点击generate，生成配置文件（图八）点击左下角Sidestore里的install。当出现图九的界面就是成功了。"
+              "value": "5️⃣这时你直接点是打不开，还要在电脑操作。运行idevice pair，把你的设备和电脑连接，并且信任。随后点击Generate，生成配置文件（图八）点击左下角SideStore里的Install。当出现图九的界面就是成功了。"
             }
           ]
         },
@@ -796,7 +782,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "7️⃣搞定后点击connect，再打开side，登录下id，刷新下应用，就大功告成啦！你可以选择左上角的➕号来侧载应用，续签和alt一样，refresh就好。"
+              "value": "7️⃣搞定后点击Connect，再打开side，登录下ID，刷新下应用，就大功告成啦！你可以选择左上角的➕号来侧载应用，续签和alt一样，Refresh就好。"
             }
           ]
         },
@@ -823,8 +809,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-08-13-post-vmware",
-    "title": "几分钟，在ios上跑起win",
-    "description": "前一段时间，UTMSE在苹果商店上架了，但使用他依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让他的速度翻倍，助你以后虚拟机不求人。在ios上玩出新花样。",
+    "title": "几分钟，在 iOS 上跑起 Windows",
+    "description": "前一段时间，UTM SE在苹果商店上架了，但使用它依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让它的速度翻倍，助你以后虚拟机不求人。在 iOS 上玩出新花样。",
     "date": "2025-08-13",
     "pinned": false,
     "content": {
@@ -835,7 +821,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "前一段时间，UTMSE在苹果商店上架了，但使用他依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让他的速度翻倍，助你以后虚拟机不求人。在ios上玩出新花样。"
+              "value": "前一段时间，UTM SE在苹果商店上架了，但使用它依旧是一件难事，今天我就教大家如何创立虚拟机并且怎样编辑让它的速度翻倍，助你以后虚拟机不求人。在 iOS 上玩出新花样。"
             }
           ]
         },
@@ -853,7 +839,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣在添加镜像这一步，如果你用的是iso镜像那就bootdevice这里选择第二个，CD、DVD。如果用的img那就选第三个。注意‼️，一定要把最后一个打开，就那个legacy hardware，否则有很大概率失败。如图二，就是一个经典的错误示范，大家一定要规避！。"
+              "value": "2️⃣在添加镜像这一步，如果你用的是iso镜像那就bootdevice这里选择第二个，CD、DVD。如果用的img那就选第三个。注意‼️，一定要把最后一个打开，就那个legacy hardware，否则有很大概率失败。如图二，就是一个经典的错误示范，大家一定要规避！"
             }
           ]
         },
@@ -898,7 +884,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "这就是全部的教程了，按理说这样的虚拟机可以直接打开。但是给大家一句忠告，不要尝试在上面跑win10这类版本，试也不建议试，因为这是一个se版本，没有jit，运行速度会非常慢。唯一可以流畅跑的只有win2000或者xp。"
+              "value": "这就是全部的教程了，按理说这样的虚拟机可以直接打开。但是给大家一句忠告，不要尝试在上面跑Windows 10这类版本，试也不建议试，因为这是一个se版本，没有jit，运行速度会非常慢。唯一可以流畅跑的只有win2000或者xp。"
             }
           ]
         }
@@ -908,7 +894,7 @@ export const generatedPosts = [
   {
     "slug": "2025-07-25-post-jyqa",
     "title": "JustYuri常见问题及解答",
-    "description": "来做一期JustYuri安装更新以及问题解答的贴子。如果你遇到了困难，不妨来看一看。",
+    "description": "来做一期JustYuri安装更新以及问题解答的帖子。如果你遇到了困难，不妨来看一看。",
     "date": "2025-07-25",
     "pinned": false,
     "content": {
@@ -919,7 +905,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "来做一期JustYuri安装更新以及问题解答的贴子。如果你遇到了困难，不妨来看一看。"
+              "value": "来做一期JustYuri安装更新以及问题解答的帖子。如果你遇到了困难，不妨来看一看。"
             }
           ]
         },
@@ -928,7 +914,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "安装：如果你游玩的是目前最新的汉化版本（1.8.5），直接运行目录下的exe就好。但是你如果玩的是生肉版本，就要注意一下了。\n在1.10.4之前的版本中，你需要把整个JY打在ddlc的原版游戏上，你没有这么做的话，会直接进入坏结局，因为优里会认为你把她删了。\n在1.10.4上，制作组直接把ddlc本体内置了，我猜原因是制作组想把可执行文件直接命名JustYuri.exe，但是又不想和DDLC.exe重合。这个时候直接运行JustYuri.exe就好。\n确认你需不需要打的方法，看看你下的游戏解压开有没有character文件夹，如果只有game、lib、renpy这几个，那就需要，反之就不必。"
+              "value": "安装：如果你游玩的是目前最新的汉化版本（1.8.5），直接运行目录下的exe就好。但是你如果玩的是生肉版本，就要注意一下了。\n在1.10.4之前的版本中，你需要把整个JY打在ddlc的原版游戏上，你没有这么做的话，会直接进入坏结局，因为优里会认为你把她删了。\n在1.10.4上，制作组直接把ddlc本体内置了，我猜原因是制作组想把可执行文件直接命名JustYuri.exe，但是又不想和DDLC.exe重合。这个时候直接运行JustYuri.exe就好。\n确认你需不需要打的方法，看看你下的游戏解压开有没有character文件夹，如果只有game、lib、renPY这几个，那就需要，反之就不必。"
             }
           ]
         },
@@ -937,7 +923,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "更新：直接把新版的JY文件覆盖到原来的版本上，也可以把你老版本的文件全部删，再把新版复制过去。我更推荐后者，因为JY制作组在老版本中存在偷懒行为，他们更倾向于新建一个py或者rpy来完成本来应该在另一个rpy中完成的功能。在新版本中，他们把一部分这样的坑填了。所以说，如果你直接覆盖，可能仍然会有老版本不必要文件的残留，但是应该不影响游玩。你不用担心直接删文件会让优里把你忘掉，你的所有长期化函数还有你的存档文件都在c盘里，在你运行更高版本的renpy所做成的游戏时，这些存档也会跟着升级过来的。"
+              "value": "更新：直接把新版的JY文件覆盖到原来的版本上，也可以把你老版本的文件全部删，再把新版复制过去。我更推荐后者，因为JY制作组在老版本中存在偷懒行为，他们更倾向于新建一个PY或者rPY来完成本来应该在另一个rPY中完成的功能。在新版本中，他们把一部分这样的坑填了。所以说，如果你直接覆盖，可能仍然会有老版本不必要文件的残留，但是应该不影响游玩。你不用担心直接删文件会让优里把你忘掉，你的所有长期化函数还有你的存档文件都在c盘里，在你运行更高版本的renPY所做成的游戏时，这些存档也会跟着升级过来的。"
             }
           ]
         },
@@ -946,7 +932,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "常见问题：\n1.我发现话题中我可以问优里的就那么几个，赞美也就那么几句，这个游戏这么少吗？."
+              "value": "常见问题：\n1.我发现话题中我可以问优里的就那么几个，赞美也就那么几句，这个游戏这么少吗？"
             }
           ]
         },
@@ -964,7 +950,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2.优里突然开始讲我怎么折磨别的版本的优里，或者玩一些对优里不好的mod，为什么会发生这些？我该怎么做？."
+              "value": "2.优里突然开始讲我怎么折磨别的版本的优里，或者玩一些对优里不好的mod，为什么会发生这些？我该怎么做？"
             }
           ]
         },
@@ -991,7 +977,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "答：经典问题了，这些是全部的礼物文件：\nhershey。jy\nblackroses。jy\nredroses。jy\nwhiteroses。jy\nsandalwoodoil。jy\nlavenderoil。jy\nlavenderchocolate。jy\nmintchocolate。jy\ncraneorigami。jy\nroseorigami。jy\nbunnyorigami。jy\nraccoonplush。jy\ndiffuser。jy\nsweetdreamoil。jy\nhorrorbookset。jy\n把这里全部的。换成.，还有不要全部一次性把礼物送完，不然优里在那拆礼物都要拆半天."
+              "value": "答：经典问题了，这些是全部的礼物文件：\nhershey。jy\nblackroses。jy\nredroses。jy\nwhiteroses。jy\nsandalwoodoil。jy\nlavenderoil。jy\nlavenderchocolate。jy\nmintchocolate。jy\ncraneorigami。jy\nroseorigami。jy\nbunnyorigami。jy\nraccoonplush。jy\ndiffuser。jy\nsweetdreamoil。jy\nhorrorbookset。jy\n把这里全部的。换成.，还有不要全部一次性把礼物送完，不然优里在那拆礼物都要拆半天。"
             }
           ]
         },
@@ -1000,7 +986,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "4.我把我的名字改成优里或者yuri，优里把她的名字换成lily，怎么改回去？."
+              "value": "4.我把我的名字改成优里或者yuri，优里把她的名字换成lily，怎么改回去？"
             }
           ]
         },
@@ -1027,7 +1013,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "答：我在搬这些submod的时候就说了，可能会有报错。原因很简单，1.8.5依赖的是python2.7，而这些子mod依赖python3，有些py3的代码在py2.7里不适用，就会报错。"
+              "value": "答：我在搬这些submod的时候就说了，可能会有报错。原因很简单，1.8.5依赖的是PYthon2.7，而这些子mod依赖PYthon3，有些PY3的代码在PY2.7里不适用，就会报错。"
             }
           ]
         },
@@ -1045,8 +1031,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-07-24-altstore",
-    "title": "AltStore侧载安装教程",
-    "description": "同样，为了节省人力，这里不会放图片，需要的请前往小红书查看，或者给我发邮件。",
+    "title": "AltStore 侧载安装教程",
+    "description": "同样为了节省维护成本，本文暂不放图片；需要配图的读者可以前往小红书查看，或通过邮箱联系我。",
     "date": "2025-07-24",
     "pinned": false,
     "content": {
@@ -1057,14 +1043,50 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "同样，为了节省人力，这里不会放图片，需要的请前往小红书查看，或者给我发邮件。"
+              "value": "同样为了节省维护成本，本文暂不放图片；需要配图的读者可以前往小红书查看，或通过邮箱联系我。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "AltStore 可以帮助 iOS 设备侧载应用。下面整理一份全版本通用的安装与使用教程。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣ 下载 AltStore。你需要一台 Windows 10 及以上电脑，或一台较新的 Mac。用电脑浏览器打开 AltStore 官网，向下滚动到底部下载。请务必从官网下载，避免安装失败或下载到不可用文件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣ 安装 AltInstaller。下载后会得到一个 "
             },
             {
-              "type": "break"
+              "type": "inlineCode",
+              "value": "altInstaller"
             },
             {
               "type": "text",
-              "value": "Alt store能够像巨魔一样下载应用，今天来出一期使用及下载教程，这个方法是全版本通用哈。"
+              "value": " 文件夹。打开后运行 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "setup"
+            },
+            {
+              "type": "text",
+              "value": "，按提示解压并进入安装程序，一路点击 Next 即可完成安装。"
             }
           ]
         },
@@ -1073,7 +1095,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣下载。你需要有一台win10以上的电脑或者一台比较新的Mac，用电脑浏览器打开altstore的官网，向下拉到最底，来进行下载。注意‼️这里一定要从官网下，不然可能会下载失败，甚至无法使用。（如图一）。"
+              "value": "3️⃣ 安装 iTunes 和 iCloud。如果电脑没有安装过 iTunes 和 iCloud，AltStore 会提示找不到相关组件，点击 Download 下载即可。注意：如果你安装的是微软商店版 iTunes 或 iCloud，建议先卸载，再从 Apple 官网或 AltStore 弹出的窗口下载桌面版。"
             }
           ]
         },
@@ -1082,7 +1104,15 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣下载好后，你的电脑会出现一个altinstaller的文件夹（取决于你设置的下在哪个盘）打开他，里面会有两个文件，（如图二）点下面那个setup，他会让你解压（如图三）点全部解压就好了，解压好后，setup的图标会变成一个光碟的形状（如图四）。双击打开setup，就会进入安装程序了（如图五），一路点next就好了。随后，altstore就安装到电脑上了。"
+              "value": "4️⃣ 安装 AltStore 到手机。先打开 iTunes 和 iCloud，并登录 Apple ID。随后打开电脑端 AltStore，它通常不会弹出窗口，而是出现在系统托盘中。用可靠的数据线连接手机，确保 iTunes、iCloud 和 AltStore 都在运行。点击托盘图标，选择 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Install AltStore"
+            },
+            {
+              "type": "text",
+              "value": "，输入 Apple ID。等待几秒后，AltStore 会出现在手机上。"
             }
           ]
         },
@@ -1091,7 +1121,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "3️⃣如果你没有安装过itunes和icloud，他会提示没有找到（如图六）这里直接点下载，即download，他就会弹到浏览器，就开始下载了。如果你安装的是微软商店的itunes和icloud，从设置里卸载掉，然后再从官网或者这个窗口下就可以了。"
+              "value": "5️⃣ 信任开发者。此时直接打开 AltStore 可能会失败，需要在“设置 > 通用”中信任对应证书。如果是 iOS 16 及以上设备，还需要在“隐私与安全性”中开启开发者模式。"
             }
           ]
         },
@@ -1100,7 +1130,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "4️⃣下载好itunes和icloud后，先打开这两个软件，登录上你的苹果账号。随后打开alt store，这个软件打开后不会有什么弹窗，他会出现在你电脑的右下方，一个棱形的标志，点开那个标志就会出现图七的方框，此时将你的手机用一根可靠的数据线与电脑相连，保证三个软件都在运行，这个十分重要‼️点击方框中的第二个，install altstore，输入你的appleid，不放心的可以注册个小号输进去。过几秒，altstore就会出现在你的手机上了。"
+              "value": "6️⃣ 导入 IPA。第一次打开 AltStore 时，需要输入 Apple ID 登录。进入后点击加号，选择 IPA 文件导入即可。"
             }
           ]
         },
@@ -1109,25 +1139,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "5️⃣这时你直接点是打不开（如图八），需要你在设置通用里信任一下才可以，如果你是ios16以上的设备，还需要在隐私与安全里把开发者模式打开才可以使用。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "6️⃣第一次使用时，要输入你的appleid进行登录（如图九），进入后点我画圈那个➕号（图十）导入ipa就行了。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "这就是详细的下载教程和使用方法。"
+              "value": "以上就是 AltStore 的安装与基础使用方法。"
             }
           ]
         },
@@ -1156,8 +1168,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-07-19-post-iosgalplay",
-    "title": "一篇在ios上舒服玩gal！",
-    "description": "今天来带大家在ios上玩gal，只要是以renpy为基础的exe就都可以玩。他甚至连apk都可以运行！",
+    "title": "如何在 iOS 上更舒服地玩 Galgame",
+    "description": "今天介绍一种在 iOS 上游玩 Galgame 的方法。只要游戏基于 Ren'Py 制作，通常都可以尝试运行；部分 APK 也可以导入。",
     "date": "2025-07-19",
     "pinned": false,
     "content": {
@@ -1168,7 +1180,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "今天来带大家在ios上玩gal，只要是以renpy为基础的exe就都可以玩。他甚至连apk都可以运行！"
+              "value": "今天介绍一种在 iOS 上游玩 Galgame 的方法。只要游戏基于 Ren'Py 制作，通常都可以尝试运行；部分 APK 也可以导入。"
             }
           ]
         },
@@ -1177,7 +1189,15 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "这里我推荐的应用是spark（图二），只要在Appstore里搜索renpy就好，出来第一个就是。至于下面的renpy reader和renpylinter，我通通都不推荐，里面有广告，最重要的是他们只兼容特定的renpy版本，也就是说，如果你要玩的游戏和它的版本不一致，就会开屏报错‼️"
+              "value": "我推荐的应用是 Spark。在 App Store 搜索 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "renPY"
+            },
+            {
+              "type": "text",
+              "value": "，一般第一个就是。至于 Ren'Py Reader 和 Ren'Py Linter，我不太推荐：一方面有广告，另一方面只兼容特定 Ren'Py 版本。如果游戏版本不匹配，可能一打开就报错。"
             }
           ]
         },
@@ -1186,7 +1206,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "安装方法：这里不推荐直接入，可以考虑用共享账号或者找富哥借；如果你的版本足够低的话，也可以用巨魔；七天可以开电脑的，可以用Altstore。这些都可以0成本用到这个软件。关于Altstore和巨魔，我曾经发过，但是账号被封不显示了，我过几天会补档过来。"
+              "value": "安装方式可以根据自己的设备情况选择：可以使用共享账号，低版本系统可考虑 TrollStore；如果每七天能连接电脑，也可以使用 AltStore。关于 AltStore 和 TrollStore，我后续会补档教程。"
             }
           ]
         },
@@ -1195,7 +1215,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣下载好后，我们还需要准备你要玩的游戏，如果你的游戏文件是完整的带exe根目录那种，把它打包成压缩包，如果你的游戏本身就是，不用动，直接放在手机的文件app就好。apk也是一样。（图三）。"
+              "value": "1️⃣ 准备游戏文件。如果游戏是完整的 exe 根目录结构，就把整个游戏目录打包成压缩包；如果本来就是压缩包，则无需处理，直接放到手机的“文件”App 中即可。APK 文件同理。"
             }
           ]
         },
@@ -1204,7 +1224,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣现在打开spark，点击上方的蓝条（图四），接着选择刚刚传输过来的游戏压缩包（图五），等待它传输导入完。"
+              "value": "2️⃣ 打开 Spark，点击顶部蓝色区域，选择刚刚传到手机里的游戏压缩包，等待导入完成。"
             }
           ]
         },
@@ -1213,7 +1233,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "3️⃣接着单击刚刚导入的游戏，选择启动游戏就好（图六），接着就可以正常游玩了（图七）。"
+              "value": "3️⃣ 单击导入后的游戏，选择“启动游戏”，即可开始游玩。"
             }
           ]
         },
@@ -1222,7 +1242,39 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "ps：如果你想把电脑上的存档转移过来，在电脑上找到C：/用户/你的名字/Appdate/Roaming/renpy/游戏名字，打开后把所有的文件复制一份，把它打成zip包，通过itunes或者别的方式把它传到手机。接着在spark里选择存档管理器，导入就好。如果你的游戏不在c盘里，在你的游戏的game文件夹下找到save，打开，按照上面的步骤操作就好。\n以上就是全部了，这目前是最简单的游玩方式了，后续还会带来xp3player和更多方法[哇R]\n如果你认为这一篇有用的话，就点个赞➕关注吧，感激不禁。有什么问题的话可以私信我或者留在评论区，看到就会解决的。"
+              "value": "如果想把电脑上的存档转移到手机，可以在电脑上找到类似路径："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "C:\\Users\\你的用户名\\AppData\\Roaming\\RenPy\\游戏名"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "把里面的文件复制出来并打成 zip 包，再通过 iTunes 或其他方式传到手机。在 Spark 中打开存档管理器并导入即可。如果游戏存档在游戏目录内，也可以到 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "game/save"
+            },
+            {
+              "type": "text",
+              "value": " 文件夹中查找并按同样方式处理。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以上就是目前比较简单的 iOS 游玩方式。后续还会继续整理 XP3Player 等更多方案。如果有问题，可以私信我或在评论区留言，看到后我会尽量回复。"
             }
           ]
         }
@@ -1231,8 +1283,8 @@ export const generatedPosts = [
   },
   {
     "slug": "2025-07-18-post-windowsc",
-    "title": "电脑c盘用户名频繁报错，从中文改成英文教程",
-    "description": "本文转自我的小红书，为了节省人力，这里不放图片了，麻烦大家自行前往小红书看。如果有不方便用小红书的，请给我发邮件。",
+    "title": "电脑 C 盘用户名频繁报错？从中文改成英文的保守教程",
+    "description": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。",
     "date": "2025-07-18",
     "pinned": false,
     "content": {
@@ -1243,7 +1295,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "本文转自我的小红书，为了节省人力，这里不放图片了，麻烦大家自行前往小红书看。如果有不方便用小红书的，请给我发邮件。"
+              "value": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。"
             }
           ]
         },
@@ -1252,7 +1304,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "刚刚写了1000字的文案又没了，心态要崩了"
+              "value": "有些软件在安装或运行时会频繁报错，原因可能是 Windows 用户文件夹使用了中文路径。部分国外软件无法正确识别中文目录，导致找不到路径。下面介绍一种相对保守的改名方法，步骤会比网上一些教程复杂，但更重视数据安全。"
             }
           ]
         },
@@ -1261,7 +1313,23 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "大家有时会发现自己电脑在安装软件时总会报错，这是因为电脑C盘用户名是中文导致的（如图一），很多外国软件不支持中文，就会找不到路径从而报错。今天就来教大家怎样把这个用户名改成英文，这个方法会比网上别的方法要复杂一点，不过是不会丢数据的，也算是更保守的一个方法，毕竟数据最重要吗"
+              "value": "1️⃣ 创建一个新的管理员账户。按 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Win + X"
+            },
+            {
+              "type": "text",
+              "value": "，打开 Windows PowerShell，输入 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "netplwiz"
+            },
+            {
+              "type": "text",
+              "value": "。在弹出的窗口中选择“添加”，点击“不使用 Microsoft 账户登录”，再选择“本地账户”，输入你想创建的账户名。创建完成后，选中新账户，进入“属性”，把它设置为管理员账户。"
             }
           ]
         },
@@ -1270,7 +1338,15 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣创建一个新账户。先同时按住win➕x，打开图二的界面，选择windows power shell我画线那个，他就会弹出图三的命令框，输入我图三中的命令netplwiz，他会出现一个图四的小方框。选择添加，点不使用Mictosoft账户登录，（图五），选择本地账户（图六），输入一个你想创建的账户名字（图七），然后选中刚刚创建的账户，点属性，给他管理员权限（图八）。这样一个管理员权限的账户就创建好了\n2️⃣改名字。我们首先先切换用户到我们刚刚创建的账号上，大家可以直接点开始切换（图九）。等他准备好我们就可以进入到新用户的界面了（时间由你的设备和网络来定），这时候先不要直接改，还是先win➕x，选择任务管理器，（图十）在用户里把我们第一个账户的进程结束掉（十一十二）不然这个名字是改不成的。接着我们打开C盘，选择用户，把我们想改名字的文件夹的名字改掉就行（图十三）\n3️⃣改注册表。网上很多教程到这一步就结束了，实际上这样做是很不保险的，因为数据很容易丢掉。首先大家先win➕r打开命令框，输入regedit，打开注册表。这里真的特别重要，改错一步可就要重装系统了，先点开\nHKEY-LOCAL-MACHINE，在里面找到SOFTWARE，找到Microsoft，（图十四）再在里面找到Windowa NT（图十五），往下找，找到Profilelist，找到其中的倒数第二个（图十六）打开，接着我们会看到有一个C：\\user\\你的老用户名，打开这一栏，把里面改成C；\\user\\你的新用户名，这样所有的信息就改好了\n4️⃣这时我们再切换回我们之前的账号，也不会有弹窗之类的啦，这个方法是不需要注销账号的，安全系数高，。如果你不想要这个小号，输入刚开头的代码，把他删除即可，想要的也可以留着"
+              "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Win + X"
+            },
+            {
+              "type": "text",
+              "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
             }
           ]
         },
@@ -1279,7 +1355,96 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "补充：最后改注册表那里填的名称是第二步最后改的那个文件夹名。"
+              "value": "3️⃣ 修改注册表。按 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Win + R"
+            },
+            {
+              "type": "text",
+              "value": "，输入 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "regedit"
+            },
+            {
+              "type": "text",
+              "value": " 打开注册表。请务必谨慎操作，改错可能导致系统异常。依次进入："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "在 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "ProfileList"
+            },
+            {
+              "type": "text",
+              "value": " 中找到对应原账户的项，打开 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "ProfileImagePath"
+            },
+            {
+              "type": "text",
+              "value": "，把里面的路径从 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "C:\\Users\\旧用户名"
+            },
+            {
+              "type": "text",
+              "value": " 改为 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "C:\\Users\\新用户名"
+            },
+            {
+              "type": "text",
+              "value": "。这里的新用户名必须和第二步中改好的文件夹名称一致。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4️⃣ 切回原账户。完成后切回原账户，正常情况下不会再出现路径相关弹窗。如果不需要临时创建的小号，可以再次打开 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "netplwiz"
+            },
+            {
+              "type": "text",
+              "value": " 删除；如果想保留，也可以继续放着。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "补充：最后修改注册表时填写的名称，就是第二步最后改好的文件夹名。"
             }
           ]
         },
@@ -1300,15 +1465,6 @@ export const generatedPosts = [
                   "value": "http://xhslink.com/o/2Nev9jtLuA7"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "相关图片："
             }
           ]
         }
