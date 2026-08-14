@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
@@ -13,6 +14,28 @@ export function generateStaticParams() {
 type PostPageProps = {
   params: Promise<{ locale: Locale; slug: string }>;
 };
+
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+  setRequestLocale(locale);
+  const post = getPostBySlug(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const title = `${post.title} | Panghu1102 Blog`;
+
+  return {
+    title,
+    description: post.description,
+    openGraph: {
+      title,
+      description: post.description,
+      type: "article",
+    },
+  };
+}
 
 export default async function PostPage({ params }: PostPageProps) {
   const { locale, slug } = await params;
