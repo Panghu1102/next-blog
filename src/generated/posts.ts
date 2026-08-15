@@ -69,6 +69,55 @@ export const generatedPosts = [
     }
   },
   {
+    "slug": "2026-08-09-post-zhuanyi",
+    "title": "针对新域名，相关服务域名更换",
+    "description": "workers与pages的新域名适配",
+    "date": "2026-08-09",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "域名"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1.pages：drive\nyuri.qzz.io—drive.panghu.bond"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2.workers：\nddlc.dpdns.org—relay.panghu.bond\ngj911.dpdns.org—gj911.panghu.bond"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "workers的旧域名仍作为备用域名存在。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "slug": "welcome",
     "title": "欢迎来到我的博客",
     "description": "这是一篇示例 Markdown 文章，用于展示 posts 目录的加载效果。",
@@ -1312,6 +1361,94 @@ export const generatedPosts = [
           "type": "paragraph",
           "children": [
             {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411789_IMG_6147.jpeg",
+              "alt": "IMG_6147.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788406896_IMG_6148.jpeg",
+              "alt": "IMG_6148.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788410271_IMG_6149.jpeg",
+              "alt": "IMG_6149.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788410629_IMG_6150.jpeg",
+              "alt": "IMG_6150.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788412970_IMG_6151.jpeg",
+              "alt": "IMG_6151.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788414018_IMG_6152.jpeg",
+              "alt": "IMG_6152.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411266_IMG_6153.jpeg",
+              "alt": "IMG_6153.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416445_IMG_6154.jpeg",
+              "alt": "IMG_6154.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
               "type": "text",
               "value": "1️⃣ 创建一个新的管理员账户。按 "
             },
@@ -1337,6 +1474,39 @@ export const generatedPosts = [
           "type": "paragraph",
           "children": [
             {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788418065_IMG_6155.jpeg",
+              "alt": "IMG_6155.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415438_IMG_6158.jpeg",
+              "alt": "IMG_6158.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416141_IMG_6159.jpeg",
+              "alt": "IMG_6159.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
               "type": "text",
               "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
             },
@@ -1347,6 +1517,39 @@ export const generatedPosts = [
             {
               "type": "text",
               "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411215_IMG_6160.jpeg",
+              "alt": "IMG_6160.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416573_IMG_6161.jpeg",
+              "alt": "IMG_6161.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415033_IMG_6162.jpeg",
+              "alt": "IMG_6162.jpeg"
             }
           ]
         },
