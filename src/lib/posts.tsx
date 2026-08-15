@@ -1,5 +1,5 @@
 import { generatedPosts } from "@/generated/posts";
-import type { Root, RootContent, Text, PhrasingContent, ListItem, TableRow } from "mdast";
+import type { Root, RootContent, Text, PhrasingContent, ListItem, TableRow, Image } from "mdast";
 
 export type PostMeta = {
   slug: string;
@@ -50,6 +50,22 @@ export function renderInline(nodes: PhrasingContent[] = []) {
         <a key={index} href={node.url} target="_blank" rel="noreferrer">
           {renderInline(node.children)}
         </a>
+      );
+    }
+
+    if (node.type === "image") {
+      const image = node as Image;
+
+      return (
+        // eslint-disable-next-line @next/next/no-img-element -- Markdown posts can reference arbitrary external image hosts, so use a plain responsive image.
+        <img
+          key={index}
+          src={image.url}
+          alt={image.alt ?? ""}
+          title={image.title ?? undefined}
+          loading="lazy"
+          className="mx-auto my-6 h-auto max-w-full rounded-2xl border border-black/10 shadow-lg shadow-black/10 dark:border-white/10 dark:shadow-white/5"
+        />
       );
     }
 
