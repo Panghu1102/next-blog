@@ -9,8 +9,8 @@ export function NavBar() {
   const locale = useLocale();
 
   const items = [
-    { label: t("home"), href: "/" },
-    { label: t("blog"), href: "/about" },
+    { label: t("posts"), href: "/posts" },
+    { label: t("about"), href: "/about" },
     { label: t("projects"), href: "/projects" },
   ] as const;
 
