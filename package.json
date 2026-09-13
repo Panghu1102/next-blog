@@ -34,10 +34,10 @@
 		"rehype-slug": "^6.0.0",
 		"remark": "^15.0.1",
 		"remark-gfm": "^4.0.1",
-		"@payloadcms/db-d1-sqlite": "^3.0.0",
-		"@payloadcms/next": "^3.0.0",
-		"@payloadcms/richtext-lexical": "^3.0.0",
-		"payload": "^3.0.0"
+		"@payloadcms/db-d1-sqlite": "^3.89.0",
+		"@payloadcms/next": "^3.89.0",
+		"@payloadcms/richtext-lexical": "^3.89.0",
+		"payload": "^3.89.0"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3",
