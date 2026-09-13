@@ -56,7 +56,7 @@
 		"build:next": "npm run generate:posts && next build --webpack && next-sitemap",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
 		"check": "npm run build && tsc",
-		"deploy": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare deploy",
+		"deploy": "opennextjs-cloudflare deploy",
 		"dev": "next dev",
 		"generate:posts": "node scripts/generate-posts.mjs",
 		"lint": "eslint .",
