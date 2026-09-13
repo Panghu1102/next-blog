@@ -67,7 +67,7 @@
 		"payload:migrate": "payload migrate",
 		"preview": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare preview",
 		"start": "next start",
-		"upload": "opennextjs-cloudflare build --noMinify && node-sitemap",
+		"upload": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare upload",
 		"postbuild": "next-sitemap && node scripts/fix-open-next-wasm.mjs",
 		"sitemap": "npm run generate:posts && next-sitemap",
 		"postinstall": "node scripts/patch-payload-load-env.mjs"
