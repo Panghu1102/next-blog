@@ -1,0 +1,3 @@
+# Generate with: openssl rand -base64 48
+# Never reuse a local secret in production.
+PAYLOAD_SECRET=
