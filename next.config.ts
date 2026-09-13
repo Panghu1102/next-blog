@@ -5,7 +5,7 @@ import { withPayload } from "@payloadcms/next/withPayload";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["@payloadcms/db-d1-sqlite"],
 };
 
 export default withNextIntl(withPayload(nextConfig));
