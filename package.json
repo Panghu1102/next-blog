@@ -27,7 +27,7 @@
 		"next-sitemap": "^4.2.3",
 		"react": "19.2.1",
 		"react-dom": "19.2.1",
-		"rehype-autolink-headings": "^7.1.0",
+		"rehype-autolink-headings": "7.1.0",
 		"rehype-highlight": "^7.0.2",
 		"rehype-slug": "^6.0.0",
 		"remark": "^15.0.1",
@@ -67,7 +67,7 @@
 		"payload:migrate": "payload migrate",
 		"preview": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare preview",
 		"start": "next start",
-		"upload": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare upload",
+		"upload": "opennextjs-cloudflare build --noMinify && node-sitemap",
 		"postbuild": "next-sitemap && node scripts/fix-open-next-wasm.mjs",
 		"sitemap": "npm run generate:posts && next-sitemap",
 		"postinstall": "node scripts/patch-payload-load-env.mjs"
