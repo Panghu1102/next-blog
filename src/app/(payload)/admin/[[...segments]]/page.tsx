@@ -10,5 +10,9 @@ export const generateMetadata = ({ params, searchParams }: PageProps) =>
   generatePageMetadata({ config, params, searchParams });
 
 export default function Page({ params, searchParams }: PageProps) {
-  return RootPage({ config, params, searchParams });
+  return RootPage({
+    config,
+    params: params.then(({ segments = [] }) => ({ segments })),
+    searchParams,
+  });
 }
