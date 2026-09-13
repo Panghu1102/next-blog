@@ -3,7 +3,7 @@ import { generatePageMetadata, RootPage } from "@payloadcms/next/views";
 
 type PageProps = {
   params: Promise<{ segments?: string[] }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Promise<Record<string, string | string[]>>;
 };
 
 export const generateMetadata = ({ params, searchParams }: PageProps) =>
