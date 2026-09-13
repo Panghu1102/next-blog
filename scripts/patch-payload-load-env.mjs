@@ -1,15 +1,16 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { createRequire } from "node:module";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const require = createRequire(import.meta.url);
-
-let payloadLoadEnv;
-try {
-  payloadLoadEnv = require.resolve("payload/dist/bin/loadEnv.js");
-} catch {
-  console.log("[postinstall] Payload is not installed; skipping loadEnv patch.");
-  process.exit(0);
-}
+const projectRoot = join(fileURLToPath(new URL(".", import.meta.url)), "..");
+const payloadLoadEnv = join(
+  projectRoot,
+  "node_modules",
+  "payload",
+  "dist",
+  "bin",
+  "loadEnv.js",
+);
 
 if (!existsSync(payloadLoadEnv)) {
   console.log("[postinstall] Payload loadEnv.js not found; skipping patch.");
