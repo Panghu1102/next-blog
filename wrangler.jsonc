@@ -15,5 +15,16 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+
+	// Create the database first: npx wrangler d1 create next-blog-cms
+	// Then copy the returned database_id into this binding. It is deliberately
+	// commented out until a real ID is available; do not deploy a placeholder ID.
+	// "d1_databases": [
+	//   {
+	//     "binding": "blogcms",
+	//     "database_id": "<database_id returned by Wrangler>",
+	//     "database_name": "next-blog-cms"
+	//   }
+	// ]
 }
