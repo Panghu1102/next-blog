@@ -6,6 +6,15 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["@payloadcms/db-d1-sqlite", "jose"],
+  turbopack: {},
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "next/og": false,
+    };
+
+    return config;
+  },
 };
 
 export default withNextIntl(withPayload(nextConfig));
