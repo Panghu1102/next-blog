@@ -55,22 +55,22 @@
 	"private": true,
 	"scripts": {
 		"build": "opennextjs-cloudflare build",
-		"build:next": "npm run generate:posts && next build && next-sitemap",
+		"build:next": "npm run generate:posts && next build --webpack && next-sitemap",
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
 		"check": "npm run build && tsc",
 		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
 		"dev": "next dev",
 		"generate:posts": "node scripts/generate-posts.mjs",
 		"lint": "eslint .",
-		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"start": "next start",
-		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-		"postbuild": "next-sitemap",
-		"sitemap": "npm run generate:posts && next-sitemap",
 		"payload": "payload",
 		"payload:generate:types": "payload generate:types",
 		"payload:generate:importmap": "payload generate:importmap",
 		"payload:migrate:create": "payload migrate:create",
-		"payload:migrate": "payload migrate"
+		"payload:migrate": "payload migrate",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"start": "next start",
+		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+		"postbuild": "next-sitemap",
+		"sitemap": "npm run generate:posts && next-sitemap"
 	}
 }
