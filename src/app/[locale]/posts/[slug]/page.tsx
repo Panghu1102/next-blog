@@ -7,7 +7,6 @@ import { GiscusComments } from "@/components/posts/GiscusComments";
 import { getAllPosts, getPostBodyBlocks, getPostBySlug, renderBlocks } from "@/lib/posts";
 import { locales, type Locale } from "@/i18n/routing";
 
-export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) => getAllPosts().map((post) => ({ locale, slug: post.slug })));
