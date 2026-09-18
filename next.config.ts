@@ -4,16 +4,7 @@ import type { NextConfig } from "next";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["jose"],
-  turbopack: {},
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "next/og": false,
-    };
-
-    return config;
-  },
+	/* config options here */
 };
 
 export default withNextIntl(nextConfig);
