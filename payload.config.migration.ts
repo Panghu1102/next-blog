@@ -4,6 +4,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import { Posts } from "./src/collections/Posts";
 import { Users } from "./src/collections/Users";
+import { migrations } from "./src/migrations";
 
 /**
  * This config is intentionally only for `payload migrate:create`.
@@ -21,6 +22,7 @@ export default buildConfig({
   db: sqliteD1Adapter({
     binding: {} as Parameters<typeof sqliteD1Adapter>[0]["binding"],
     migrationDir: path.resolve(process.cwd(), "src/migrations"),
+    prodMigrations: migrations,
   }),
   editor: lexicalEditor(),
   secret:

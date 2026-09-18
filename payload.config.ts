@@ -4,6 +4,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import { Posts } from "./src/collections/Posts";
 import { Users } from "./src/collections/Users";
+import { migrations } from "./src/migrations";
 
 export default getCloudflareContext({ async: true }).then((cloudflare) => {
   const secret = process.env.PAYLOAD_SECRET;
@@ -21,6 +22,7 @@ export default getCloudflareContext({ async: true }).then((cloudflare) => {
     collections: [Users, Posts],
     db: sqliteD1Adapter({
       binding: cloudflare.env.blogcms,
+      prodMigrations: migrations,
     }),
     editor: lexicalEditor(),
     secret,
