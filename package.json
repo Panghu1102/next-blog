@@ -66,7 +66,7 @@
 		"payload": "payload",
 		"payload:generate:types": "payload generate:types",
 		"payload:generate:importmap": "payload generate:importmap",
-		"payload:migrate:create": "PAYLOAD_CONFIG_PATH=./payload.config.migration.ts payload migrate:create",
+		"payload:migrate:create": "tsx scripts/create-migration.ts",
 		"payload:migrate": "payload migrate",
 		"preview": "opennextjs-cloudflare build --noMinify && opennextjs-cloudflare preview",
 		"start": "next start",
