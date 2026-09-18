@@ -5,26 +5,27 @@ import { buildConfig } from "payload";
 import { Posts } from "./src/collections/Posts";
 import { Users } from "./src/collections/Users";
 
-const cloudflare = await getCloudflareContext({ async: true });
-const secret = process.env.PAYLOAD_SECRET;
+export default getCloudflareContext({ async: true }).then((cloudflare) => {
+  const secret = process.env.PAYLOAD_SECRET;
 
-if (!secret) {
-  throw new Error(
-    "PAYLOAD_SECRET must be configured before Payload can start.",
-  );
-}
+  if (!secret) {
+    throw new Error(
+      "PAYLOAD_SECRET must be configured before Payload can start.",
+    );
+  }
 
-export default buildConfig({
-  admin: {
-    user: Users.slug,
-  },
-  collections: [Users, Posts],
-  db: sqliteD1Adapter({
-    binding: cloudflare.env.blogcms,
-  }),
-  editor: lexicalEditor(),
-  secret,
-  typescript: {
-    outputFile: "src/payload-types.ts",
-  },
+  return buildConfig({
+    admin: {
+      user: Users.slug,
+    },
+    collections: [Users, Posts],
+    db: sqliteD1Adapter({
+      binding: cloudflare.env.blogcms,
+    }),
+    editor: lexicalEditor(),
+    secret,
+    typescript: {
+      outputFile: "src/payload-types.ts",
+    },
+  });
 });
