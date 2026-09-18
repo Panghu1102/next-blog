@@ -2,7 +2,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://panghu.bond";
 const locales = ["zh", "en"];
 const defaultLocale = "zh";
 
