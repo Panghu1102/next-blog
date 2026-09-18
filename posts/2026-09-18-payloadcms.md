@@ -1,8 +1,20 @@
+---
+title: "Next.js+Cloudflare worker添加PayloadCMS的尝试与踩坑"
+date: 2026-09-18T15:34:30-04:00
+categories:
+  - Blog
+tags:
+  - CMS
+  - cloudflare
+---
+  
 # Next.js + Cloudflare Worker 添加 Payload CMS！尝试
 
 > 一次并不算顺利的 CMS 接入记录：从 Next.js、OpenNext、Cloudflare Workers，到 D1、Payload CMS、Migration，再到一堆 Cloudflare Worker 报错。
 >
-> **本文记录的是实际尝试过程，而不是一篇“照着做就一定成功”的教程。**
+> **本文记录的是实际尝试过程，而不是一篇“照着做就一定成功”的教程。**  
+
+我在这篇文章里汇入了几乎所有我遇到的问题和报错…但是因为我也是第一次尝试，所以我没有按照往日的帖子那样留下图片。凑合看吧，希望可以给你提供点帮助，由于信息量太大，一些信息我使用了ai来汇总，不过应该是没错误的。
 
 ---
 
@@ -56,7 +68,7 @@ Cloudflare Worker
 
 > 打开一个后台 → 写文章 → 富文本编辑 → 点击发布 → 网站直接出现文章。
 
-也就是说，我想给自己的博客加一个真正的 CMS。
+也就是说，我想给自己的博客加一个真正的 CMS（其实到最后发现还是github方便哈哈哈）
 
 ---
 
@@ -1583,4 +1595,11 @@ payload_migrations
 
 ---
 
-> **本文记录于 Payload CMS 接入仍在排查阶段。最终是否能够稳定运行在 Cloudflare Workers + D1 上，还需要继续验证。**
+> **怎么说呢，这个经历真的要给我整崩溃了，报错比文章里多得多，而且很长时间都是一个修不好。好的，最后的成果是payload可以运行，但是貌似并不太好用，而且由于注册过于简单，很可能会出现问题。我决定先用cloudflare access把payload的东西封堵一下，慢慢研究，暂时不用**  
+需要什么的话可以discussion留言，如果我有，我可以找找给你
+
+
+
+
+
+
