@@ -69,106 +69,6 @@ export const generatedPosts = [
     }
   },
   {
-    "slug": "2026-08-18-post-appleai",
-    "title": "ios27！国行iphone强开apple智能！",
-    "description": "啊啊啊明天就要军训啦！今天最后更新一下apple智能在国行设备上强制开启的教程吧。",
-    "date": "2026-08-18",
-    "pinned": false,
-    "content": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "啊啊啊明天就要军训啦！今天最后更新一下apple智能在国行设备上强制开启的教程吧。"
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "text",
-              "value": "注明：仅支持ios 27beta1-beta4。本操作有一定风险，若发生白苹果/数据丢失等情况，本人不负任何责任。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "首先，在你的设备上侧载GestaltEdit。你可以在Github上找到这个项目并下载ipa文件。"
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "text",
-              "value": "侧载可以选择爱思助手，sidestore等等，你还需要开启开发者模式并在设置中信任一下（图一）。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/gesaltesit/1787044346271_IMG_3152.jpeg",
-              "alt": "IMG_3152.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "随后，打开这个软件。选择第一个，启用SiriAI（图二）。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/gesaltesit/1787044469778_IMG_3153.jpeg",
-              "alt": "IMG_3153.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "再者，你还需要去appstore中，登陆支持SiriAI的apple 账户，这里不再赘述。"
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "text",
-              "value": "再去“设置-通用-语言与地区-地区”，更改为美国。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "接下来只需要等待siri页面下载模型就可以了。不支持apple智能的设备，安装模型后仅有跑马灯效果，支持的设备则可以拥有全套功能。"
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
     "slug": "2026-08-09-post-zhuanyi",
     "title": "针对新域名，相关服务域名更换",
     "description": "workers与pages的新域名适配",
@@ -1316,208 +1216,6 @@ export const generatedPosts = [
     }
   },
   {
-    "slug": "2025-7-20-post-jumo",
-    "title": "ios上实用工具—巨魔！安装教程",
-    "description": "今天就来教大家怎样在设备上安装巨魔。首先声明一下这个教程只适用于ios17以下的设备，巨魔还是很好用，可以随意安装ipa，还不会像不完美越狱那样掉。注：我知道有很多大佬都会装，但是经常看到有人在网上花米来安装，所以做了个教程，会的话不要喷。",
-    "date": "2025-07-20",
-    "pinned": false,
-    "content": {
-      "type": "root",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "今天就来教大家怎样在设备上安装巨魔。首先声明一下这个教程只适用于ios17以下的设备，巨魔还是很好用，可以随意安装ipa，还不会像不完美越狱那样掉。注：我知道有很多大佬都会装，但是经常看到有人在网上花米来安装，所以做了个教程，会的话不要喷。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "1️⃣下载。首先要在电脑上安装爱思助手（如图一），有的直接打开就行。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053531_IMG_6166.jpeg",
-              "alt": "IMG_6166.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "2️⃣准备巨魔安装器的ipa文件。这个我已经替大家找好了，我准备的是一个汉化版的，需要的找我就行（如图二）。在下载这个ipa文件的过程中，我建议大家把你电脑的防火墙关掉，因为巨魔是依靠系统漏洞来运行的，所以有几率会报毒，不关防火墙的话很容易下载失败（我这个就下了好几遍，最后实在没办法把防火墙关了才成功）（如图三、图四）。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053024_IMG_6167.jpeg",
-              "alt": "IMG_6167.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786049554_IMG_6168.jpeg",
-              "alt": "IMG_6168.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053568_IMG_6169.jpeg",
-              "alt": "IMG_6169.jpeg"
-            },
-            {
-              "type": "text",
-              "value": "\n3️⃣签名。打开我们下载好的爱思助手，在上面一栏里选择工具箱，（如图五）找到ipa签名，点进去，接着选择左上角的添加文件，找到刚才下载的安装器的ipa（如图六）（这个下在哪里就去哪里找），然后选择使用appleid签名，添加appleid，把你的id输进去，（不放心的可以去注册个小号）（如图七）然后勾选要签名的文件及刚刚保存的id，（如图八）接着他提示签名成功就好了。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786048271_IMG_6170.jpeg",
-              "alt": "IMG_6170.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786051682_IMG_6171.jpeg",
-              "alt": "IMG_6171.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786052155_IMG_6172.jpeg",
-              "alt": "IMG_6172.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786048183_IMG_6173.jpeg",
-              "alt": "IMG_6173.jpeg"
-            },
-            {
-              "type": "text",
-              "value": "\n4️⃣安装。这里我忘记截图了，所以尽量讲的详细一点。点击爱思助手右上角的第一个图标，即下载的图标，点进去后就能发现我们刚刚签名的安装器就在这里。把你要安装巨魔的设备与电脑连接在一起，点击操作中的安装，他就会把这个软件安装在你的设备中了（如图九）。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786051552_IMG_6174.jpeg",
-              "alt": "IMG_6174.jpeg"
-            },
-            {
-              "type": "text",
-              "value": "\n5️⃣接着打开安装器（如图十）点下面的安装，然后他会让你选择巨魔助手，随便选一个就行（如图十一），他就会自动安装了。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053631_IMG_6175.jpeg",
-              "alt": "IMG_6175.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786054144_IMG_6176.jpeg",
-              "alt": "IMG_6176.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786057606_IMG_6177.jpeg",
-              "alt": "IMG_6177.jpeg"
-            },
-            {
-              "type": "text",
-              "value": "\n6️⃣安装好后你的桌面就会出现巨魔的图标，进入后点击右上角的➕就可以自由下载应用了。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786058370_IMG_6178.jpeg",
-              "alt": "IMG_6178.jpeg"
-            },
-            {
-              "type": "text",
-              "value": "\n这就是全部了，总的来说还是挺简单的，有什么问题可以讨论一下，喜欢或有帮助的话就点个赞➕关注吧，感谢[害羞R][害羞R][害羞R]"
-            }
-          ]
-        }
-      ]
-    }
-  },
-  {
     "slug": "2025-07-19-post-iosgalplay",
     "title": "如何在 iOS 上更舒服地玩 Galgame",
     "description": "今天介绍一种在 iOS 上游玩 Galgame 的方法。只要游戏基于 Ren'Py 制作，通常都可以尝试运行；部分 APK 也可以导入。",
@@ -1635,7 +1333,7 @@ export const generatedPosts = [
   {
     "slug": "2025-07-18-post-windowsc",
     "title": "电脑 C 盘用户名频繁报错？从中文改成英文的保守教程",
-    "description": "本文转自我的小红书。",
+    "description": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。",
     "date": "2025-07-18",
     "pinned": false,
     "content": {
@@ -1646,7 +1344,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "本文转自我的小红书。"
+              "value": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。"
             }
           ]
         },
@@ -1662,29 +1360,6 @@ export const generatedPosts = [
         {
           "type": "paragraph",
           "children": [
-            {
-              "type": "text",
-              "value": "1️⃣ 创建一个新的管理员账户。按 "
-            },
-            {
-              "type": "inlineCode",
-              "value": "Win + X"
-            },
-            {
-              "type": "text",
-              "value": "，打开 Windows PowerShell，输入 "
-            },
-            {
-              "type": "inlineCode",
-              "value": "netplwiz"
-            },
-            {
-              "type": "text",
-              "value": "。在弹出的窗口中选择“添加”，点击“不使用 Microsoft 账户登录”，再选择“本地账户”，输入你想创建的账户名。创建完成后，选中新账户，进入“属性”，把它设置为管理员账户。"
-            },
-            {
-              "type": "break"
-            },
             {
               "type": "image",
               "title": null,
@@ -1775,7 +1450,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
+              "value": "1️⃣ 创建一个新的管理员账户。按 "
             },
             {
               "type": "inlineCode",
@@ -1783,7 +1458,15 @@ export const generatedPosts = [
             },
             {
               "type": "text",
-              "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
+              "value": "，打开 Windows PowerShell，输入 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "netplwiz"
+            },
+            {
+              "type": "text",
+              "value": "。在弹出的窗口中选择“添加”，点击“不使用 Microsoft 账户登录”，再选择“本地账户”，输入你想创建的账户名。创建完成后，选中新账户，进入“属性”，把它设置为管理员账户。"
             }
           ]
         },
@@ -1817,6 +1500,56 @@ export const generatedPosts = [
               "title": null,
               "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416141_IMG_6159.jpeg",
               "alt": "IMG_6159.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Win + X"
+            },
+            {
+              "type": "text",
+              "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411215_IMG_6160.jpeg",
+              "alt": "IMG_6160.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416573_IMG_6161.jpeg",
+              "alt": "IMG_6161.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415033_IMG_6162.jpeg",
+              "alt": "IMG_6162.jpeg"
             }
           ]
         },
@@ -1889,37 +1622,6 @@ export const generatedPosts = [
             {
               "type": "text",
               "value": "。这里的新用户名必须和第二步中改好的文件夹名称一致。"
-            },
-            {
-              "type": "break"
-            },
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411215_IMG_6160.jpeg",
-              "alt": "IMG_6160.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416573_IMG_6161.jpeg",
-              "alt": "IMG_6161.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415033_IMG_6162.jpeg",
-              "alt": "IMG_6162.jpeg"
             }
           ]
         },
