@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
     return {};
   }
 
-  const title = `${post.title} | Panghu1102 Blog`;
+  const title = `${post.title} | Panghu1102`;
 
   return {
     title,
