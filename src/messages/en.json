@@ -47,23 +47,23 @@
     "title": "About me and this blog",
     "subtitle": "A place for projects, experiments, tutorials, and notes about games, system tools, and AI.",
     "paragraphs": [
-      "Hello, welcome to Panghu1102. This site is both my personal homepage and a place to organize technical notes and project updates.",
-      "I focus on programming, computer technology, and AI, while also writing about iOS sideloading, Windows tips, virtual machines, Steam beginner notes, and DDLC/JustYuri-related content. Many posts come from practical sharing on Xiaohongshu or Tieba, so they focus on solving real problems step by step.",
-      "The tutorials try to keep practical notes, risk reminders, and lessons learned. If a post mentions images that are not shown here, you can usually find them on the original platform or contact me by email.",
+      "Hello, welcome to my blog. This site is both my personal homepage and a place to organize technical notes and project updates. I may also post things that seem unrelated to technology… don't be mistaken, I might simply be recording a bit of my life :)",
+      "I mainly research cybersecurity and the applications of large AI models across different areas. I also write about iOS sideloading, Windows tips, virtual machines, Steam beginner guides, and other related topics. Most of these are based on my own experiences and the pitfalls I've encountered.",
+      "The tutorials try to keep practical notes, risk reminders, and lessons learned. If a post mentions images that are not shown here, you can usually find them on the original platform or contact me by email. (I'm really sorry, but I don't have that much time, so I may not be able to move all the images here.)",
       "I hope this site helps people who enjoy tinkering with devices, exploring software, and building creative projects. Suggestions and corrections are always welcome."
     ],
     "highlights": [
       {
-        "title": "Technical practice",
-        "description": "Practical guides for iOS, Windows, virtual machines, and sideloading tools, with operational details and risk notes."
+        "title": "Applied practice",
+        "description": "Notes on practical applications of cybersecurity and large AI models, along with hands-on experiments with iOS, Windows, virtual machines, and more."
       },
       {
         "title": "Project notes",
-        "description": "Updates on JustYuri, JYACS, and personal development experiments, turning ideas into usable features."
+        "description": "Updates on personal projects, development experiments, and various attempts to turn ideas into things that actually run and can be used."
       },
       {
         "title": "Experience sharing",
-        "description": "Notes about games, tools, and platforms, with ongoing editing to make posts clearer and easier to read."
+        "description": "Sharing lessons and pitfalls from technical exploration, software tools, games, and everyday tinkering, so others can avoid some of the same detours."
       }
     ],
     "contactTitle": "Contact and keep reading",
