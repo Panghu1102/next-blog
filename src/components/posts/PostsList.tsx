@@ -29,14 +29,14 @@ export function PostsList({ posts }: PostsListProps) {
   const result = keyword ? fuse.search(keyword).map((item) => item.item) : posts;
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white px-6 pb-20 pt-28 text-black dark:bg-black dark:text-white">
+    <main className="min-h-screen overflow-hidden bg-white px-4 pb-20 pt-4 text-black dark:bg-black dark:text-white sm:px-6 sm:pt-6">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.18),transparent_32rem),radial-gradient(circle_at_bottom_right,rgba(236,72,153,0.16),transparent_30rem)]" />
 
       <motion.div
         initial={{ opacity: 0, y: -18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease: "easeOut" }}
-        className="sticky top-4 z-40 mx-auto mb-8 w-full max-w-4xl space-y-4"
+        className="sticky top-2 z-40 mx-auto mb-6 w-full max-w-4xl space-y-3 sm:top-4 sm:mb-8 sm:space-y-4"
       >
         <NavBar />
         <div className="rounded-2xl border border-black/10 bg-white/35 p-3 shadow-2xl shadow-black/10 backdrop-blur-2xl supports-[backdrop-filter]:bg-white/25 dark:border-white/10 dark:bg-black/35 dark:shadow-white/5 dark:supports-[backdrop-filter]:bg-black/25">
