@@ -69,6 +69,4610 @@ export const generatedPosts = [
     }
   },
   {
+    "slug": "2026-09-18-payloadcms",
+    "title": "Next.js+Cloudflare worker添加PayloadCMS的尝试与踩坑",
+    "description": "Next.js + Cloudflare Worker 添加 Payload CMS！尝试",
+    "date": "2026-09-18",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "Next.js + Cloudflare Worker 添加 Payload CMS！尝试"
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "一次并不算顺利的 CMS 接入记录：从 Next.js、OpenNext、Cloudflare Workers，到 D1、Payload CMS、Migration，再到一堆 Cloudflare Worker 报错。"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "本文记录的是实际尝试过程，而不是一篇“照着做就一定成功”的教程。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我在这篇文章里汇入了几乎所有我遇到的问题和报错…但是因为我也是第一次尝试，所以我没有按照往日的帖子那样留下图片。凑合看吧，希望可以给你提供点帮助，由于信息量太大，一些信息我使用了ai来汇总，不过应该是没错误的。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "一、为什么突然想给博客加 CMS？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我的博客原本已经可以正常运行。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "整体架构大致是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\n   ↓\nOpenNext\n   ↓\nCloudflare Workers\n   ↓\npanghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "文章内容以前主要通过 GitHub 仓库里的 Markdown 文件管理。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这种方案其实非常简单："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "编辑 Markdown\n    ↓\nGit commit\n    ↓\nGitHub\n    ↓\nNext.js 构建\n    ↓\nCloudflare Worker\n    ↓\n博客页面"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但用久了以后，总觉得编辑体验还是有点麻烦。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果只是修改一篇 Markdown 文章，那么："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": 1,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "找到文件；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "修改 Markdown；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "保存；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Git commit；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "push；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "等待 Cloudflare 构建；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "最后才能看到网站上的变化。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而我真正想要的是一种更加接近社交平台的体验："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "打开一个后台 → 写文章 → 富文本编辑 → 点击发布 → 网站直接出现文章。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说，我想给自己的博客加一个真正的 CMS（其实到最后发现还是github方便哈哈哈）"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二、为什么选择 Payload CMS？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "一开始考虑过很多 CMS，不过最终尝试了 Payload。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原因比较简单。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 本身："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "开源；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "TypeScript 友好；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "和 Next.js 结合比较自然；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "自带 Admin Panel；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "自带用户认证；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "支持 Rich Text；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "可以自己定义 Collection；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "支持 SQLite；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "而 Cloudflare 又提供了 D1。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是我脑子里想象出来的架构大概是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "                    ┌──────────────┐\n                    │ Payload CMS  │\n                    │    Admin     │\n                    └──────┬───────┘\n                           │\n                           ▼\n                    ┌──────────────┐\n                    │ Cloudflare D1│\n                    │    blogcms   │\n                    └──────┬───────┘\n                           │\n                           ▼\n                    ┌──────────────┐\n                    │ Next.js Blog │\n                    └──────────────┘"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "看起来……"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "非常合理。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后我就开始了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "事实证明："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "看起来合理 ≠ 真正部署起来简单。😂"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三、项目原本的环境"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次使用的主要技术栈："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\nReact\nOpenNext\nCloudflare Workers\nCloudflare D1\nPayload CMS\nTypeScript"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "部署环境中出现过："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Node.js 24.18.0\nnpm 10.9.2\nNext.js 16.x\nOpenNext for Cloudflare\nPayload CMS 3.x\nWrangler 4.x"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "后来项目中的版本包括："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js 16.2.11\n@opennextjs/cloudflare 1.20.2\nPayload 3.89.x\nReact 19.2.1\nWrangler 4.88.0"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这也埋下了后面的一些坑。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "四、第一步：把 Payload 接进 Next.js"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 的核心配置最终大致变成了这样："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "import { getCloudflareContext } from \"@opennextjs/cloudflare\";\nimport { sqliteD1Adapter } from \"@payloadcms/db-d1-sqlite\";\nimport { lexicalEditor } from \"@payloadcms/richtext-lexical\";\nimport { buildConfig } from \"payload\";\nimport { Posts } from \"./src/collections/Posts\";\nimport { Users } from \"./src/collections/Users\";\n\nexport default getCloudflareContext({ async: true }).then((cloudflare) => {\n  const secret = process.env.PAYLOAD_SECRET;\n\n  if (!secret) {\n    throw new Error(\n      \"PAYLOAD_SECRET must be configured before Payload can start.\",\n    );\n  }\n\n  return buildConfig({\n    admin: {\n      user: Users.slug,\n    },\n    collections: [Users, Posts],\n    db: sqliteD1Adapter({\n      binding: cloudflare.env.blogcms,\n    }),\n    editor: lexicalEditor(),\n    secret,\n    typescript: {\n      outputFile: \"src/payload-types.ts\",\n    },\n  });\n});"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里最重要的一行就是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "binding: cloudflare.env.blogcms"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为 Payload 最终需要通过这个 binding 访问 Cloudflare D1。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我的 D1 数据库 binding 名字就是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "blogcms"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "五、Users 和 Posts"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Users"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "用户 Collection 很简单："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "import type { CollectionConfig } from \"payload\";\n\nexport const Users: CollectionConfig = {\n  slug: \"users\",\n  admin: { useAsTitle: \"email\" },\n  auth: true,\n  fields: [{ name: \"name\", type: \"text\", required: true }],\n};"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "其中："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "auth: true"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "意味着 Payload 会负责用户认证。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以理论上："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "/admin/login"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "就可以直接进入 Payload 的登录页面。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "六、Posts"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "博客文章 Collection 大概是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "import type { CollectionConfig } from \"payload\";\n\nexport const Posts: CollectionConfig = {\n  slug: \"posts\",\n\n  admin: {\n    useAsTitle: \"title\",\n    defaultColumns: [\"title\", \"status\", \"publishedAt\", \"updatedAt\"],\n  },\n\n  access: {\n    read: ({ req: { user } }) =>\n      user ? true : { status: { equals: \"published\" } },\n  },\n\n  fields: [\n    { name: \"title\", type: \"text\", required: true },\n    { name: \"slug\", type: \"text\", required: true, unique: true, index: true },\n    { name: \"description\", type: \"textarea\" },\n    {\n      name: \"status\",\n      type: \"select\",\n      required: true,\n      defaultValue: \"draft\",\n      options: [\n        { label: \"Draft\", value: \"draft\" },\n        { label: \"Published\", value: \"published\" },\n      ],\n    },\n    {\n      name: \"publishedAt\",\n      type: \"date\",\n      admin: { date: { pickerAppearance: \"dayOnly\" } },\n    },\n    {\n      name: \"categories\",\n      type: \"array\",\n      fields: [{ name: \"category\", type: \"text\", required: true }],\n    },\n    {\n      name: \"tags\",\n      type: \"array\",\n      fields: [{ name: \"tag\", type: \"text\", required: true }],\n    },\n    { name: \"pinned\", type: \"checkbox\", defaultValue: false },\n    { name: \"content\", type: \"richText\", required: true },\n    {\n      name: \"seo\",\n      type: \"group\",\n      fields: [\n        { name: \"title\", type: \"text\" },\n        { name: \"description\", type: \"textarea\" },\n      ],\n    },\n  ],\n};"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样一来，一篇文章基本就具备了："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "标题\nSlug\n描述\n状态\n发布时间\n分类\n标签\n置顶\n正文\nSEO"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而正文使用："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Lexical Rich Text"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "正是我最想要的那种“不用手写 Markdown”的编辑体验。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "七、然后问题来了：D1 是空的"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 虽然已经接进去了，但 Cloudflare D1 最开始基本是空数据库。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是访问："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond/admin/login"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "直接出现："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "This page couldn’t load\n\nA server error occurred.\n\nERROR 317763716"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当时的第一反应很自然："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Payload 要查 users，但是 D1 里面没有 Payload 的表。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是开始研究 Payload 的 SQLite / D1 schema。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "八、开始手动创建 D1 表"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当时尝试在 D1 里创建 Payload 需要的表。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "涉及："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users\nusers_sessions\nposts\nposts_categories\nposts_tags\npayload_kv\npayload_locked_documents\npayload_locked_documents_rels\npayload_preferences\npayload_preferences_rels\npayload_migrations"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以及各种："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "indexes\nforeign keys\nunique constraints"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这时候问题开始变复杂。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为 Payload 并不是只有："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users\nposts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这么简单。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "它自己还需要维护："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "session；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "locked documents；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "preferences；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "migrations；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "KV；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "relation tables。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "九、Codespace 里的第一次坑：npm 安装失败"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "在 Codespace 里尝试准备 Payload migration 时，又遇到了另一个问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "执行："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "npm install --package-lock-only --ignore-scripts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "结果被环境中的 package registry proxy 拒绝："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "blocked by the environment’s package-registry proxy returning HTTP 403."
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是后续："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "npx tsc --noEmit"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也没办法正常检查 Payload 相关代码，因为依赖并没有完整安装。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当时还尝试："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "PAYLOAD_SECRET=development-only-not-a-secret npm run build"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "结果因为："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "@payloadcms/next/withPayload"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "没有成功安装，又导致构建失败。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这一阶段的核心问题其实不是代码，而是："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Codespace 的 npm registry / proxy 返回了 HTTP 403。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十、Next.js / OpenNext 也开始报错"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "整个接入过程中还处理了多个 Next.js / OpenNext / Cloudflare 的问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "包括："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Next.js 版本和 OpenNext 支持情况；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "next/og"
+                    },
+                    {
+                      "type": "text",
+                      "value": "；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "jose"
+                    },
+                    {
+                      "type": "text",
+                      "value": "；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "wasm 文件；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare Worker runtime；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload 在 Next.js build 阶段加载；"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare binding 在 build/runtime 两种环境中的区别。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "例如项目里后来出现了："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "serverExternalPackages: [\n  \"@payloadcms/db-d1-sqlite\",\n  \"jose\",\n],"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以及："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "turbopack: {},"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "还有："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "webpack: (config) => {\n  config.resolve.alias = {\n    ...config.resolve.alias,\n    \"next/og\": false,\n  };\n\n  return config;\n},"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这些东西并不是 Payload 本身的功能，而是为了让它和 Next.js + OpenNext + Cloudflare 这一套环境一起工作。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十一、PAYLOAD_SECRET 问题"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "部署构建过程中还遇到过："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "PAYLOAD_SECRET must be configured before Payload can start."
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原因很直接："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 在启动时需要："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "PAYLOAD_SECRET"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而 Cloudflare production 环境没有正确提供时，Payload 直接拒绝启动。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以后来确认："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "PAYLOAD_SECRET"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要在 Cloudflare 环境中配置。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这个问题解决以后，项目又继续往下跑了。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十二、Next.js 页面里的 TypeScript 错误"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "之前还有一个 Payload Admin 页面相关的 TypeScript 错误。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "大概涉及："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/app/(payload)/admin/[[...segments]]/page.tsx"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为 optional catch-all route 的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "segments"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "可能是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "undefined"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以后来需要把它规范化成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "[]"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而不是直接假设一定存在。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这个问题解决以后，TypeScript 才继续通过。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十三、终于开始研究 Payload Migration"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "到了这里，我发现："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "手工建表真的不是一个好主意。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是开始研究 Payload 正式的 Migration 系统。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "加入了："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "payload.config.migration.ts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以及："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "json",
+          "meta": null,
+          "value": "{\n  \"payload:migrate:create\": \"PAYLOAD_CONFIG_PATH=./payload.config.migration.ts payload migrate:create\"\n}"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后生成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/migrations/20260918_135130_init_schema.ts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "这一步非常重要。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为从这一刻开始，我终于不需要再“猜 Payload 到底需要什么表”了。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十四、正式 Migration 到底创建了什么？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "生成的 migration 创建了完整 schema。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "Users"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users\nusers_sessions"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "其中 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "users"
+            },
+            {
+              "type": "text",
+              "value": " 包括："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "id\nname\nupdated_at\ncreated_at\nemail\nreset_password_token\nreset_password_expiration\nsalt\nhash\nlogin_attempts\nlock_until"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "users_sessions"
+            },
+            {
+              "type": "text",
+              "value": " 包括："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "_order\n_parent_id\nid\ncreated_at\nexpires_at"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以及对应的 foreign key 和 index。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十五、Posts"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Migration 同样创建："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "posts\nposts_categories\nposts_tags"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Posts 本身包括："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "id\ntitle\nslug\ndescription\nstatus\npublished_at\npinned\ncontent\nseo_title\nseo_description\nupdated_at\ncreated_at"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "还有："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "UNIQUE(slug)"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "等约束。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十六、Payload 自己的表"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Migration 还创建："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "payload_kv\npayload_locked_documents\npayload_locked_documents_rels\npayload_preferences\npayload_preferences_rels\npayload_migrations"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以整个数据库并不是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users + posts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users\nusers_sessions\n\nposts\nposts_categories\nposts_tags\n\npayload_kv\n\npayload_locked_documents\npayload_locked_documents_rels\n\npayload_preferences\npayload_preferences_rels\n\npayload_migrations"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这也解释了为什么："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "手工根据感觉建几个表，很容易漏东西。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十七、一个很重要的误会：users_sessions.data"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "之前看到 Payload 登录相关的运行时 stack："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "SQLiteD1Session.prepareQuery\nQueryPromise._prepare\nQueryPromise.executeRaw\n...\nfindOne"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "于是曾经怀疑："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users_sessions.data"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "是不是缺少了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "甚至手工添加过："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "sql",
+          "meta": null,
+          "value": "ALTER TABLE users_sessions ADD COLUMN data TEXT;"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但是后来真正查看正式生成的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/migrations/20260918_135130_init_schema.ts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "发现："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "里面根本没有 "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "data"
+                    },
+                    {
+                      "type": "text",
+                      "value": " 这个字段。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以这个猜测被正式推翻。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这也是这次排查中非常重要的一点："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "不能看到 runtime stack 就开始猜数据库 schema。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真正应该相信的，是 Payload 根据当前 Config 生成出来的 migration。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十八、Cloudflare Migration 应该怎么做？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里又遇到了 Cloudflare 环境的问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "payload.config.migration.ts"
+            },
+            {
+              "type": "text",
+              "value": " 主要是为了："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "生成 migration"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "它里面的 D1 binding 是一个 placeholder。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以不能简单理解成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "npm run payload:migrate"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后就一定会把 migration 应用到 Cloudflare 上的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "blogcms"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真正的生产环境需要让 migration 使用"
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "远程 D1"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "十九、研究 Payload 官方 Cloudflare D1 模板"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "后来研究了 Payload 官方的 Cloudflare D1 模板。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "官方方案的核心思路是把部署拆成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "deploy\n├── deploy:database\n│      ↓\n│   Payload migrations\n│      ↓\n│   Remote D1\n│\n└── deploy:app\n       ↓\n    OpenNext build\n       ↓\n    Cloudflare Worker"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "数据库 migration 应该成为 Cloudflare 部署流程的一部分。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而不是每次让我手动去 D1 Console 里创建表。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十、Cloudflare binding 又出问题"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "为了让 Payload 在不同环境都能正确拿到 Cloudflare D1 binding，项目又进行了几次修改。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "其中出现过："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "fix: load Payload Cloudflare bindings during build and runtime"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以及："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "fix: remove unavailable __wrangler import from Payload config"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里的核心问题是："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 会在不同环境运行："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload CLI\nNext.js build\nOpenNext build\nCloudflare Worker runtime"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "getCloudflareContext()"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "并不是在所有这些环境里都以完全相同的方式工作。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "官方 Cloudflare D1 模板甚至会判断："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "ts",
+          "meta": null,
+          "value": "const isCLI = process.argv.some(...)\nconst isProduction = process.env.NODE_ENV === \"production\""
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后根据环境决定使用哪一种 Cloudflare context 获取方式。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这也是整个项目最麻烦的地方之一："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "不是 Payload 不支持 Cloudflare，而是 Payload CLI、Next.js、OpenNext 和 Cloudflare Worker runtime 的执行环境并不完全一样。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十一、最终：博客首页终于正常"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "经过前面一堆问题之后："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\n↓\nOpenNext\n↓\nCloudflare Worker"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这一部分已经可以正常工作。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "博客主页能够正常访问。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以问题已经逐渐从："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "“整个项目部署不了”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "缩小到了："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "“Payload Admin 和 D1 数据库访问还有问题”。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十二、/admin/login 第二次报错"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "后来再次访问："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond/admin/login"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Worker 日志："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "json",
+          "meta": null,
+          "value": "{\n  \"level\": \"error\",\n  \"message\": \"    at SQLiteD1Session.prepareQuery (worker.js:187855:38)\\n    at QueryPromise._prepare (worker.js:187047:89)\\n    at QueryPromise.executeRaw (worker.js:187087:25)\\n    at QueryPromise.execute (worker.js:187090:25)\\n    at QueryPromise.then (worker.js:183646:25)\\n    at async find (worker.js:169373:27)\\n    at async Object.findOne (worker.js:10737:20)\\n    at async aH (worker.js:287324:35)\"\n}"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "完整请求："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "GET https://panghu.bond/admin/login"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "对应："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "scriptName: next-blog\nexecutionModel: stateless"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Worker version："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "f562fc32-03c8-45f2-84e6-68254dd29b29"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Ray ID："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "a3d0fda3ccdb1509"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Trace ID："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "be008ce051aaaac72bea92512e06b844"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十三、这次的错误编号也发生了变化"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "之前 Cloudflare 报："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "ERROR 317763716"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "后来修改代码之后，错误变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "ERROR 612214154"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "虽然错误编号发生了变化，但仅凭 Cloudflare 的错误编号不能直接判断具体原因。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真正有价值的是 Worker stack："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "SQLiteD1Session.prepareQuery\n→ QueryPromise._prepare\n→ QueryPromise.executeRaw\n→ QueryPromise.execute\n→ QueryPromise.then\n→ find\n→ findOne"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这说明 Payload 已经走到了数据库查询这一层。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十四、但是……D1 后台竟然没有 Query"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后出现了一个非常关键的新线索。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "查看 Cloudflare D1 后台："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "这个请求期间没有任何 Query，也没有任何 Write。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "/admin/login\n       ↓\nPayload\n       ↓\nSQLiteD1Session.prepareQuery()\n       ↓\n❌\n       ↓\nD1"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "很可能根本没有成功到达："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Cloudflare D1"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果 D1 后台确认没有 Query，那么继续："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "CREATE TABLE\nALTER TABLE\nDROP TABLE"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "实际上都可能是在错误的方向上浪费时间。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十五、所以现在真正怀疑的是哪里？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "现在问题已经从："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "“D1 里面缺哪个表？”"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "“为什么 SQLiteD1Session.prepareQuery()\n没有成功把查询交给 D1？”"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload\n   ↓\n@payloadcms/db-d1-sqlite\n   ↓\nDrizzle\n   ↓\nSQLiteD1Session\n   ↓\nCloudflare D1 binding\n   ↓\nD1"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "目前真正值得检查的是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "cloudflare.env.blogcms"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "到底是不是 Worker runtime 中一个正常的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "D1Database"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "对象。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十六、现在不应该再猜 users_sessions.data"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这一点现在可以明确记录下来："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "之前猜测 "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "users_sessions.data"
+                    },
+                    {
+                      "type": "text",
+                      "value": " 是错误方向。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "正式生成的 migration 中没有这个字段。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以后续如果继续排查："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "不要：\nALTER TABLE users_sessions ADD COLUMN data TEXT"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "除非 Payload 当前实际运行的 SQL 明确报："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "no such column: users_sessions.data"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "否则没有理由添加。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十七、目前真正应该做的事情"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当前最合理的排查顺序已经变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "1. 检查 blogcms D1 binding\n        ↓\n2. 检查 Worker runtime 中 binding 是否正常\n        ↓\n3. 检查 SQLiteD1Session.prepareQuery()\n        ↓\n4. 检查它实际调用的 D1 API\n        ↓\n5. 检查 migration 是否已经应用\n        ↓\n6. 再检查具体 SQL\n        ↓\n7. 最后才是 schema"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而不是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "看到报错\n↓\n猜一个字段\n↓\nALTER TABLE\n↓\n继续报错\n↓\n再猜一个字段"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十八、这次还学到一个很现实的东西"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Cloudflare Worker 的日志有时候真的很“抽象”。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次日志只给了："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "SQLiteD1Session.prepareQuery"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "却没有给："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "no such table: users"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "或者："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "no such column: xxx"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以单看日志很难判断。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果能在安全范围内临时增加："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "typeof binding\nbinding.prepare\nbinding.batch\nbinding.exec"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "等 runtime diagnostic，就能判断："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "D1 binding 到底有没有正确进入 Worker。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当然不能把："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "密码\ntoken\ncookie\n用户数据"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这些东西打进日志。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "二十九、当前项目的状态"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "到目前为止，可以把整个尝试总结成："
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "已经成功的部分"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Next.js 博客"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "OpenNext"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare Worker"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare D1 binding"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload 安装"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload Config"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Users Collection"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Posts Collection"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Rich Text"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload Admin 路由进入运行流程"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload Migration 成功生成"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "正式 D1 schema 已经确定"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "PAYLOAD_SECRET"
+                    },
+                    {
+                      "type": "text",
+                      "value": " 已配置"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": true,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "多个 Next.js / OpenNext 构建问题已经处理"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "还没有完全成功的部分"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "inlineCode",
+                      "value": "/admin/login"
+                    },
+                    {
+                      "type": "text",
+                      "value": " 正常工作"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload 查询成功访问远程 D1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Migration 自动进入 Cloudflare 部署流程"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "CMS 真正投入日常使用"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "从 Payload Admin 创建、编辑、发布文章"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三十、整个折腾过程其实可以浓缩成这样"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最开始想的是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\n +\nPayload\n +\nD1\n =\nCMS"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "实际变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\n   ↓\nNext.js Config\n   ↓\nPayload\n   ↓\nPayload Config\n   ↓\n@payloadcms/next\n   ↓\n@payloadcms/db-d1-sqlite\n   ↓\nDrizzle\n   ↓\nSQLiteD1Session\n   ↓\nCloudflare Context\n   ↓\nD1 Binding\n   ↓\nCloudflare D1"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后其中任意一层出问题："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "💥"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "😂"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三十一、这次尝试的阶段性结论"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果只是从“给博客增加一个 CMS”这个目标来看："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "确实比一开始想象得复杂很多。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "尤其是当博客本身已经运行在："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Next.js\n+\nOpenNext\n+\nCloudflare Workers"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样的 serverless 环境里以后，再加入一个需要："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "数据库\n+\n认证\n+\nAdmin Panel\n+\nMigration\n+\nRuntime Adapter"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "的 CMS，就不再是简单的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "npm install payload"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真正复杂的地方其实不是 Payload Admin UI。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而是："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Payload 怎么在 Cloudflare Worker runtime 里获得正确的 D1 binding，并让它的数据库 adapter 正常工作。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三十二、不过这次并不是完全白折腾"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "至少现在已经搞清楚了很多东西。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最重要的是："
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "原来的博客"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Markdown\n→ GitHub\n→ Build\n→ Worker"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "理想中的新博客"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload Admin\n→ D1\n→ Next.js\n→ Worker"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而中间真正需要解决的，就是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload\n     ↓\nD1 Adapter\n     ↓\nCloudflare Worker"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这一段。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Migration 也已经正式生成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/migrations/20260918_135130_init_schema.ts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以后不应该再手工猜表结构。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三十三、最终目标"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果最终成功，理想中的使用方式应该变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "打开 /admin\n      ↓\n登录\n      ↓\nPosts\n      ↓\nNew Post\n      ↓\n富文本编辑器\n      ↓\n写文章\n      ↓\n选择分类 / Tags\n      ↓\nSEO\n      ↓\nPublished\n      ↓\n保存\n      ↓\n博客页面出现"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而原本的："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Markdown\nGit\nCommit\nPush\nBuild\nDeploy"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "就可以逐渐从日常写作流程中退出。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 1,
+          "children": [
+            {
+              "type": "text",
+              "value": "三十四、结语"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次最大的感受就是："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "“看起来只是加一个 CMS”，实际上是在给已经运行良好的 serverless 博客增加一整套后端系统。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Payload 本身并没有想象中那么难。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真正麻烦的是："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload\n+\nNext.js\n+\nOpenNext\n+\nCloudflare Workers\n+\nD1\n+\nMigration\n+\nRuntime Binding"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这些东西全部叠在一起。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "目前这次尝试还没有彻底成功。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但是至少已经从："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "“/admin/login 为什么炸了？”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "一路排查到了："
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "“Payload 的 "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "SQLiteD1Session.prepareQuery()"
+                },
+                {
+                  "type": "text",
+                  "value": " 出错，而且 D1 后台甚至没有看到对应 Query，因此下一步应该检查 Worker runtime 中 D1 binding 和 adapter 的连接，而不是继续猜数据库字段。”"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这也算是一个阶段性进展。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Payload CMS × Cloudflare Workers 的故事，未完待续。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "附：这次遇到过的关键报错"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. Cloudflare Admin 登录"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "This page couldn’t load\n\nA server error occurred.\n\nERROR 317763716"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "后来错误编号变成："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "ERROR 612214154"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. Payload Secret"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "PAYLOAD_SECRET must be configured before Payload can start."
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. npm registry"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "npm install --package-lock-only --ignore-scripts\n\nblocked by the environment’s package-registry proxy returning HTTP 403."
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "4. TypeScript"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/app/(payload)/admin/[[...segments]]/page.tsx"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "optional segments 可能为 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "undefined"
+            },
+            {
+              "type": "text",
+              "value": "，需要进行规范化处理。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "5. Worker Runtime"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "SQLiteD1Session.prepareQuery\nQueryPromise._prepare\nQueryPromise.executeRaw\nQueryPromise.execute\nQueryPromise.then\nfind\nfindOne"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "6. 最新的 Cloudflare Worker 请求"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "GET https://panghu.bond/admin/login"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Worker："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "scriptName: next-blog\nexecutionModel: stateless"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最新日志仍然落在："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "SQLiteD1Session.prepareQuery"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "7. D1 后台"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最值得注意的一条："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "/admin/login 请求期间\nD1 Query: 0\nD1 Write: 0"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此当前最终排查方向："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "Payload\n  ↓\nSQLiteD1Session\n  ↓\nD1 binding\n  ↓\n❓\n  ↓\nCloudflare D1"
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "附：当前正式 Migration"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "项目目前已经有："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "src/migrations/20260918_135130_init_schema.ts"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "它负责创建："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "users\nusers_sessions\n\nposts\nposts_categories\nposts_tags\n\npayload_kv\n\npayload_locked_documents\npayload_locked_documents_rels\n\npayload_preferences\npayload_preferences_rels\n\npayload_migrations"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "后续应以这份 Payload 生成的 migration 作为 schema 的事实来源，而不是继续手工猜字段。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "怎么说呢，这个经历真的要给我整崩溃了，报错比文章里多得多，而且很长时间都是一个修不好。好的，最后的成果是payload可以运行，但是貌似并不太好用，而且由于注册过于简单，很可能会出现问题。我决定先用cloudflare access把payload的东西封堵一下，慢慢研究，暂时不用"
+                    }
+                  ]
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "type": "text",
+                  "value": "需要什么的话可以discussion留言，如果我有，我可以找找给你"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2026-08-18-post-appleai",
+    "title": "ios27！国行iphone强开apple智能！",
+    "description": "啊啊啊明天就要军训啦！今天最后更新一下apple智能在国行设备上强制开启的教程吧。",
+    "date": "2026-08-18",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "啊啊啊明天就要军训啦！今天最后更新一下apple智能在国行设备上强制开启的教程吧。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "注明：仅支持ios 27beta1-beta4。本操作有一定风险，若发生白苹果/数据丢失等情况，本人不负任何责任。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "首先，在你的设备上侧载GestaltEdit。你可以在Github上找到这个项目并下载ipa文件。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "侧载可以选择爱思助手，sidestore等等，你还需要开启开发者模式并在设置中信任一下（图一）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/gesaltesit/1787044346271_IMG_3152.jpeg",
+              "alt": "IMG_3152.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "随后，打开这个软件。选择第一个，启用SiriAI（图二）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/gesaltesit/1787044469778_IMG_3153.jpeg",
+              "alt": "IMG_3153.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "再者，你还需要去appstore中，登陆支持SiriAI的apple 账户，这里不再赘述。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "text",
+              "value": "再去“设置-通用-语言与地区-地区”，更改为美国。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "接下来只需要等待siri页面下载模型就可以了。不支持apple智能的设备，安装模型后仅有跑马灯效果，支持的设备则可以拥有全套功能。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "slug": "2026-08-09-post-zhuanyi",
     "title": "针对新域名，相关服务域名更换",
     "description": "workers与pages的新域名适配",
@@ -1216,6 +5820,208 @@ export const generatedPosts = [
     }
   },
   {
+    "slug": "2025-7-20-post-jumo",
+    "title": "ios上实用工具—巨魔！安装教程",
+    "description": "今天就来教大家怎样在设备上安装巨魔。首先声明一下这个教程只适用于ios17以下的设备，巨魔还是很好用，可以随意安装ipa，还不会像不完美越狱那样掉。注：我知道有很多大佬都会装，但是经常看到有人在网上花米来安装，所以做了个教程，会的话不要喷。",
+    "date": "2025-07-20",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "今天就来教大家怎样在设备上安装巨魔。首先声明一下这个教程只适用于ios17以下的设备，巨魔还是很好用，可以随意安装ipa，还不会像不完美越狱那样掉。注：我知道有很多大佬都会装，但是经常看到有人在网上花米来安装，所以做了个教程，会的话不要喷。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "1️⃣下载。首先要在电脑上安装爱思助手（如图一），有的直接打开就行。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053531_IMG_6166.jpeg",
+              "alt": "IMG_6166.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "2️⃣准备巨魔安装器的ipa文件。这个我已经替大家找好了，我准备的是一个汉化版的，需要的找我就行（如图二）。在下载这个ipa文件的过程中，我建议大家把你电脑的防火墙关掉，因为巨魔是依靠系统漏洞来运行的，所以有几率会报毒，不关防火墙的话很容易下载失败（我这个就下了好几遍，最后实在没办法把防火墙关了才成功）（如图三、图四）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053024_IMG_6167.jpeg",
+              "alt": "IMG_6167.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786049554_IMG_6168.jpeg",
+              "alt": "IMG_6168.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053568_IMG_6169.jpeg",
+              "alt": "IMG_6169.jpeg"
+            },
+            {
+              "type": "text",
+              "value": "\n3️⃣签名。打开我们下载好的爱思助手，在上面一栏里选择工具箱，（如图五）找到ipa签名，点进去，接着选择左上角的添加文件，找到刚才下载的安装器的ipa（如图六）（这个下在哪里就去哪里找），然后选择使用appleid签名，添加appleid，把你的id输进去，（不放心的可以去注册个小号）（如图七）然后勾选要签名的文件及刚刚保存的id，（如图八）接着他提示签名成功就好了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786048271_IMG_6170.jpeg",
+              "alt": "IMG_6170.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786051682_IMG_6171.jpeg",
+              "alt": "IMG_6171.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786052155_IMG_6172.jpeg",
+              "alt": "IMG_6172.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786048183_IMG_6173.jpeg",
+              "alt": "IMG_6173.jpeg"
+            },
+            {
+              "type": "text",
+              "value": "\n4️⃣安装。这里我忘记截图了，所以尽量讲的详细一点。点击爱思助手右上角的第一个图标，即下载的图标，点进去后就能发现我们刚刚签名的安装器就在这里。把你要安装巨魔的设备与电脑连接在一起，点击操作中的安装，他就会把这个软件安装在你的设备中了（如图九）。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786051552_IMG_6174.jpeg",
+              "alt": "IMG_6174.jpeg"
+            },
+            {
+              "type": "text",
+              "value": "\n5️⃣接着打开安装器（如图十）点下面的安装，然后他会让你选择巨魔助手，随便选一个就行（如图十一），他就会自动安装了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786053631_IMG_6175.jpeg",
+              "alt": "IMG_6175.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786054144_IMG_6176.jpeg",
+              "alt": "IMG_6176.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786057606_IMG_6177.jpeg",
+              "alt": "IMG_6177.jpeg"
+            },
+            {
+              "type": "text",
+              "value": "\n6️⃣安装好后你的桌面就会出现巨魔的图标，进入后点击右上角的➕就可以自由下载应用了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/巨魔/1786786058370_IMG_6178.jpeg",
+              "alt": "IMG_6178.jpeg"
+            },
+            {
+              "type": "text",
+              "value": "\n这就是全部了，总的来说还是挺简单的，有什么问题可以讨论一下，喜欢或有帮助的话就点个赞➕关注吧，感谢[害羞R][害羞R][害羞R]"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "slug": "2025-07-19-post-iosgalplay",
     "title": "如何在 iOS 上更舒服地玩 Galgame",
     "description": "今天介绍一种在 iOS 上游玩 Galgame 的方法。只要游戏基于 Ren'Py 制作，通常都可以尝试运行；部分 APK 也可以导入。",
@@ -1333,7 +6139,7 @@ export const generatedPosts = [
   {
     "slug": "2025-07-18-post-windowsc",
     "title": "电脑 C 盘用户名频繁报错？从中文改成英文的保守教程",
-    "description": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。",
+    "description": "本文转自我的小红书。",
     "date": "2025-07-18",
     "pinned": false,
     "content": {
@@ -1344,7 +6150,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "本文转自我的小红书。为了节省维护成本，站内暂不放图片；如果需要配图，请前往小红书查看，或通过邮箱联系我。"
+              "value": "本文转自我的小红书。"
             }
           ]
         },
@@ -1360,6 +6166,29 @@ export const generatedPosts = [
         {
           "type": "paragraph",
           "children": [
+            {
+              "type": "text",
+              "value": "1️⃣ 创建一个新的管理员账户。按 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "Win + X"
+            },
+            {
+              "type": "text",
+              "value": "，打开 Windows PowerShell，输入 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "netplwiz"
+            },
+            {
+              "type": "text",
+              "value": "。在弹出的窗口中选择“添加”，点击“不使用 Microsoft 账户登录”，再选择“本地账户”，输入你想创建的账户名。创建完成后，选中新账户，进入“属性”，把它设置为管理员账户。"
+            },
+            {
+              "type": "break"
+            },
             {
               "type": "image",
               "title": null,
@@ -1450,7 +6279,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "1️⃣ 创建一个新的管理员账户。按 "
+              "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
             },
             {
               "type": "inlineCode",
@@ -1458,15 +6287,7 @@ export const generatedPosts = [
             },
             {
               "type": "text",
-              "value": "，打开 Windows PowerShell，输入 "
-            },
-            {
-              "type": "inlineCode",
-              "value": "netplwiz"
-            },
-            {
-              "type": "text",
-              "value": "。在弹出的窗口中选择“添加”，点击“不使用 Microsoft 账户登录”，再选择“本地账户”，输入你想创建的账户名。创建完成后，选中新账户，进入“属性”，把它设置为管理员账户。"
+              "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
             }
           ]
         },
@@ -1500,56 +6321,6 @@ export const generatedPosts = [
               "title": null,
               "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416141_IMG_6159.jpeg",
               "alt": "IMG_6159.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "2️⃣ 修改用户文件夹名称。先切换到刚刚创建的新账户。进入系统后，不要立刻改名，先按 "
-            },
-            {
-              "type": "inlineCode",
-              "value": "Win + X"
-            },
-            {
-              "type": "text",
-              "value": " 打开任务管理器，在“用户”中结束原账户的相关进程，否则文件夹可能无法重命名。随后打开 C 盘的“用户”目录，把需要修改的用户文件夹改成英文名称。"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411215_IMG_6160.jpeg",
-              "alt": "IMG_6160.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416573_IMG_6161.jpeg",
-              "alt": "IMG_6161.jpeg"
-            }
-          ]
-        },
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "image",
-              "title": null,
-              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415033_IMG_6162.jpeg",
-              "alt": "IMG_6162.jpeg"
             }
           ]
         },
@@ -1622,6 +6393,37 @@ export const generatedPosts = [
             {
               "type": "text",
               "value": "。这里的新用户名必须和第二步中改好的文件夹名称一致。"
+            },
+            {
+              "type": "break"
+            },
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788411215_IMG_6160.jpeg",
+              "alt": "IMG_6160.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788416573_IMG_6161.jpeg",
+              "alt": "IMG_6161.jpeg"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "image",
+              "title": null,
+              "url": "https://drive.panghu.bond/file/public/小红书/windowsc/1786788415033_IMG_6162.jpeg",
+              "alt": "IMG_6162.jpeg"
             }
           ]
         },
