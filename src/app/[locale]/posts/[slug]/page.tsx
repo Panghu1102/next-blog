@@ -50,7 +50,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <main className="min-h-screen overflow-hidden bg-white px-4 pb-20 pt-28 text-black dark:bg-black dark:text-white sm:px-6 sm:pt-32">
-      <header className="sticky top-2 z-50 mx-auto mb-4 w-full max-w-5xl sm:top-4 sm:mb-6">\n        <NavBar />\n      </header>\n      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.18),transparent_28rem),radial-gradient(circle_at_85%_10%,rgba(14,165,233,0.14),transparent_26rem),radial-gradient(circle_at_bottom,rgba(236,72,153,0.12),transparent_32rem)]" />
+      <header className="fixed top-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl -translate-x-1/2">\n        <NavBar />\n      </header>\n      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(99,102,241,0.18),transparent_28rem),radial-gradient(circle_at_85%_10%,rgba(14,165,233,0.14),transparent_26rem),radial-gradient(circle_at_bottom,rgba(236,72,153,0.12),transparent_32rem)]" />
       <article className="mx-auto w-full max-w-3xl rounded-3xl border border-black/10 bg-white/55 p-6 shadow-2xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-black/50 dark:shadow-white/5 sm:p-10">
         <Link href="/posts" className="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-sm text-black/60 transition hover:bg-black/5 hover:text-black dark:border-white/10 dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white">
           <ArrowLeft className="h-4 w-4" />
