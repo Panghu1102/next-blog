@@ -4,7 +4,6 @@ description: "一次大规模文件索引场景下 Cloudflare D1 与 KV 消耗�
 date: "2026-10-01"
 ---
 
-# 关于CloudFlare D1 SQL和KV存储的研究
 
 ## 实验背景
 
