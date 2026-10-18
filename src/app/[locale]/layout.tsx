@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+
+export const metadata: Metadata = { alternates: { canonical: "/zh" } };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
