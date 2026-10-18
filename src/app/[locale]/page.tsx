@@ -1,7 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = { alternates: { canonical: "/zh" } };
-
 "use client";
 
 import Image from "next/image";
