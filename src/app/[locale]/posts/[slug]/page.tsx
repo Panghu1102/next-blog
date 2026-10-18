@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   return {
     title,
     description: post.description,
+    alternates: { canonical: `/zh/blog/${encodeURIComponent(slug)}` },
     openGraph: {
       title,
       description: post.description,
