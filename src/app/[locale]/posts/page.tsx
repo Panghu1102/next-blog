@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = { alternates: { canonical: "/zh/blog" } };
+
 import { setRequestLocale } from "next-intl/server";
 import { PostsList } from "@/components/posts/PostsList";
 import { getAllPosts } from "@/lib/posts";
