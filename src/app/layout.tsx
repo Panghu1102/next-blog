@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		icons: {
 			icon: [{ url: "/tiger-favicon.svg", type: "image/svg+xml" }],
 			shortcut: "/tiger-favicon.svg",
-			apple: "/apple-icon",
+			apple: "/apple-icon.png",
 		},
 	};
 }
