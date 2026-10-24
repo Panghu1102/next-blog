@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations("metadata");
 
 	return {
-		metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://panghu.bond"),
+		metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://panghutech.com"),
 		title: t("title"),
 		description: t("description"),
 	};
