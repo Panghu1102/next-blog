@@ -43,7 +43,7 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
-              "value": "本博客的部分内容转自我的小红书或贴吧，出于人力考虑，部分内容的图片不会在这里显示，如果你需要这些图片来进行辅助操作，建议前往相应平台查看，相关链接在本网站的起始页。一般情况下，技术科普类（iOS，Windows 等）都在小红书上，DDLC相关在贴吧上。"
+              "value": "本博客的部分内容转自我的小红书或贴吧，出于人力考虑，部分内容的图片不会在这里显示，如果你需要这些图片来进行辅助操作，建议前往相应平台查看，相关链接在本网站的起始页。一般情况下，技术科普类（iOS，Windows 等）都在小红书上，相关在贴吧上。"
             }
           ]
         },
@@ -61,7 +61,3474 @@ export const generatedPosts = [
           "children": [
             {
               "type": "text",
+              "value": "自2026年10月11日起，来自中国大陆地区ip的访问，在访问panghu.bond及drive.panghu.bond时，将对被307重定向至cn.panghu.bond和cndrive.panghu.bond，以优化速度和相关体验"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
               "value": "有任何问题可以发至我的邮箱。"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2026-10-11-post-cloudflare-worker-cn-acceleration",
+    "title": "零成本！大幅度提升cloudflare worker在大陆的访问",
+    "description": "通过腾讯云 EdgeOne 反向代理和 Cloudflare 地区重定向，优化 Workers 网站在中国大陆的访问体验",
+    "date": "2026-10-11",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "前言"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最近，我发现一个非常头疼的问题："
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "部署在 Cloudflare Workers 上的网站，在中国大陆地区的访问速度实在太慢了！"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "倒不是完全无法连接，而是网页加载速度慢得离谱。有时候打开一个页面需要等待十几秒，甚至更长时间。尤其是在晚上，这种情况更加明显。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "一开始，我甚至怀疑自己的域名是不是被 GFW 干扰了。但经过测试，我发现网站本身并没有出现故障，海外访问速度也基本正常，问题主要集中在中国大陆地区的网络连接上。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "既然如此，有没有办法在不迁移 Cloudflare Workers 的情况下，提高国内用户的访问速度呢？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "答案是："
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "利用腾讯云 EdgeOne 和 Cloudflare，实现网站的国内外分流！"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这篇文章就来介绍一下我的实际操作过程。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "一、为什么要进行国内外分流？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Cloudflare 在全球拥有大量 CDN 节点，但对于中国大陆的普通免费用户来说，访问 Cloudflare 的体验并不总是理想。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "尤其是部署在 Workers 上的网站，实际请求可能被路由到距离用户较远的节点。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这就导致一种比较尴尬的情况："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "海外用户访问网站，速度非常快。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "中国大陆用户访问网站，可能需要等待很长时间。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "网站本身运行正常，并不存在明显的性能问题。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "传统的解决方法包括优选 IP、更换 CDN、迁移服务器等。但是，这些方法并不一定适合 Cloudflare Workers。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "例如，Workers 的执行和路由依赖 Cloudflare 自身的网络架构，简单修改 DNS 解析记录，并不能保证请求被调度到指定节点。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "而将整个网站迁移到其他平台，又需要修改部署方式，甚至重新适配项目。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，我最终决定采用另一种方案："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "海外继续使用 Cloudflare，中国大陆则通过腾讯云 EdgeOne 进行访问加速。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样既不需要迁移网站，也能保留 Cloudflare Workers 原有的功能。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "二、实现原理"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "整个方案并不复杂。我们需要准备两个不同的访问入口："
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "align": [
+            null,
+            null,
+            null
+          ],
+          "children": [
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "用户地区"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "访问入口"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "CDN"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "中国大陆"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cn.panghu.bond"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "腾讯云 EdgeOne"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "其他地区"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "panghu.bond"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "两个入口最终都访问同一个 Cloudflare Workers 网站。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "具体流程如下："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "                    用户访问网站\n                         |\n                         v\n                    panghu.bond\n                         |\n                         v\n                Cloudflare 判断地区\n                         |\n             +-----------+-----------+\n             |                       |\n             v                       v\n         中国大陆                 其他地区\n             |                       |\n             v                       |\n        307 重定向                  |\n             |                       |\n             v                       |\n       cn.panghu.bond               |\n             |                       |\n             v                       |\n       腾讯云 EdgeOne                |\n             |                       |\n             v                       |\n       回源 panghu.bond              |\n             |                       |\n             +-----------+-----------+\n                         |\n                         v\n                 Cloudflare Workers\n                         |\n                         v\n                    返回网页内容"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意，这里并不是把 Workers 迁移到了 EdgeOne。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "EdgeOne 只是作为额外的 CDN 和反向代理入口，网站仍然运行在 Cloudflare Workers 上。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，实际性能仍然受到 EdgeOne 到 Cloudflare 回源链路的影响。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "另外，307 重定向需要先访问 Cloudflare 才能触发，所以它不能解决 Cloudflare 完全无法连接的情况。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "三、准备工作"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "开始之前，需要准备以下资源："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": 1,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "一个已经部署成功的 Cloudflare Workers 网站。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "一个自己拥有的域名。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "一个 Cloudflare 账户。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "一个腾讯云 EdgeOne 账户。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "一个用于国内访问的子域名。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本文使用以下域名作为示例："
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "align": [
+            null,
+            null
+          ],
+          "children": [
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "用途"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "域名"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "原始网站"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "国内加速入口"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cn.panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "原始网盘"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "drive.panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "网盘加速入口"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cndrive.panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "你可以根据自己的实际情况替换这些域名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本文采用的是 EdgeOne 的境外加速区域，不需要使用中国大陆 CDN 节点。如果需要使用中国大陆 CDN 节点，则通常需要满足相应的 ICP 备案要求。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "特别提醒：EdgeOne 的境外加速区域不代表所有请求都会经过香港节点，也不保证一定比 Cloudflare 快。实际效果需要根据网络情况进行测试。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "四、将域名添加到 EdgeOne"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "首先进入腾讯云 EdgeOne 控制台。选择添加站点，输入需要加速的域名。这里以 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "panghu.bond"
+            },
+            {
+              "type": "text",
+              "value": " 为例。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. 验证域名所有权"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "由于我的域名 DNS 仍然托管在 Cloudflare，因此没有选择将整个域名的 DNS 托管迁移到 EdgeOne，而是使用 "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "TXT 记录验证"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "具体操作如下："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": 1,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "在 EdgeOne 中添加站点。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "选择通过 TXT 记录验证域名所有权。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "复制 EdgeOne 提供的 TXT 记录名称和记录值。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "打开 Cloudflare DNS 管理页面。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "添加对应的 TXT 记录。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "返回 EdgeOne，完成域名验证。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样就可以在不更换 DNS 托管服务商的情况下，将域名添加到 EdgeOne。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意，域名验证成功不代表流量已经切换到 EdgeOne。接下来还需要配置加速域名和 DNS 记录。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. 添加加速域名"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "验证完成后，在 EdgeOne 中添加需要加速的子域名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我添加了两个："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "cn.panghu.bond\ncndrive.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "分别用于："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "博客网站的国内加速。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "个人网盘的国内加速。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样可以避免直接修改原有网站的访问入口。即使 EdgeOne 出现问题，也不会立即影响原来的 Cloudflare 访问地址。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. 配置加速区域"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "由于我的域名没有使用中国大陆 CDN 所需的备案，因此选择 EdgeOne 支持的境外加速区域。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里需要根据自己的套餐和控制台提供的选项进行配置。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "选择境外加速，并不意味着 EdgeOne 一定会将中国大陆用户调度到香港节点。"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " 实际调度由 EdgeOne 决定，最终速度需要通过测试确认。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "五、配置 EdgeOne 回源"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这是整个教程中非常重要的一步。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我们需要让 EdgeOne 接收到用户请求后，将请求转发到原来的 Cloudflare Workers 网站。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. 设置源站地址"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我的配置如下："
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "align": [
+            null,
+            null
+          ],
+          "children": [
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "EdgeOne 加速域名"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "回源地址"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cn.panghu.bond"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tableRow",
+              "children": [
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "cndrive.panghu.bond"
+                    }
+                  ]
+                },
+                {
+                  "type": "tableCell",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "drive.panghu.bond"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "源站类型选择域名源站。这里填写的是原有网站域名，而不是服务器 IP。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为网站本身部署在 Cloudflare Workers 上，并不存在需要手动填写的固定源站 IP。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. 配置回源端口"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我的配置为："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "HTTP：80\nHTTPS：443"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "建议优先使用 HTTPS 回源，确保 EdgeOne 与 Cloudflare 之间的连接经过 TLS 加密。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. 配置回源 Host"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里需要特别注意 Host 请求头。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "以博客为例："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户访问：\ncn.panghu.bond\n\nEdgeOne 回源：\npanghu.bond\n\n回源 Host：\npanghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "网盘同理："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户访问：\ncndrive.panghu.bond\n\nEdgeOne 回源：\ndrive.panghu.bond\n\n回源 Host：\ndrive.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样可以让 Cloudflare 根据正确的域名匹配对应的网站或 Workers 路由。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果 Host 配置不正确，可能会出现 404、路由不匹配或其他错误。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果源站启用了 Cloudflare Access，还需要额外考虑身份验证和访问控制，不能简单地认为配置反向代理后就可以正常访问所有受保护资源。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "4. 避免回源循环"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "还需要确保 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "cn.panghu.bond"
+            },
+            {
+              "type": "text",
+              "value": " 不会再次被重定向回自己。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "例如，错误的配置可能导致："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "cn.panghu.bond\n       |\n       v\npanghu.bond\n       |\n       v\ncn.panghu.bond\n       |\n       v\n......"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最终出现无限重定向。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，后续配置 Cloudflare 重定向规则时，必须明确匹配原始域名。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "六、配置 SSL 证书"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "完成回源设置后，还需要为 EdgeOne 加速域名配置 HTTPS。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里不得不吐槽一下："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "都 2026 年了，EdgeOne 的部分配置流程竟然还需要用户手动申请 SSL 证书……"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "至少在我这次使用的配置中，证书并没有按照我预期的方式自动完成部署。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "不过操作并不复杂。在 EdgeOne 的证书管理页面，为以下域名配置证书："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "cn.panghu.bond\ncndrive.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "证书签发成功后，将证书部署到对应的加速域名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意：Cloudflare 和 EdgeOne 使用不同的 SSL 证书完全正常。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "例如："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "panghu.bond\n    |\n    +-- Cloudflare SSL\n\ncn.panghu.bond\n    |\n    +-- EdgeOne SSL"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "浏览器只需要验证当前访问域名对应的证书是否有效，并不要求两个入口使用同一张证书。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "另外，EdgeOne 到 Cloudflare 的 HTTPS 回源也需要正确验证源站证书。不要为了避免证书错误而随意关闭证书验证。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "七、配置 CNAME 解析"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "完成 EdgeOne 的加速配置后，平台通常会提供对应的 CNAME 接入地址。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我们需要回到 Cloudflare DNS 管理页面，为国内加速域名添加 CNAME 记录。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "例如："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "类型：CNAME\n名称：cn\n目标：EdgeOne 提供的 CNAME 地址"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "网盘也是一样："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "类型：CNAME\n名称：cndrive\n目标：EdgeOne 提供的 CNAME 地址"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这里的目标地址必须使用 EdgeOne 控制台实际分配的地址，不要自行猜测。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "特别注意：Cloudflare 中用于指向 EdgeOne 的 CNAME 记录应设置为 DNS Only（仅 DNS），而不是 Proxied（已代理）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "否则，用户请求可能仍然先进入 Cloudflare 代理，导致实际访问路径与预期不同。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "配置完成后，可以通过 DNS 查询工具检查解析结果。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果解析正确，就可以尝试直接访问："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://cn.panghu.bond\nhttps://cndrive.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "确认网站能够正常加载。此时，EdgeOne 反向代理就基本搭建完成了！"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "八、配置中国大陆地区自动重定向"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "虽然现在已经拥有了国内加速域名，但还有一个问题："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "中国大陆用户默认访问的仍然是 panghu.bond，而不是 cn.panghu.bond。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "总不能让每个国内用户都手动输入 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "cn"
+            },
+            {
+              "type": "text",
+              "value": " 子域名吧？"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，还需要配置自动重定向。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我的做法是使用 Cloudflare 的重定向规则，根据用户 IP 所在地区判断是否需要跳转。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. 创建重定向规则"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "进入 Cloudflare 控制台，找到对应域名的重定向规则管理页面。创建一条新的 Single Redirect 规则。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "匹配条件可以使用："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "(ip.geoip.country eq \"CN\" and http.host eq \"panghu.bond\")"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这个表达式的意思是：当用户 IP 所在国家或地区为中国，并且访问的域名是 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "panghu.bond"
+            },
+            {
+              "type": "text",
+              "value": " 时，触发重定向。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. 设置目标地址"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "目标地址可以使用动态表达式："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "concat(\"https://cn.panghu.bond\", http.request.uri.path)"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "同时开启保留查询字符串的选项。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样就能实现："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond/\n        |\n        v\nhttps://cn.panghu.bond/"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "对于文章页面："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond/zh/posts/example\n        |\n        v\nhttps://cn.panghu.bond/zh/posts/example"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原有的路径不会丢失。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. 选择 307 重定向"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我选择的是："
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "307 Temporary Redirect（临时重定向）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "与永久重定向相比，307 更适合这种可能根据网络情况调整的分流方案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "307 还有一个特点：它会保留原始请求方法。例如，POST 请求经过 307 重定向后，仍然是 POST 请求。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "不过，这并不代表所有上传或 API 请求都适合直接重定向。特别是涉及身份验证、跨域请求和文件上传时，需要额外测试。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "4. 网盘配置"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "网盘可以创建另一条类似规则："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "(ip.geoip.country eq \"CN\" and http.host eq \"drive.panghu.bond\")"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "目标地址："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "concat(\"https://cndrive.panghu.bond\", http.request.uri.path)"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "同样保留查询字符串。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样，中国大陆用户访问原始网盘域名时，也会自动跳转到 EdgeOne 加速入口。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意，网盘涉及文件上传、下载、登录和权限验证，因此需要重点测试这些功能。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "九、测试分流是否成功"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "完成全部配置后，就可以开始测试了。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. 测试国内访问"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "使用中国大陆网络访问："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "正常情况下，浏览器应该收到 307 重定向，并跳转到："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://cn.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "然后由 EdgeOne 提供加速服务。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. 测试海外访问"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "使用海外网络访问："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "https://panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "正常情况下，不应该触发上述中国大陆地区重定向规则。网站继续通过 Cloudflare 访问。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. 检查响应头"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "可以使用以下命令查看响应："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "curl -I https://panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果要测试中国大陆地区的重定向，需要从中国大陆网络发起请求。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为 Cloudflare 判断的是实际请求来源 IP，而不是命令中指定的地区。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "成功触发时，应该能看到类似："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "http",
+          "meta": null,
+          "value": "HTTP/2 307\nlocation: https://cn.panghu.bond/"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "还可以直接测试 EdgeOne 加速域名："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "meta": null,
+          "value": "curl -I https://cn.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意，不能只通过响应头中是否存在某个 CDN 标识来判断整个请求链路。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最好结合 EdgeOne 控制台的请求统计、访问日志以及实际测速结果进行确认。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "4. 测试实际加载速度"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "可以使用 ITDOG 等网站测速工具，对比以下地址："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "panghu.bond\ncn.panghu.bond"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "重点观察："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "TCP 连接时间。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "TLS 握手时间。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "首字节响应时间（TTFB）。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "完整网页加载时间。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "不同地区的访问成功率。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "建议分别测试白天和晚上。因为中国大陆到境外网络的连接质量可能随着时间发生明显变化。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "此外，还应该分别测试首次访问和重复访问。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "EdgeOne 缓存命中后，静态资源可能会获得更好的加载速度。但对于需要实时执行的动态 Workers 请求，EdgeOne 仍然可能需要向 Cloudflare 回源。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，不能将所有性能提升都归功于缓存。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "十、最终效果"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "经过实际配置和测试，我发现这种方案确实改善了自己网站在中国大陆地区的访问体验。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "原本通过 Cloudflare 直接访问时，部分地区加载速度非常慢。而通过 EdgeOne 反向代理之后，访问速度明显提高。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "尤其是在此前访问体验较差的情况下，改善非常直观。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最终，我实现了以下访问方式："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "中国大陆："
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户\n |\n v\nCloudflare 地区判断\n |\n v\n307 重定向\n |\n v\n腾讯云 EdgeOne\n |\n v\nCloudflare Workers"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "其他地区："
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户\n |\n v\nCloudflare\n |\n v\nCloudflare Workers"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样既保留了原有 Workers 部署方式，又为国内用户提供了一个额外的加速入口。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "不过需要说明，这种方案并不能保证所有地区都实现秒开。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "实际效果取决于当地运营商、EdgeOne 节点调度、回源链路以及网站本身的资源结构。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "十一、一些需要注意的问题"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "虽然整个方案比较简单，但实际使用时还有几个需要注意的地方。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "1. 重定向不能解决完全无法连接的问题"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这是本方案最明显的局限。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为中国大陆用户仍然需要先访问 Cloudflare，才能收到 307 重定向。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果 Cloudflare 完全无法连接，那么重定向也无法执行。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "所以，这种方案更适合："
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Cloudflare 可以连接，但访问速度比较慢的情况。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果需要彻底避免国内用户首先连接 Cloudflare，则需要考虑 DNS 地理位置解析等其他方案。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "2. EdgeOne 仍然需要回源 Cloudflare"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "EdgeOne 并没有取代 Workers。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果请求没有命中缓存，EdgeOne 仍然需要访问原来的 Cloudflare 网站。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，性能取决于："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户 → EdgeOne → Cloudflare"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这条链路的整体质量。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果 EdgeOne 到 Cloudflare 的回源连接出现问题，网站依然可能加载缓慢。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "3. 不要随意缓存私人文件"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "对于普通博客，缓存图片、CSS、JavaScript 等静态资源通常没有太大问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但是对于网盘，需要格外小心，尤其是涉及："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "私人文件。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "登录状态。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Cloudflare Access。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "带有身份验证信息的请求。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "用户专属下载链接。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "不要直接对所有路径开启无差别缓存。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "否则可能导致身份验证异常，甚至出现私人内容被错误缓存的问题。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "4. 注意两个 CDN 的缓存规则"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Cloudflare 和 EdgeOne 都有各自的缓存机制。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当两个 CDN 串联时，可能出现："
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "meta": null,
+          "value": "用户\n |\n v\nEdgeOne 缓存\n |\n v\nCloudflare 缓存\n |\n v\n源站"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，更新网站后，如果发现国内用户仍然访问旧版本内容，可以分别检查两个平台的缓存。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "必要时，需要同时清理 EdgeOne 和 Cloudflare 的相关缓存。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 3,
+          "children": [
+            {
+              "type": "text",
+              "value": "5. 注意跨域和 Cookie 问题"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "panghu.bond"
+            },
+            {
+              "type": "text",
+              "value": " 和 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "cn.panghu.bond"
+            },
+            {
+              "type": "text",
+              "value": " 虽然属于同一个主域名，但仍然是不同的主机名。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果网站使用了限定主机名的 Cookie、OAuth 登录回调、严格的 CSP 或 CORS 配置，切换域名后可能出现兼容性问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "尤其是个人网盘这类具有登录和上传功能的网站，最好在正式启用分流前进行完整测试。"
+            }
+          ]
+        },
+        {
+          "type": "thematicBreak"
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "十二、总结"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次折腾下来，我发现："
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "对于已经部署在 Cloudflare Workers 上的网站，利用 EdgeOne 反向代理，再结合 Cloudflare 地区重定向，确实是一种值得尝试的国内访问优化方案。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "它最大的优势就是不需要迁移原来的 Workers 项目。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "整个过程主要涉及："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": 1,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "在 EdgeOne 中验证域名所有权。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "添加国内加速子域名。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "配置 Cloudflare Workers 原有域名作为回源地址。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "配置 HTTPS 证书。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "添加 CNAME 解析。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "使用 Cloudflare 的 307 重定向实现地区分流。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "分别测试国内外访问效果。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "当然，这并不是一个完美的解决方案。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "它仍然依赖 Cloudflare 完成首次地区判断，也需要考虑 CDN 回源、缓存、SSL 和身份验证等问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但对于我的实际使用场景来说，已经取得了比较明显的改善。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最重要的是，整个网站不需要重新部署，也不用修改原有 Workers 的代码。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "如果你也遇到了 Cloudflare Workers 在中国大陆地区访问缓慢的问题，不妨试试这种方案！"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2026-10-11-post-website-routing",
+    "title": "网站分流！优化网站在中国大陆地区的访问速度",
+    "description": "使用 EdgeOne 和 Cloudflare Workers 实现网站国内外分流",
+    "date": "2026-10-11",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最近我发现托管在cloudflare worker上的网站在大陆地区直接访问速度会非常非常的慢，不是连接不到，但是加载速度慢的离谱！我甚至怀疑我的域名是不是被GFW搞了…这现象在夜晚的时候非常常见。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "为了解决这个问题，我选择了分流，因为网站本身是部署在worker上，所以传统的优选ip之类的并不能管用，而把worker进行迁移的成本又太高，综合一下，我决定了CNAME"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "其实很简单，edgeone有几个免费的cdn套餐，虽然大陆的cdn要备案不能用，但是香港的依旧可以，至少最终结果比cloudflare强"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "我现把域名通过txt验证的方式添加到edgeone，随后把cn.panghu.bond和cndrive.panghu.bond添加到了其中（这里必须吐槽edgeone，2026年了竟然还要求用户手动申请ssl…）回源填worker的两个域名，就是panghu.bond和drive.panghu.bond。http用80端口，https用443。请求头也选择回源"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这样一个反带就搭建好了！"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但是大陆的请求还不见得都到了cn下。我又去域名后台，添加了两个重定向，当检测到是大陆的ip在请求panghu.bond时，307到cn.panghu.bond。尽管大陆打开网页很慢，但是请求是过得去的，因此重定向可以直接完成！"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最后，就实现了大陆和全球地区网页秒开的效果！"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "真的很实用！"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "slug": "2026-10-01-post-cloudflare-d1-kv",
+    "title": "关于CloudFlare D1 SQL和KV存储的研究",
+    "description": "一次大规模文件索引场景下 Cloudflare D1 与 KV 消耗情况的实际测试与记录",
+    "date": "2026-10-01",
+    "pinned": false,
+    "content": {
+      "type": "root",
+      "children": [
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "实验背景"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "今天向由 Cloudflare 搭建的图床（"
+            },
+            {
+              "type": "link",
+              "title": null,
+              "url": "https://github.com/MarSeventh/CloudFlare-ImgBed",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "CloudFlare-ImgBed"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "）里一次性存储了 4000 多个文件。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "4000 多个文件本身并不算特别大，大多数文件大小在几十 MB 到一百多 MB 之间。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "需要注意的是，这个图床中的 D1 和 KV 并不是实际的文件存储后端，而是主要用于页面索引和相关设置的存储。实际文件存储在 Hugging Face Datasets 和 Discord 频道中。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "文件上传过程"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "一开始上传时，4000 多个文件经历了不断报错、不断成功上传的过程。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "根据实际情况，这些报错应该主要来自 Discord 和 Hugging Face 的速率限制。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "在完整写入之后，加上此前已经存在的文件，总文件数量大约达到了 7500 个。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "D1 消耗异常"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "在尝试访问图床时，由于页面需要大范围索引约 7500 个文件的路径，D1 的消耗速度突然变得非常快。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "最后 Cloudflare 向我发送了邮件，提示 D1 超出了额度。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "比较有意思的是，Cloudflare 并没有在刚刚超过额度时立即返回错误，而是一直允许继续使用，直到实际使用量达到大约 127000 次之后才开始出现 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "429"
+            },
+            {
+              "type": "text",
+              "value": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说，实际使用量明显超过了原本看到的额度。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "尝试使用 KV"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "之后又尝试使用 KV。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因为 KV 和 D1 在这个场景下都可以承担类似的索引或设置存储功能，所以想通过 KV 来降低 D1 的消耗。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "但结果是 KV 的额度同样很快被消耗完了。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "尤其是 KV 的写入额度只有 1000 次，在这种大规模索引场景下非常容易达到限制。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "达到额度后的影响"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "比较严重的是，当 KV 和 D1 都达到限制之后，图床甚至出现了无法正常登录的情况。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "也就是说，这些服务不只是影响某一个页面的数据读取；当核心索引或设置依赖的存储服务无法继续工作时，整个应用的部分基础功能都会受到影响。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [
+            {
+              "type": "text",
+              "value": "初步结论"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次实验让我发现，对于包含大量文件索引的应用来说，D1 和 KV 的额度并不只是一个单纯的数字问题。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "如果一次页面请求需要处理大量索引数据，那么即使实际文件本身并没有存储在 D1 或 KV 中，也可能因为索引操作产生大量数据库访问。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "本次大约 7500 个文件的实际测试中，D1 最终在约 127000 次使用后触发 "
+            },
+            {
+              "type": "inlineCode",
+              "value": "429"
+            },
+            {
+              "type": "text",
+              "value": "，而 KV 的写入额度则很快达到 1000 次限制。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "因此，在设计这类图床或文件管理服务时，需要特别注意："
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "spread": false,
+          "children": [
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "不要在一次请求中无差别索引大量文件。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "对高频访问的数据进行缓存。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "根据数据特点选择 D1、KV 等不同存储方式。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "避免让登录、配置等核心功能完全依赖容易达到额度上限的存储操作。"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "spread": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "对大规模文件索引进行分页、缓存或其他优化。"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "这次测试也算是一次比较真实的 Cloudflare D1 / KV 压力测试记录。"
             }
           ]
         }
