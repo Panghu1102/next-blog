@@ -25,6 +25,11 @@ export async function generateMetadata(): Promise<Metadata> {
 		metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://panghutech.com"),
 		title: t("title"),
 		description: t("description"),
+		icons: {
+			icon: "/tiger-favicon.svg",
+			shortcut: "/tiger-favicon.svg",
+			apple: "/tiger-favicon.svg",
+		},
 	};
 }
 
