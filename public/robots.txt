@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://panghu.bond
+Host: https://panghutech.com
 
 # Sitemaps
-Sitemap: https://panghu.bond/sitemap.xml
+Sitemap: https://panghutech.com/sitemap.xml
