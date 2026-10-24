@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAgACADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAABAUGAwH/xAAqEAACAQMDAQgCAwAAAAAAAAABAgMABBESITETBSIyUWFxgaEGQRWRsf/EABcBAQEBAQAAAAAAAAAAAAAAAAIDBAX/xAAcEQACAwADAQAAAAAAAAAAAAABAgADERIhMTL/2gAMAwEAAhEDEQA/AFhIG5reG3M0HV6sca6tID5yTjPGK7ZwrIxkkUuNQRF/TeZ+j/VUHYrpLYmOU4kc9T1wdwR7cfFZlAJydG69l+YuewIXa5VjoyAUIJ+KyBKWc5bJYoQHJ20hgMD55qlFvEF0kZ23yBv60n/ItJtIY4znpN3mJ89gPc8/FI14NMlXeSwU+RVZT6LYZjJSNtOvWD3ieMcjbNN4zJb9NeikyAaWUnBHqKnRJiPQsoC77bfvn/aM/lpsqSYmIUg97Gdhv9fdSZe+SxmtuwfJQ6JXQGG9MSN4lkRWK+x8/fNK+2NawNGrBLeNTpLKXZz5k8DNDP2y7oFEcQIIO7Zoe6v5LrZnRFxgqp8Q9aZdmABEC0EHZ//Z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<rect width="64" height="64" rx="14" fill="#c91f16"/>
+<path d="M12 20 9 8l15 7M52 20l3-12-15 7" fill="#f5b544" stroke="#241c17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M13 20Q17 9 32 10Q47 9 51 20L55 34Q54 51 32 56Q10 51 9 34Z" fill="#f6b64b" stroke="#241c17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M17 18l8 7-8 1M47 18l-8 7 8 1M25 12l3 10M39 12l-3 10M11 33l10 2-8 6M53 33l-10 2 8 6" fill="#241c17"/>
+<path d="M15 37Q20 28 29 34L32 38 35 34Q44 28 49 37Q49 48 32 51Q15 48 15 37Z" fill="#fff4df" stroke="#241c17" stroke-width="2"/>
+<ellipse cx="24" cy="29" rx="3" ry="4" fill="#241c17"/><ellipse cx="40" cy="29" rx="3" ry="4" fill="#241c17"/>
+<path d="M28 38Q32 34 36 38L32 42Z" fill="#e98991" stroke="#241c17" stroke-width="1.5"/>
+<path d="M32 42v3m0 0q-4 4-7 0m7 0q4 4 7 0" fill="none" stroke="#241c17" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="21" cy="39" r="1" fill="#241c17"/><circle cx="25" cy="41" r="1" fill="#241c17"/><circle cx="43" cy="39" r="1" fill="#241c17"/><circle cx="39" cy="41" r="1" fill="#241c17"/>
+</svg>
