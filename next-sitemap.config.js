@@ -2,7 +2,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://panghu.bond";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://panghutech.com";
 
 module.exports = {
   siteUrl,
