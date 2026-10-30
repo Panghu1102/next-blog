@@ -11,7 +11,7 @@ export function generateStaticParams() {
 }
 export async function generateMetadata({params}:{params:Promise<{locale:string;project:string;section:string}>}):Promise<Metadata>{
  const {project,section}=await params;const p=getProjectDetail(project);const c=p?.chapters.find(x=>x.slug===section);
- return {title:c?`${c.title} | ${p?.name}`:"Project",description:c?.intro};
+ return {title:c?`${c.title} | ${p?.name}`:"Project",description:c?.intro,alternates:{canonical:`/zh/projects/${project}/${section}`}};
 }
 export default async function Chapter({params}:{params:Promise<{locale:string;project:string;section:string}>}){
  const {locale,project,section}=await params;const p=getProjectDetail(project);const chapter=p?.chapters.find(c=>c.slug===section);
