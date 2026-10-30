@@ -3,7 +3,7 @@
 .jyacs-site *{box-sizing:border-box}
 .jyacs-site a{transition:background .2s,color .2s,transform .2s}
 .jyacs-wrap{max-width:1120px;margin:auto;padding:0 24px}
-.jyacs-header{position:sticky;top:0;z-index:30;background:rgba(23,18,31,.84);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
+.jyacs-header{position:sticky;top:0;z-index:30;background:rgba(23,18,31,.35);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
 .jyacs-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:74px}
 .jyacs-brand{font-size:24px;font-weight:900;letter-spacing:.09em;color:#ffe4f2}
 .jyacs-brand small{display:block;color:#cdabc6;font-size:10px;letter-spacing:.26em;margin-top:3px}
@@ -40,3 +40,30 @@
 .jyacs-version time{color:#b99aaf;font-size:13px}
 .jyacs-footer{border-top:1px solid var(--line);padding:34px 0;color:#b79bad;font-size:13px}
 @media(max-width:800px){.jyacs-nav{align-items:flex-start;flex-direction:column;padding:14px 0}.jyacs-links{gap:0}.jyacs-links a{padding:8px}.jyacs-grid{grid-template-columns:1fr}.jyacs-hero{padding:75px 0}.jyacs-inner{padding:45px 0 80px}}
+
+/* Motion system: gentle entry, spring-like hover feedback, reduced-motion friendly. */
+.jyacs-site{overflow-x:clip}
+.jyacs-header{transition:background .35s ease,border-color .35s ease;box-shadow:0 10px 40px #08040f12}
+.jyacs-brand,.jyacs-links a{transition:color .25s ease,background .25s ease,transform .25s ease}
+.jyacs-brand:hover{color:white;transform:translateY(-1px)}
+.jyacs-links a:hover{transform:translateY(-2px)}
+.jyacs-button{transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s ease,box-shadow .3s ease}
+.jyacs-button:hover{box-shadow:0 12px 34px #df84b132;transform:translateY(-3px)}
+.jyacs-button:active{transform:scale(.97)}
+.jyacs-card,.jyacs-version{transition:transform .42s cubic-bezier(.2,.8,.2,1),background .35s ease,border-color .35s ease,box-shadow .4s ease}
+.jyacs-card:hover,.jyacs-version:hover{transform:translateY(-6px);border-color:#ffcfeb60;background:linear-gradient(145deg,#ffffff19,#ffffff07);box-shadow:0 24px 55px #0c041e5c}
+.jyacs-inner a:not(.jyacs-button):hover{color:white}
+.jyacs-gradient{background-size:210% auto;animation:jyacs-shimmer 11s ease-in-out infinite alternate}
+@keyframes jyacs-shimmer{from{background-position:0% center}to{background-position:100% center}}
+.jyacs-reveal-ready{opacity:0;transform:translateY(24px);filter:blur(3px)}
+.jyacs-reveal-ready.jyacs-revealed{opacity:1;transform:translateY(0);filter:blur(0);transition:opacity .78s ease,transform .78s cubic-bezier(.2,.8,.2,1),filter .78s ease}
+.jyacs-grid>.jyacs-reveal-ready:nth-child(2){transition-delay:90ms}
+.jyacs-grid>.jyacs-reveal-ready:nth-child(3){transition-delay:170ms}
+.jyacs-grid>.jyacs-reveal-ready:nth-child(4){transition-delay:65ms}
+.jyacs-grid>.jyacs-reveal-ready:nth-child(5){transition-delay:125ms}
+.jyacs-grid>.jyacs-reveal-ready:nth-child(6){transition-delay:185ms}
+.jyacs-site :focus-visible{outline:2px solid #ffc2e1;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){
+ .jyacs-site *, .jyacs-site *::before,.jyacs-site *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .jyacs-reveal-ready{opacity:1!important;transform:none!important;filter:none!important}
+}
