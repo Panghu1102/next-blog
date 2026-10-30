@@ -8,7 +8,7 @@ import "./microsites.css";
 export function generateStaticParams() { return projectDetails.map((p) => ({ project: p.slug })); }
 
 export async function generateMetadata({params}:{params:Promise<{locale:string;project:string}>}) {
- const {project}=await params; const p=getProjectDetail(project);
+ const {project}=await params;
  return { alternates: { canonical: `/zh/projects/${project}` } };
 }
 
