@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { CSSProperties, Metadata } from "react";
+import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Github } from "lucide-react";
 import { getProjectDetail, projectDetails } from "@/lib/project-microsites";
 import { notFound } from "next/navigation";
