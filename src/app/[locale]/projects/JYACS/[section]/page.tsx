@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 type Props={params:Promise<{locale:string;section:string}>};
 const titles:Record<string,string>={"install":"安装与配置","versions":"版本历史","features":"功能与技术","cloud-compute":"Cloud Compute","faq":"常见问题","privacy":"隐私与用户守则","about":"关于 JYACS"};
 export function generateStaticParams(){return Object.keys(titles).flatMap(section=>["zh","en"].map(locale=>({locale,section})))}
-export async function generateMetadata({params}:Props):Promise<Metadata>{const {locale,section}=await params;return {title:titles[section]||"JYACS",alternates:{canonical:`/zh/projects/JYACS/${section}`} }}
+export async function generateMetadata({params}:Props):Promise<Metadata>{const {section}=await params;return {title:titles[section]||"JYACS",alternates:{canonical:`/zh/projects/JYACS/${section}`}}}
 const repo="https://github.com/Panghu1102/JYACS";
 const downloads=[
  {name:"下载体验优化 · speed-improve",date:"2026/09/26 (北京时间)",points:["在 GitHub Release 基础上新增不限速网盘镜像，以改善下载体验。","该发布记录使用 Beta 2.0.0 压缩包名称；这是下载渠道更新，并非新的正式版本。"],url:"https://github.com/Panghu1102/JYACS/releases/download/speed-improve/JYACS.Beta2.0.0.zip",release:"https://github.com/Panghu1102/JYACS/releases/tag/speed-improve",main:"https://drive.panghu.bond/file/public/github/JYACS/1790338925803_JYACS-main.zip",developer:"https://drive.panghu.bond/file/public/github/JYACS/1790338715654_JYACS-developer.zip"},
