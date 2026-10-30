@@ -20,10 +20,10 @@ const projects = [
 		name: "cfRelay",
 		repo: "Panghu1102/cfRelay",
 		href: "https://github.com/Panghu1102/cfRelay",
-		tagline: "基于 Cloudflare 生态的轻量级 Relay 项目。",
+		tagline: "基于 Cloudflare Workers 的开源 AI API 中继与管理网关。",
 		description:
-			"cfRelay 聚焦轻量部署与网络请求转发场景，适合用于探索 Cloudflare Workers 相关能力。项目强调低维护成本、便捷部署和清晰的配置方式。",
-		highlights: ["Cloudflare 相关", "轻量部署", "请求转发"],
+			"支持 OpenAI 兼容 API 转发、用户鉴权与月度配额；完整版还提供双上游切换、管理后台与 D1 知识库，Lite 可轻量部署。",
+		highlights: ["Cloudflare Workers", "AI API Gateway", "KV / D1"],
 	},
 ];
 
@@ -79,7 +79,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 									<span key={highlight} className="rounded-full border border-black/10 bg-white/35 px-3 py-1 text-xs text-black/55 dark:border-white/10 dark:bg-white/10 dark:text-white/55">{highlight}</span>
 								))}
 							</div>
-							<div className="mt-7 flex flex-wrap gap-3">{project.name === "JYACS" && <a href={`/${locale}/projects/JYACS`} className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600">项目网站 ↗</a>}<a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
+							<div className="mt-7 flex flex-wrap gap-3">{(project.name === "JYACS" || project.name === "cfRelay") && <a href={`/${locale}/projects/${project.name === "JYACS" ? "JYACS" : "cfrelay"}`} className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600">项目网站 ↗</a>}<a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
 								{t("github")}
 								<ExternalLink className="h-4 w-4" />
 							</a></div>
