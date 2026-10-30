@@ -3,7 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://panghutech.com";
-const locales = ["zh", "en"];
+const locale = "zh";
 
 const projectChapters = {
   "Real-ESRGAN-animevideov3": ["features", "architecture", "deploy"],
@@ -27,7 +27,7 @@ const cfrelaySections = ["deploy", "features", "versions"];
 function getAdditionalPaths() {
   const paths = new Set();
 
-  for (const locale of locales) {
+  for (const locale of [locale]) {
     for (const route of ["", "/about", "/blog", "/projects"]) {
       paths.add(`/${locale}${route}`);
     }
@@ -55,7 +55,7 @@ function getAdditionalPaths() {
     for (const fileName of fs.readdirSync(postsDirectory)) {
       if (!fileName.endsWith(".md")) continue;
       const slug = fileName.replace(/\.md$/, "");
-      for (const locale of locales) {
+      for (const locale of [locale]) {
         paths.add(`/${locale}/blog/${slug}`);
       }
     }
