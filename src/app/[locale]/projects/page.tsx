@@ -25,6 +25,51 @@ const projects = [
 			"支持 OpenAI 兼容 API 转发、用户鉴权与月度配额；完整版还提供双上游切换、管理后台与 D1 知识库，Lite 可轻量部署。",
 		highlights: ["Cloudflare Workers", "AI API Gateway", "KV / D1"],
 	},
+	{
+		name: "Real-ESRGAN animevideov3",
+		repo: "Panghu1102/Real-ESRGAN-animevideov3",
+		href: "https://github.com/Panghu1102/Real-ESRGAN-animevideov3",
+		tagline: "基于 Modal GPU 的 4× AI 动漫图片超分辨率服务。",
+		description: "结合 Real-ESRGAN、FastAPI 与 NVIDIA T4，输入图片二进制流，获得超分辨率 PNG 输出。",
+		highlights: ["Real-ESRGAN", "Modal", "4× Upscale"],
+		site: "Real-ESRGAN-animevideov3",
+	},
+	{
+		name: "Panghu1102 · Legacy Blog",
+		repo: "Panghu1102/panghu1102.github.io",
+		href: "https://github.com/Panghu1102/panghu1102.github.io",
+		tagline: "个人博客的早期版本与 Jekyll 网站档案。",
+		description: "使用 Minimal Mistakes 和 GitHub Pages 搭建的旧版个人博客，记录网站架构的成长历程。",
+		highlights: ["Jekyll", "GitHub Pages", "Archive"],
+		site: "panghu1102.github.io",
+	},
+	{
+		name: "Aokana GPT-SoVITS",
+		repo: "Panghu1102/Aokana-GPT-Sovits",
+		href: "https://github.com/Panghu1102/Aokana-GPT-Sovits",
+		tagline: "围绕《苍之彼方的四重奏》的语音 AI 探索方向。",
+		description: "GPT-SoVITS 语音实验项目。目前仓库仅公开许可证，项目页面介绍探索方向与开发状态。",
+		highlights: ["GPT-SoVITS", "Voice AI", "Early stage"],
+		site: "Aokana-GPT-Sovits",
+	},
+	{
+		name: "SparkRelay",
+		repo: "Panghu1102/SparkRelay",
+		href: "https://github.com/Panghu1102/SparkRelay",
+		tagline: "Small sparks, connected into useful software.",
+		description: "基于 Next.js App Router 的开源组织门户，展示项目生态、协作理念与工程实践。",
+		highlights: ["Next.js", "Open Source", "Organization"],
+		site: "SparkRelay",
+	},
+	{
+		name: "Panghu Navigation",
+		repo: "Panghu1102/daohang",
+		href: "https://github.com/Panghu1102/daohang",
+		tagline: "用简洁的玻璃风格连接个人互联网空间。",
+		description: "基于 Astro 的中英双语导航站，聚合博客、GitHub、JYACS 与个人云盘。",
+		highlights: ["Astro", "Bilingual", "Netlify"],
+		site: "daohang",
+	},
 ];
 
 type ProjectsPageProps = {
@@ -79,7 +124,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 									<span key={highlight} className="rounded-full border border-black/10 bg-white/35 px-3 py-1 text-xs text-black/55 dark:border-white/10 dark:bg-white/10 dark:text-white/55">{highlight}</span>
 								))}
 							</div>
-							<div className="mt-7 flex flex-wrap gap-3">{(project.name === "JYACS" || project.name === "cfRelay") && <a href={`/${locale}/projects/${project.name === "JYACS" ? "JYACS" : "cfrelay"}`} className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600">项目网站 ↗</a>}<a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
+							<div className="mt-7 flex flex-wrap gap-3">{<a href={`/${locale}/projects/${"site" in project ? project.site : project.name === "JYACS" ? "JYACS" : "cfrelay"}`} className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600">项目网站 ↗</a>}<a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
 								{t("github")}
 								<ExternalLink className="h-4 w-4" />
 							</a></div>
