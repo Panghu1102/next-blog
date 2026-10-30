@@ -11,10 +11,10 @@ const projects = [
 		name: "JYACS",
 		repo: "Panghu1102/JYACS",
 		href: "https://github.com/Panghu1102/JYACS",
-		tagline: "围绕自动化与实用工具构建的项目集合。",
+		tagline: "为 Just Yuri 带来 AI 对话能力的开源 Submod。",
 		description:
-			"JYACS 是一个面向实际使用场景打磨的开发项目，关注清晰的功能组织、稳定的运行体验，以及从日常需求出发的自动化能力。适合继续沉淀为可复用的工具链或学习样例。",
-		highlights: ["GitHub 开源项目", "实用工具导向", "持续迭代"],
+			"JYACS 是 DDLC 的 Just Yuri MOD 的开源 Submod，支持用户自定义 API 地址、密钥和模型，在熟悉的角色界面中体验 AI 对话。",
+		highlights: ["Ren’Py / Just Yuri", "AI 对话", "Apache-2.0"],
 	},
 	{
 		name: "cfRelay",
@@ -79,10 +79,10 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 									<span key={highlight} className="rounded-full border border-black/10 bg-white/35 px-3 py-1 text-xs text-black/55 dark:border-white/10 dark:bg-white/10 dark:text-white/55">{highlight}</span>
 								))}
 							</div>
-							<a href={project.href} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
+							<div className="mt-7 flex flex-wrap gap-3">{project.name === "JYACS" && <a href={`/${locale}/projects/JYACS`} className="inline-flex flex-1 items-center justify-center rounded-xl bg-indigo-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600">项目网站 ↗</a>}<a href={project.href} target="_blank" rel="noopener noreferrer" className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-black/10 bg-black px-4 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/80 dark:border-white/10 dark:bg-white dark:text-black dark:hover:bg-white/85">
 								{t("github")}
 								<ExternalLink className="h-4 w-4" />
-							</a>
+							</a></div>
 						</article>
 					))}
 				</section>

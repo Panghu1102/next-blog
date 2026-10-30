@@ -1,0 +1,42 @@
+
+.jyacs-site{--ink:#f6eaf4;--muted:#c8adbf;--line:rgba(255,222,245,.17);background:radial-gradient(ellipse at 72% 0%,#58354e 0%,transparent 38%),radial-gradient(ellipse at 10% 45%,#35253f 0%,transparent 55%),#17121f;color:var(--ink);min-height:100vh;font-family:Arial,"Microsoft YaHei",sans-serif;}
+.jyacs-site *{box-sizing:border-box}
+.jyacs-site a{transition:background .2s,color .2s,transform .2s}
+.jyacs-wrap{max-width:1120px;margin:auto;padding:0 24px}
+.jyacs-header{position:sticky;top:0;z-index:30;background:rgba(23,18,31,.84);border-bottom:1px solid var(--line);backdrop-filter:blur(20px)}
+.jyacs-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:74px}
+.jyacs-brand{font-size:24px;font-weight:900;letter-spacing:.09em;color:#ffe4f2}
+.jyacs-brand small{display:block;color:#cdabc6;font-size:10px;letter-spacing:.26em;margin-top:3px}
+.jyacs-links{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.jyacs-links a{font-size:13px;color:#decbd8;padding:9px 11px;border-radius:12px}
+.jyacs-links a:hover,.jyacs-links a[aria-current="page"]{background:#ffffff18;color:white}
+.jyacs-hero{padding:110px 0 95px;position:relative}
+.jyacs-kicker{letter-spacing:.29em;text-transform:uppercase;color:#f1adc9;font-size:12px;font-weight:700}
+.jyacs-hero h1{font-size:clamp(52px,9vw,108px);line-height:1.03;letter-spacing:-.06em;font-weight:900;margin:20px 0 24px}
+.jyacs-gradient{background:linear-gradient(105deg,#fff,#f2b6d7 55%,#bcabea);color:transparent;background-clip:text}
+.jyacs-lead{font-size:clamp(17px,2vw,22px);line-height:1.85;color:#e2cadb;max-width:760px}
+.jyacs-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+.jyacs-button{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:14px;font-weight:700;font-size:14px;background:#f4bfd9;color:#25152b}
+.jyacs-button:hover{transform:translateY(-2px);background:#ffe0ec}
+.jyacs-button.secondary{background:#ffffff13;color:#f8e8f4;border:1px solid var(--line)}
+.jyacs-section{padding:40px 0 70px}
+.jyacs-section h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.04em;font-weight:850;margin:0 0 24px}
+.jyacs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.jyacs-card{padding:28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#ffffff0d,#ffffff04);box-shadow:0 20px 60px #00000018}
+.jyacs-card h3{font-size:20px;font-weight:750;color:#ffe4f2;margin:8px 0 13px}
+.jyacs-card p,.jyacs-card li,.jyacs-copy{color:#d9bfd1;line-height:1.9;font-size:15px}
+.jyacs-tag{display:inline-flex;border:1px solid #efb3d466;background:#efb3d41a;border-radius:100px;padding:5px 12px;color:#f6c0df;font-size:12px;font-weight:700}
+.jyacs-inner{padding:72px 0 100px;max-width:900px;margin:auto}
+.jyacs-inner h1{font-size:clamp(37px,6vw,65px);font-weight:850;letter-spacing:-.05em;margin:13px 0 20px}
+.jyacs-inner h2{font-size:24px;color:#fbd5e8;font-weight:750;margin:30px 0 14px}
+.jyacs-inner p,.jyacs-inner li{line-height:1.95;color:#e2ccdb;margin:10px 0}
+.jyacs-inner ol,.jyacs-inner ul{padding-left:25px}
+.jyacs-inner a:not(.jyacs-button){color:#ffb8dc;text-decoration:underline;text-underline-offset:4px}
+.jyacs-inner code{background:#ffffff12;padding:3px 7px;border-radius:6px;overflow-wrap:anywhere}
+.jyacs-note{border-left:3px solid #efb3d4;background:#efb3d40d;padding:14px 20px;border-radius:0 14px 14px 0;margin:22px 0;color:#ecd4e2;line-height:1.8}
+.jyacs-version{border:1px solid var(--line);background:#ffffff08;border-radius:22px;padding:26px;margin:20px 0}
+.jyacs-version-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.jyacs-version h2{margin:0;font-size:23px}
+.jyacs-version time{color:#b99aaf;font-size:13px}
+.jyacs-footer{border-top:1px solid var(--line);padding:34px 0;color:#b79bad;font-size:13px}
+@media(max-width:800px){.jyacs-nav{align-items:flex-start;flex-direction:column;padding:14px 0}.jyacs-links{gap:0}.jyacs-links a{padding:8px}.jyacs-grid{grid-template-columns:1fr}.jyacs-hero{padding:75px 0}.jyacs-inner{padding:45px 0 80px}}
