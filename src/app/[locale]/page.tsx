@@ -17,7 +17,7 @@ export default function Home() {
 	const contacts = [
 		{ name: "Email", icon: Mail, value: "Ph101102@163.com", href: "mailto:Ph101102@163.com" },
 		{ name: "小红书", icon: ExternalLink, value: "Panghu1102", href: "https://www.xiaohongshu.com/user/profile/63e64f0f000000002600784a?xsec_token=YB6tdTc5ICPxK5P8K8xUDP23NLeGUuhDZbEN3wdP_lL_M=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODlHNjdLNE82NzUyOTgwNjg5OTc7PTpK&apptime=1784475483&share_id=c78a4d192c6d4334bdd3a0a61efe8c18" },
-		{ name: "贴吧", icon: ExternalLink, value: "Panghu1102", href: "https://tieba.baidu.com/home/main?id=tb.1.d07df80c.a8EiNjQtA7cwWgVEwH0bmQ?t=1672895272&fr=index" },
+		{ name: "导航站", icon: ExternalLink, value: "1102502.xyz", href: "https://1102502.xyz" },
 		{ name: "GitHub", icon: ExternalLink, value: "Panghu1102", href: "https://github.com/Panghu1102" },
 	];
 
